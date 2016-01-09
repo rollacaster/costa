@@ -27,7 +27,8 @@
     "body-parser": "^1.14.2",
     "express": "^4.13.3",
     "highland": "^2.6.0",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "ws": "^1.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
