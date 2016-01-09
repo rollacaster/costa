@@ -1,6 +1,8 @@
-import app from './app'
 import http from 'http'
 import ws from 'ws'
+
+import app from './app'
+import store from './store'
 
 const port = process.env.PORT || '3000'
 app.set('port', port)
@@ -11,7 +13,7 @@ server.on('listening', () => console.log(`Listening on port ${port}`))
 
 const wss = new ws.Server({ server })
 wss.on('connection', ws => {
-  ws.send('Hello World')
+  ws.send(JSON.stringify(store.getState()))
 })
 
 server.listen(port)
