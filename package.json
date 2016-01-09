@@ -4,6 +4,8 @@
   "description": "Keep track of your daily costs across all devices.",
   "main": "server.js",
   "scripts": {
+    "start": "npm run start:server",
+    "start:server": "babel-node server",
     "test": "npm run test:unit; npm run lint",
     "test:unit": "./node_modules/.bin/mocha **/*.spec.js --require babel-core/register",
     "lint": "./node_modules/.bin/standard",
@@ -22,13 +24,18 @@
   "author": "Thomas Sojka",
   "license": "MIT",
   "dependencies": {
-    "highland": "^2.6.0"
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "highland": "^2.6.0",
+    "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.4.0",
     "babel-istanbul": "^0.6.0",
     "babel-preset-es2015": "^6.3.13",
     "chai": "^3.4.1",
+    "isparta": "^4.0.0",
+    "istanbul": "^0.4.1",
     "mocha": "^2.3.4",
     "standard": "^5.4.1"
   },
