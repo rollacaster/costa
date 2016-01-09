@@ -19,6 +19,9 @@
   ],
   "author": "Thomas Sojka",
   "license": "MIT",
+  "dependencies": {
+    "highland": "^2.6.0"
+  },
   "devDependencies": {
     "babel-core": "^6.4.0",
     "babel-istanbul": "^0.6.0",

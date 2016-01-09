@@ -1,0 +1,3 @@
+#Category, Costs
+Food, 1
+Internet, 2
