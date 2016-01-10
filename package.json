@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "npm run start:server",
-    "start:server": "babel-node server",
+    "start:server": "babel-node src/server",
     "test": "npm run test:unit; npm run lint",
-    "test:unit": "./node_modules/.bin/mocha **/*.spec.js --require babel-core/register",
+    "test:unit": "./node_modules/.bin/mocha 'src/**/*.spec.js' --require babel-core/register",
     "lint": "./node_modules/.bin/standard",
-    "coverage": "./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha  **/*.spec.js",
+    "coverage": "./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha  'src/**/*.spec.js'",
     "reset": "npm run reset:dependencies",
     "reset:dependencies": "rm -rf ./node_modules/; npm i"
   },

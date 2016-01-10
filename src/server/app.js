@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 
 const app = webServer()
 
-app.use(favicon('./dashboard/images/favicon.ico'))
+app.use(favicon(__dirname + '/../dashboard/images/favicon.ico'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(webServer.static('./dashboard'))
