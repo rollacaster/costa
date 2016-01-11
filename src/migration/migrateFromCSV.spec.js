@@ -9,11 +9,11 @@ describe('Migration', () => {
       actions = migrateFromCSV(__dirname + '/migration.fixture.txt')
     })
 
-    it('should create actions', (done) => {
+    it('should create an action', done => {
       actions.each(action => {
-        expect(action[0].type).to.be.equal('ADD_COSTS')
-        expect(action[0].category).to.be.a.string
-        expect(action[0].cost).to.be.a.number
+        expect(action.type).to.be.equal('CREDATE_COSTS')
+        expect(action.category).to.equal('Food')
+        expect(action.cost).to.equal(1.12)
         done()
       })
     })

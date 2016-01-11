@@ -1,13 +1,15 @@
 import fs from 'fs'
 import _ from 'highland'
 
+import { CREDATE_COSTS } from '../actions'
+
 export default path => {
   const splitLinesByComma = line => line.split(',')
   const validCosts = costArray => !isNaN(costArray[1])
   const costShape = costArray => ({
-    type: 'ADD_COSTS',
+    type: CREDATE_COSTS,
     category: costArray[0],
-    cost: costArray[1]
+    cost: parseFloat(costArray[1], 2)
   })
 
   return _(fs.createReadStream(path))
@@ -15,5 +17,4 @@ export default path => {
     .map(splitLinesByComma)
     .filter(validCosts)
     .map(costShape)
-    .reduce([], (a, b) => a.concat([b]))
 }
