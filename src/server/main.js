@@ -3,8 +3,9 @@ import ws from 'ws'
 
 import app from './app'
 import store from './store'
+import config from '../config'
 
-const port = process.env.PORT || '3000'
+const port = process.env.PORT || config.port
 app.set('port', port)
 
 const server = http.createServer(app)

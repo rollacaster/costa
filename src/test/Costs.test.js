@@ -1,6 +1,7 @@
 import WebSocket from 'ws'
 import { expect } from 'chai'
 
+import config from '../config'
 import { credateCosts } from '../actions'
 
 describe('Cost integration tests', () => {
@@ -8,7 +9,7 @@ describe('Cost integration tests', () => {
     let ws
 
     beforeEach(() => {
-      ws = new WebSocket('ws://localhost:3000')
+      ws = new WebSocket(config.ws)
     })
 
     afterEach(done => {
