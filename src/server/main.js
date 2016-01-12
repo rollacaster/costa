@@ -2,8 +2,8 @@ import http from 'http'
 import ws from 'ws'
 
 import app from './app'
-import store from './store'
 import config from '../config'
+import { storeWSMessges } from './storage'
 
 const port = process.env.PORT || config.port
 app.set('port', port)
@@ -12,14 +12,11 @@ const server = http.createServer(app)
 server.on('error', err => console.log(`Could not start server: ${err}`))
 
 const wss = new ws.Server({ server })
-wss.on('connection', ws => {
-  ws.send(JSON.stringify(store.getState()))
 
-  ws.on('message', (msg) => {
-    store.dispatch(JSON.parse(msg))
-    wss.clients.forEach(ws => ws.send(JSON.stringify(store.getState())))
-  })
-})
+let db
+storeWSMessges(wss)
+  .then(connection => db = connection)
+  .catch(err => console.log(err))
 
 export function listen (cb) {
   server.on('listening', () => {
@@ -35,4 +32,7 @@ export function listen (cb) {
 
 export function stop (cb) {
   server.close(cb)
+  if (db) {
+    db.close()
+  }
 }
