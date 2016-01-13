@@ -7,10 +7,9 @@ export default function costs (state = Map(), action) {
     case CREDATE_COSTS:
       if (state.get(action.category) === notSetValue) {
         return state.set(action.category, action.cost)
-      } else {
-        return state.set(action.category, action.cost + state.get(action.category))
       }
-      break
+
+      return state.set(action.category, action.cost + state.get(action.category))
     default:
       return state
   }
