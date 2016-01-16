@@ -16,8 +16,4 @@ describe('App', () => {
   it('should be a div', () => {
     expect(output.type).to.be.equal('div')
   })
-
-  it('should render', () => {
-    expect(output).to.be.include('Hello World')
-  })
 })

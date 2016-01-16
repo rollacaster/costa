@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import CostList from './components/CostList'
+
 const styles = {
   container: {
     display: 'flex'
@@ -9,7 +11,7 @@ const styles = {
 const App = props => {
   return (
       <div style={styles.container}>
-        Hello World
+        <CostList costs={props.costs} />
       </div>
   )
 }
