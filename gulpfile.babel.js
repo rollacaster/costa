@@ -12,3 +12,9 @@ builder.task('test:integration', done => {
     })
   })
 })
+
+builder.task('develop:hot', done => {
+  spawn('node_modules/.bin/webpack-dev-server',
+        ['--hot', '--inline', '--content-base', 'static', '--port', '4000'],
+        {stdio: 'inherit'})
+})
