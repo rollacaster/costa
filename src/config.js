@@ -22,9 +22,6 @@ switch (process.env.NODE_ENV) {
   case 'production':
     config = prodConfig
     break
-  case 'develop':
-    config = devConfig
-    break
   case 'test':
     config = testConfig
     break
