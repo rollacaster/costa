@@ -4,6 +4,7 @@ import { expect } from 'chai'
 
 import config from '../config'
 import { createCost } from '../actions'
+import { getConnection } from '../server/storage'
 
 describe('Cost integration tests', () => {
   describe('Create new cost', () => {
@@ -14,8 +15,14 @@ describe('Cost integration tests', () => {
     })
 
     afterEach(done => {
+      getConnection()
+        .then(con => {
+          con.collection('actions')
+          con.dropCollection('actions')
+        })
+        .then(_ => ws.close())
+        .catch(err => console.log('err: ', err))
       ws.on('close', () => done())
-      ws.close()
     })
 
     it('should open a ws connection', (done) => {

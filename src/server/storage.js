@@ -1,33 +1,34 @@
 import { MongoClient } from 'mongodb'
 
 import config from '../config'
-import store from './store'
 
-export function storeWSMessges (webSocketServer) {
-  return new Promise((resolve, reject) => {
-    MongoClient.connect(config.db, (err, connection) => {
-      if (err) {
-        reject(`Could not connect to mongo: ${err}`)
-      }
+const connection = new Promise((resolve, reject) => {
+  MongoClient.connect(config.db, (err, connection) => {
+    if (err) {
+      reject(`Could not connect to mongo: ${err}`)
+    }
 
-      const collection = connection.collection('actions')
-      webSocketServer.on('connection', ws => {
-        ws.send(JSON.stringify(store.getState()))
-
-        ws.on('message', msg => {
-          const action = JSON.parse(msg)
-          collection.insert(action, (err, result) => {
-            if (err) {
-              console.log(`Could not save an action: ${err}`)
-            }
-
-            store.dispatch(action)
-            webSocketServer.clients.forEach(ws => ws.send(JSON.stringify(store.getState())))
-          })
-        })
-      })
-
-      resolve(connection)
-    })
+    resolve(connection)
   })
+})
+
+export function getConnection () {
+  return connection
+}
+
+export function storeDocument ({ collection, document }) {
+  return getConnection()
+    .then(con => getCollection(collection))
+    .then(col => col.insert(document))
+}
+
+export function findDocuments ({ collection }) {
+  return getConnection()
+    .then(con => getCollection(collection))
+    .then(col => col.find({}).toArray())
+}
+
+function getCollection (collection) {
+  return getConnection().then(con => con.collection(collection))
+    .catch(err => console.log(`Could not connect to collection ${collection} due to ${err}`))
 }

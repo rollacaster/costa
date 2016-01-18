@@ -1,9 +1,10 @@
 import http from 'http'
-import ws from 'ws'
+import WS from 'ws'
 
 import app from './app'
 import config from '../config'
-import { storeWSMessges } from './storage'
+import store from './store'
+import { getConnection, storeDocument, findDocuments } from './storage'
 
 const port = process.env.PORT || config.port
 app.set('port', port)
@@ -11,12 +12,23 @@ app.set('port', port)
 const server = http.createServer(app)
 server.on('error', err => console.log(`Could not start server: ${err}`))
 
-const wss = new ws.Server({ server })
+const wss = new WS.Server({ server })
 
-let db
-storeWSMessges(wss)
-  .then(connection => db = connection)
-  .catch(err => console.log(err))
+// Load stored actions
+findDocuments({ collection: 'actions' })
+  .then(actions => actions.forEach(action => store.dispatch(action)))
+
+wss.on('connection', ws => {
+  ws.send(JSON.stringify(store.getState()))
+
+  ws.on('message', msg => {
+    const action = JSON.parse(msg)
+    storeDocument({ collection: 'actions', document: action }).then(_ => {
+      store.dispatch(action)
+      wss.clients.forEach(ws => ws.send(JSON.stringify(store.getState())))
+    }).catch(err => console.log(`Could not save ${action} due to ${err}`))
+  })
+})
 
 export function listen (cb) {
   server.on('listening', () => {
@@ -31,8 +43,8 @@ export function listen (cb) {
 }
 
 export function stop (cb) {
-  server.close(cb)
-  if (db) {
-    db.close()
-  }
+  getConnection().then(con => {
+    con.close()
+    server.close(cb)
+  })
 }
