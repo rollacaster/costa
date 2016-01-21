@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
+import config from '../config'
 import CostList from './components/CostList'
 
 const styles = {
@@ -8,19 +9,34 @@ const styles = {
   }
 }
 
-const App = props => {
-  return (
-      <div style={styles.container}>
-        <CostList costs={props.costs} />
-      </div>
-  )
-}
+const App = React.createClass({
+  getInitialState () {
+    return {
+      costs: {}
+    }
+  },
 
-App.propTypes = {
-  costs: PropTypes.shape({
-    category: PropTypes.string,
-    cost: PropTypes.number
-  })
-}
+  render () {
+    const { costs } = this.state
+    return (
+      <div style={styles.container}>
+        <CostList costs={costs} />
+      </div>
+    )
+  },
+
+  componentDidMount () {
+    this.ws = new WebSocket(config.ws)
+
+    this.ws.onopen = () => {
+      console.log(`Connected to ${config.ws}`)
+      this.ws.onmessage = msg => this.setState(JSON.parse(msg.data))
+    }
+  },
+
+  componentWillUnmount () {
+    this.ws.close()
+  }
+})
 
 export default App
