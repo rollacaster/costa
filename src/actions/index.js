@@ -1,8 +1,12 @@
-export const CREDATE_COSTS = 'CREDATE_COSTS'
+import uuid from 'uuid'
 
-export function credateCosts ({ category, cost }) {
+export const CREATE_COST = 'CREATE_COST'
+
+export function createCost ({ category, cost }) {
   return {
-    type: CREDATE_COSTS,
+    type: CREATE_COST,
+    id: uuid.v1(),
+    time: new Date(),
     category,
     cost
   }

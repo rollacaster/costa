@@ -1,8 +1,9 @@
 import WebSocket from 'ws'
+import R from 'ramda'
 import { expect } from 'chai'
 
 import config from '../config'
-import { credateCosts } from '../actions'
+import { createCost } from '../actions'
 
 describe('Cost integration tests', () => {
   describe('Create new cost', () => {
@@ -37,15 +38,15 @@ describe('Cost integration tests', () => {
           const hasChildren = Object.keys(state.costs).length > 0
 
           if (hasChildren) {
-            expect(JSON.parse(msg).costs).to.be.deep.equal({
-              Food: 1
-            })
+            const { costs } = JSON.parse(msg)
+            expect(R.values(costs)[0].cost).to.be.equal(1)
+            expect(R.values(costs)[0].category).to.be.equal('Food')
             done()
           }
         })
 
         ws.send(JSON.stringify(
-          credateCosts({
+          createCost({
             category: 'Food',
             cost: 1
           })

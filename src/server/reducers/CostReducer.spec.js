@@ -1,31 +1,19 @@
 import { expect } from 'chai'
 
 import costs from './CostReducer'
-import { credateCosts } from '../../actions'
+import { createCost } from '../../actions'
 
 describe('CostReducer', () => {
-  describe('Credate action', () => {
+  describe('Create action', () => {
     it('creates a new cost entry', () => {
-      expect(costs(undefined, credateCosts({
+      const state = costs(undefined, createCost({
         category: 'Food',
         cost: 1
-      })).toObject()).to.be.deep.equal({
-        Food: 1
-      })
-    })
+      })).toArray()
 
-    it('updates an existing cost entry', () => {
-      const state = costs(undefined, credateCosts({
-        category: 'Food',
-        cost: 1
-      }))
-
-      expect(costs(state, credateCosts({
-        category: 'Food',
-        cost: 1
-      })).toObject()).to.be.deep.equal({
-        Food: 2
-      })
+      expect(state[0].category).to.be.equal('Food')
+      expect(state[0].cost).to.be.equal(1)
+      expect(state[0].time).to.be.ok
     })
   })
 

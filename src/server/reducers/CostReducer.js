@@ -1,15 +1,11 @@
-import { Map, notSetValue } from 'immutable'
+import { Map } from 'immutable'
 
-import { CREDATE_COSTS } from '../../actions'
+import { CREATE_COST } from '../../actions'
 
-export default function costs (state = Map(), action) {
-  switch (action.type) {
-    case CREDATE_COSTS:
-      if (state.get(action.category) === notSetValue) {
-        return state.set(action.category, action.cost)
-      }
-
-      return state.set(action.category, action.cost + state.get(action.category))
+export default function costs (state = Map(), {id, type, cost, category, time}) {
+  switch (type) {
+    case CREATE_COST:
+      return state.set(id, {cost, category, time})
     default:
       return state
   }
