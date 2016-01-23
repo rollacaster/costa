@@ -1,11 +1,14 @@
 import React from 'react'
 
 import config from '../config'
+import { getCategories } from './functions/costFunctions'
 import CostList from './components/CostList'
+import CostForm from './components/CostForm'
 
 const styles = {
   container: {
-    display: 'flex'
+    display: 'flex',
+    justifyContent: 'space-around'
   }
 }
 
@@ -19,8 +22,12 @@ const App = React.createClass({
   render () {
     const { costs } = this.state
     return (
-      <div style={styles.container}>
-        <CostList costs={costs} />
+      <div>
+        <h1 style={{paddingLeft: 20}}>Costa</h1>
+        <div style={styles.container}>
+          <CostList costs={costs} />
+          <CostForm categories={getCategories(costs)}/>
+        </div>
       </div>
     )
   },
