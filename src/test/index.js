@@ -1,10 +1,9 @@
-import { createRenderer } from 'react-addons-test-utils'
-import chai, { expect } from 'chai'
+import testUtils from 'react-addons-test-utils'
+import chai from 'chai'
 import chaiJSX from 'jsx-chai'
 
 chai.use(chaiJSX)
 
-export default {
-  createRenderer,
-  expect
-}
+export const expect = chai.expect
+export const createRenderer = testUtils.createRenderer
+

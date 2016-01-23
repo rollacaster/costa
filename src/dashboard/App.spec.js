@@ -1,7 +1,6 @@
 import React from 'react'
 
-import testUtils from '../test'
-const { createRenderer, expect } = testUtils
+import { createRenderer, expect } from '../test'
 
 import App from './App'
 
