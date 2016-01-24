@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack;cross-env NODE_ENV=production npm run start:server",
     "start:server": "./node_modules/babel-cli/bin/babel-node.js src/server/index.js",
+    "build": "./node_modules/babel-cli/bin/babel.js 'src/**/*.js?(x)' -d build/; webpack",
     "develop": "npm run start:server & gulp develop:hot & npm run test:watch",
     "test": "npm run test:unit; npm run lint;cross-env NODE_ENV=test gulp test:integration",
     "test:watch": "mocha 'src/**/*.spec.js?(x)' -w --require babel-core/register",
