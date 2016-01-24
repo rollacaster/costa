@@ -8,6 +8,6 @@ export function createCost ({ category, cost }) {
     id: uuid.v1(),
     time: new Date(),
     category,
-    cost
+    cost: parseFloat(cost)
   }
 }

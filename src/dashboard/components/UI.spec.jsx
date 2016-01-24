@@ -52,11 +52,13 @@ describe('UI', () => {
 
   it('should render a NumberInput', () => {
     const renderer = createRenderer()
-    renderer.render(<NumberInput id='test' label='Test' error='Error' />)
+    renderer.render(
+        <NumberInput id='test' label='Test' validationError='Error' value={3} onChange={_ => {}}/>
+    )
     output = renderer.getRenderOutput()
     expect(output).to.include(
       <div className='mdl-textfield mdl-js-textfield'>
-        <input className='mdl-textfield__input' type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' />
+        <input className='mdl-textfield__input' type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={_ => {}}/>
         <label className='mdl-textfield__label' htmlFor='test'>Test</label>
         <span className='mdl-textfield__error'>Error</span>
       </div>
@@ -65,10 +67,13 @@ describe('UI', () => {
 
   it('should render a Button', () => {
     const renderer = createRenderer()
-    renderer.render(<Button text='Test' />)
+    renderer.render(<Button text='Test' disabled/>)
     output = renderer.getRenderOutput()
     expect(output).to.include(
-      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'>
+      <button
+        type='submit'
+        className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+        disabled>
         Test
       </button>
     )

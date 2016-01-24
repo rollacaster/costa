@@ -2,8 +2,8 @@ import React from 'react'
 
 import { createRenderer, expect } from '../../test'
 import {
-  AccentedButton
-} from './UI'
+  RadioFormButtons
+} from './FormElements'
 
 import CostForm from './CostForm'
 
@@ -22,10 +22,7 @@ describe('CostForm', () => {
 
   it('should render categories', () => {
     expect(output).to.include(
-        <div style={{display: 'flex', flexWrap: 'wrap'}}>
-          <AccentedButton id='Food' text='Food' />
-          <AccentedButton id='Rent' text='Rent' />
-        </div>
+      <RadioFormButtons name='category' buttons={['Food', 'Rent']} required/>
     )
   })
 })

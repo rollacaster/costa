@@ -27,22 +27,33 @@ CardText.propTypes = {
   text: PropTypes.string
 }
 
-export const NumberInput = ({id, label, error}) => (
+export const NumberInput = ({id, label, onChange, validationError, value}) => (
   <div className={classes.textField}>
-    <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} />
+    <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} onChange={onChange} value={value}/>
     <label className={classes.label} htmlFor={id}>{label}</label>
-    <span className={classes.textFieldError}>{error}</span>
+    <span className={classes.textFieldError}>{validationError}</span>
   </div>
 )
 
 NumberInput.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
-  error: PropTypes.string
+  error: PropTypes.string,
+  onChange: PropTypes.func
 }
 
-export const Button = ({text}) => (
-  <button className={classes.raisedButton}>
+export const SelectableButton = ({text, selected, onClick}) => (
+  <button
+    type='button'
+    className={selected ? classes.raisedButton : classes.raisedButtonAccented }
+    onClick={onClick}
+    style={{margin: 5}}>
+    {text}
+  </button>
+)
+
+export const Button = ({text, disabled}) => (
+  <button type='submit' className={classes.raisedButton} disabled={disabled}>
     {text}
   </button>
 )

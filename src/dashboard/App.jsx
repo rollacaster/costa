@@ -26,7 +26,7 @@ const App = React.createClass({
         <h1 style={{paddingLeft: 20}}>Costa</h1>
         <div style={styles.container}>
           <CostList costs={costs} />
-          <CostForm categories={getCategories(costs)}/>
+          <CostForm categories={getCategories(costs)} connection={this.ws}/>
         </div>
       </div>
     )
