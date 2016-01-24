@@ -3,6 +3,7 @@ import WS from 'ws'
 
 import app from './app'
 import config from '../config'
+import backup from './backup'
 import store from './store'
 import { getConnection, storeDocument, findDocuments } from './storage'
 
@@ -13,6 +14,10 @@ const server = http.createServer(app)
 server.on('error', err => console.log(`Could not start server: ${err}`))
 
 const wss = new WS.Server({ server })
+
+if (config.backup) {
+  backup.start()
+}
 
 // Load stored actions
 findDocuments({ collection: 'actions' })
