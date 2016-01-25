@@ -8,6 +8,7 @@ import CostForm from './components/CostForm'
 const styles = {
   container: {
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-around'
   }
 }
