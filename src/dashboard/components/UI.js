@@ -72,3 +72,21 @@ AccentedButton.propTypes = {
   id: PropTypes.string,
   text: PropTypes.string
 }
+
+export const Table = ({children}) => (
+  <table className={classes.table}>
+    {children}
+  </table>
+)
+
+export const TableHeadText = ({children}) => (
+  <th className={classes.nonNumericTableCell}>
+    {children}
+  </th>
+)
+
+export const TableCellText = ({children}) => (
+  <td className={classes.nonNumericTableCell}>
+    {children}
+  </td>
+)

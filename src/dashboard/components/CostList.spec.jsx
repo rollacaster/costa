@@ -3,6 +3,7 @@ import React from 'react'
 import { createRenderer, expect } from '../../test'
 
 import CostList from './CostList'
+import { TableHeadText, TableCellText } from './ui'
 
 describe('CostList', () => {
   let output
@@ -24,7 +25,7 @@ describe('CostList', () => {
     expect(output).to.be.include(
       <thead>
         <tr>
-          <th className='mdl-data-table__cell--non-numeric'>Category</th>
+          <TableHeadText>Category</TableHeadText>
           <th>Cost</th>
         </tr>
       </thead>
@@ -34,7 +35,7 @@ describe('CostList', () => {
   it('should render a cost', () => {
     expect(output).to.be.include(
       <tr>
-        <td className='mdl-data-table__cell--non-numeric'>Food</td>
+        <TableCellText>Food</TableCellText>
         <td>3.00</td>
       </tr>
     )
@@ -43,7 +44,7 @@ describe('CostList', () => {
   it('should render the total cost', () => {
     expect(output).to.be.include(
       <tr>
-        <td className='mdl-data-table__cell--non-numeric'>Total</td>
+        <TableCellText>Total</TableCellText>
         <td>5.00</td>
       </tr>
     )

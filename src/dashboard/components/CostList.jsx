@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 
-import { classes } from '../css'
+import { Table, TableHeadText, TableCellText } from './UI'
 import { getCostsPerCategory, getTotalCosts } from '../functions/costFunctions'
 
 const CostList = ({costs}) => (
-  <table className={classes.table}>
+  <Table>
     <thead>
       <tr>
-        <th className={classes.nonNumericTableCell}>Category</th>
+        <TableHeadText>Category</TableHeadText>
         <th>Cost</th>
       </tr>
     </thead>
@@ -15,17 +15,17 @@ const CostList = ({costs}) => (
       {
         getCostsPerCategory(costs).map(({category, costs}) => (
           <tr key={category}>
-            <td className={classes.nonNumericTableCell}>{category}</td>
+            <TableCellText>{category}</TableCellText>
             <td>{costs.toFixed(2)}</td>
           </tr>
         ))
       }
       <tr>
-        <td className={classes.nonNumericTableCell}>Total</td>
+        <TableCellText>Total</TableCellText>
         <td>{getTotalCosts(costs).toFixed(2)}</td>
       </tr>
     </tbody>
-  </table>
+  </Table>
 )
 
 CostList.propTypes = {
