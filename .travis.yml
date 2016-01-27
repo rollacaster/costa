@@ -6,3 +6,6 @@ script:
   - npm run coverage
 services:
   - mongodb
+notifications:
+  email:
+    - thsojka@web.de
