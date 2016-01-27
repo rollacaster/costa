@@ -3,7 +3,7 @@ import React from 'react'
 import { createRenderer, expect } from '../../test'
 
 import CostList from './CostList'
-import { TableHeadText, TableCellText } from './ui'
+import { TableHeadText, TableCellText } from './UI'
 
 describe('CostList', () => {
   let output
