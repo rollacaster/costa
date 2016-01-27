@@ -1,6 +1,6 @@
 {
   "name": "costa",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Keep track of your daily costs across all devices.",
   "main": "server.js",
   "scripts": {
