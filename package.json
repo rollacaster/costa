@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack;cross-env NODE_ENV=production npm run start:server",
     "start:server": "./node_modules/babel-cli/bin/babel-node.js src/server/index.js",
-    "build": "./node_modules/babel-cli/bin/babel.js 'src/**/*.js?(x)' -d build/; webpack",
+    "build": "npm run build:server; npm run build:dashboard",
+    "build:server" : "./node_modules/babel-cli/bin/babel.js 'src/**/*.js?(x)' -d build/",
+    "build:dashboard" : "webpack",
     "develop": "npm run start:server & gulp develop:hot & npm run test:watch",
     "test": "npm run test:unit; npm run lint;cross-env NODE_ENV=test gulp test:integration",
     "test:watch": "mocha 'src/**/*.spec.js?(x)' -w --require babel-core/register",
@@ -53,6 +55,7 @@
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+    "babel-runtime": "^6.3.19",
     "chai": "^3.4.1",
     "coveralls": "^2.11.6",
     "cross-env": "^1.0.7",
