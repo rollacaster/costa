@@ -7,6 +7,7 @@ import {
   CardText,
   Button,
   AccentedButton,
+  AddIconButton,
   NumberInput,
   Table,
   TableHeadText,
@@ -133,6 +134,22 @@ describe('UI', () => {
       <td className='mdl-data-table__cell--non-numeric'>
         <div>Test</div>
       </td>
+    )
+  })
+
+  it('should render an AddIconButton', () => {
+    const renderer = createRenderer()
+    renderer.render(
+        <AddIconButton/>
+    )
+    const output = renderer.getRenderOutput()
+    expect(output).to.be.deep.equal(
+      <button
+        className='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'
+        onClick={undefined}
+        style={undefined}>
+        <i className='material-icons'>add</i>
+      </button>
     )
   })
 })

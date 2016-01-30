@@ -8,6 +8,8 @@ export const classes = {
   raisedButton: classNames('mdl-button mdl-js-button', 'mdl-button--raised mdl-button--colored'),
   raisedButtonAccented: classNames('mdl-button', 'mdl-js-button', 'mdl-button--raised', 'mdl-button--accent'),
   iconButton: classNames('mdl-button', 'mdl-js-button', 'mdl-button--icon'),
+  addButton: classNames('mdl-button', 'mdl-js-button', 'mdl-button--fab', 'mdl-js-ripple-effect', 'mdl-button--colored'),
+  icons: classNames('material-icons'),
   textField: classNames('mdl-textfield', 'mdl-js-textfield'),
   textFieldError: classNames('mdl-textfield__error'),
   input: classNames('mdl-textfield__input'),

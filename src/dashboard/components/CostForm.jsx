@@ -8,7 +8,8 @@ import {
   Card,
   CardTitle,
   CardText,
-  Button
+  Button,
+  AddIconButton
 } from './UI'
 
 import {
@@ -57,6 +58,9 @@ const CostForm = React.createClass({
            <CardText text='Category' />
            <div style={{display: 'flex', flexWrap: 'wrap'}}>
            <RadioFormButtons name='category' buttons={categories} required/>
+           </div>
+           <div>
+             <AddIconButton />
            </div>
            <NumberFormInput
              name='cost'
