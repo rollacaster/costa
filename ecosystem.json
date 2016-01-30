@@ -12,7 +12,7 @@
   "deploy": {
     "production": {
       "user": "pi",
-      "host": "192.168.0.61",
+      "host": "192.168.0.234",
       "ref": "origin/master",
       "repo": "git@github.com:rollacaster/costa.git",
       "path": "/var/www",

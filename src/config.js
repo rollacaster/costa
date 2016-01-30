@@ -2,7 +2,7 @@ let config
 
 const prodConfig = {
   db: 'mongodb://localhost:27017/costa',
-  ws: 'ws://localhost:3000',
+  ws: 'ws://192.168.0.234:3000',
   port: '3000',
   backup: '/backup'
 }
