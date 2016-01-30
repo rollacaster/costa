@@ -1,4 +1,5 @@
 import React from 'react'
+import Radium from 'radium'
 
 import config from '../config'
 import { getCategories } from './functions/costFunctions'
@@ -47,4 +48,4 @@ const App = React.createClass({
   }
 })
 
-export default App
+export default Radium(App)

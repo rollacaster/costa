@@ -1,39 +1,41 @@
 import React, { PropTypes } from 'react'
+import Radium from 'radium'
+
 import { classes } from '../css'
 
-export const Card = ({children}) => (
+export const Card = Radium(({children}) => (
   <div className={classes.card}>
     {children}
   </div>
-)
+))
 
-export const CardTitle = ({text}) => (
+export const CardTitle = Radium(({text}) => (
   <div className={classes.cardTitle}>
     <h2 className={classes.cardTitleText}>{text}</h2>
   </div>
-)
+))
 
 CardTitle.propTypes = {
   text: PropTypes.string
 }
 
-export const CardText = ({text}) => (
+export const CardText = Radium(({text}) => (
   <div className={classes.cardText} style={{padding: 0}}>
     {text}
   </div>
-)
+))
 
 CardText.propTypes = {
   text: PropTypes.string
 }
 
-export const NumberInput = ({id, label, onChange, validationError, value}) => (
+export const NumberInput = Radium(({id, label, onChange, validationError, value}) => (
   <div className={classes.textField}>
     <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} onChange={onChange} value={value}/>
     <label className={classes.label} htmlFor={id}>{label}</label>
     <span className={classes.textFieldError}>{validationError}</span>
   </div>
-)
+))
 
 NumberInput.propTypes = {
   id: PropTypes.string,
@@ -42,7 +44,7 @@ NumberInput.propTypes = {
   onChange: PropTypes.func
 }
 
-export const SelectableButton = ({text, selected, onClick}) => (
+export const SelectableButton = Radium(({text, selected, onClick}) => (
   <button
     type='button'
     className={selected ? classes.raisedButton : classes.raisedButtonAccented }
@@ -50,43 +52,43 @@ export const SelectableButton = ({text, selected, onClick}) => (
     style={{margin: 5}}>
     {text}
   </button>
-)
+))
 
-export const Button = ({text, disabled}) => (
+export const Button = Radium(({text, disabled}) => (
   <button type='submit' className={classes.raisedButton} disabled={disabled}>
     {text}
   </button>
-)
+))
 
 Button.propTypes = {
   text: PropTypes.string
 }
 
-export const AccentedButton = ({text}) => (
+export const AccentedButton = Radium(({text}) => (
   <button style={{margin: 5}} className={classes.raisedButtonAccented}>
     {text}
   </button>
-)
+))
 
 AccentedButton.propTypes = {
   id: PropTypes.string,
   text: PropTypes.string
 }
 
-export const Table = ({children}) => (
+export const Table = Radium(({children}) => (
   <table className={classes.table}>
     {children}
   </table>
-)
+))
 
-export const TableHeadText = ({children}) => (
+export const TableHeadText = Radium(({children}) => (
   <th className={classes.nonNumericTableCell}>
     {children}
   </th>
-)
+))
 
-export const TableCellText = ({children}) => (
+export const TableCellText = Radium(({children}) => (
   <td className={classes.nonNumericTableCell}>
     {children}
   </td>
-)
+))

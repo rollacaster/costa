@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Radium from 'radium'
 
 import { Table, TableHeadText, TableCellText } from './UI'
 import { getCostsPerCategory, getTotalCosts } from '../functions/costFunctions'
@@ -35,4 +36,4 @@ CostList.propTypes = {
   })
 }
 
-export default CostList
+export default Radium(CostList)

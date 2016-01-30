@@ -1,12 +1,13 @@
 import React, { PropTypes } from 'react'
 import Formsy from 'formsy-react'
+import Radium from 'radium'
 
 import {
   NumberInput,
   SelectableButton
 } from './UI'
 
-export const NumberFormInput = React.createClass({
+export const NumberFormInput = Radium(React.createClass({
   mixins: [Formsy.Mixin],
 
   render () {
@@ -17,9 +18,9 @@ export const NumberFormInput = React.createClass({
         {...this.props}/>
     )
   }
-})
+}))
 
-export const RadioFormButtons = React.createClass({
+export const RadioFormButtons = Radium(React.createClass({
   propTypes: {
     buttons: PropTypes.arrayOf(PropTypes.string),
     selected: PropTypes.string
@@ -42,5 +43,4 @@ export const RadioFormButtons = React.createClass({
       </div>
     )
   }
-})
-
+}))

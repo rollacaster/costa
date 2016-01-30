@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Form } from 'formsy-react'
+import Radium from 'radium'
 
 import { createCost } from '../../actions'
 
@@ -72,4 +73,4 @@ const CostForm = React.createClass({
   }
 })
 
-export default CostForm
+export default Radium(CostForm)

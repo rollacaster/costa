@@ -23,8 +23,8 @@ describe('CostList', () => {
 
   it('should render a head row', () => {
     expect(output).to.be.include(
-      <thead>
-        <tr>
+      <thead _radiumDidResolveStyles>
+        <tr _radiumDidResolveStyles>
           <TableHeadText>Category</TableHeadText>
           <th>Cost</th>
         </tr>
@@ -34,7 +34,7 @@ describe('CostList', () => {
 
   it('should render a cost', () => {
     expect(output).to.be.include(
-      <tr>
+      <tr _radiumDidResolveStyles>
         <TableCellText>Food</TableCellText>
         <td>3.00</td>
       </tr>
@@ -43,7 +43,7 @@ describe('CostList', () => {
 
   it('should render the total cost', () => {
     expect(output).to.be.include(
-      <tr>
+      <tr _radiumDidResolveStyles>
         <TableCellText>Total</TableCellText>
         <td>5.00</td>
       </tr>

@@ -44,8 +44,8 @@ describe('UI', () => {
     const renderer = createRenderer()
     renderer.render(<CardText text='Test' />)
     const output = renderer.getRenderOutput()
-    expect(output).to.include(
-      <div className='mdl-card__supporting-text' style={{padding: 0}}>
+    expect(output).to.be.deep.equal(
+      <div className=' mdl-card__supporting-text' style={{padding: 0}} _radiumDidResolveStyles>
         Test
       </div>
     )
@@ -58,7 +58,7 @@ describe('UI', () => {
     )
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-      <div className='mdl-textfield mdl-js-textfield'>
+      <div className='mdl-textfield mdl-js-textfield' _radiumDidResolveStyles>
         <input className='mdl-textfield__input' type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={_ => {}}/>
         <label className='mdl-textfield__label' htmlFor='test'>Test</label>
         <span className='mdl-textfield__error'>Error</span>
@@ -84,8 +84,8 @@ describe('UI', () => {
     const renderer = createRenderer()
     renderer.render(<AccentedButton text='Test' />)
     const output = renderer.getRenderOutput()
-    expect(output).to.include(
-      <button style={{margin: 5}} className='mdl-button mdl-js-button mdl-button--raised mdl-button--accent'>
+    expect(output).to.be.deep.equal(
+      <button style={{margin: 5}} className=' mdl-button mdl-js-button mdl-button--raised mdl-button--accent' _radiumDidResolveStyles>
         Test
       </button>
     )
