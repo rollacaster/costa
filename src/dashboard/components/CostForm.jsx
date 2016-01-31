@@ -46,7 +46,7 @@ const CostForm = React.createClass({
     const { categories } = this.props
 
     return (
-     <div style={{display: 'flex', justifyContent: 'center', padding: 10, height: '100%'}}>
+     <div style={{display: 'flex', justifyContent: 'center', height: '100%'}}>
        <Card>
          <CardTitle text='Create new cost' />
          <Form
