@@ -44,6 +44,21 @@ NumberInput.propTypes = {
   onChange: PropTypes.func
 }
 
+export const TextInput = Radium(({id, label, onChange, validationError, value, style}) => (
+  <div className={classes.textField} style={style}>
+    <input className={classes.input} type='text' id={id} onChange={onChange} value={value}/>
+    <label className={classes.label} htmlFor={id}>{label}</label>
+    <span className={classes.textFieldError}>{validationError}</span>
+  </div>
+))
+
+TextInput.propTypes = {
+  id: PropTypes.string,
+  label: PropTypes.string,
+  error: PropTypes.string,
+  onChange: PropTypes.func
+}
+
 export const SelectableButton = Radium(({text, selected, onClick}) => (
   <button
     type='button'

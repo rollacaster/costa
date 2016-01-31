@@ -8,8 +8,7 @@ import {
   Card,
   CardTitle,
   CardText,
-  Button,
-  AddIconButton
+  Button
 } from './UI'
 
 import {
@@ -56,12 +55,10 @@ const CostForm = React.createClass({
              onInvalid={_ => this.setState({canSubmit: false})}
              onValidSubmit={this.createCost}>
            <CardText text='Category' />
-           <div style={{display: 'flex', flexWrap: 'wrap'}}>
-           <RadioFormButtons name='category' buttons={categories} required/>
-           </div>
-           <div>
-             <AddIconButton />
-           </div>
+           <RadioFormButtons
+             name='category'
+             buttons={categories}
+             required/>
            <NumberFormInput
              name='cost'
              id='costInput'
