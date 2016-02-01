@@ -2,3 +2,4 @@
 /coverage
 static/dashboard.js*
 /build
+.tern-project
