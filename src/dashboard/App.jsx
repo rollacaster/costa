@@ -5,6 +5,7 @@ import config from '../config'
 import { getCategories } from './functions/costFunctions'
 import CostList from './components/CostList'
 import CostForm from './components/CostForm'
+import CostStream from './components/CostStream'
 
 const styles = {
   container: {
@@ -29,6 +30,7 @@ const App = React.createClass({
         <div style={styles.container}>
           <CostList costs={costs} />
           <CostForm categories={getCategories(costs)} connection={this.ws}/>
+          <CostStream costs={costs} connection={this.ws}/>
         </div>
       </div>
     )
