@@ -34,4 +34,16 @@ describe('Action Creators', () => {
       expect(category).to.be.equal('test')
     })
   })
+
+  describe('removeCost', () => {
+    it('should remove a new cost action', () => {
+      const removeAction = actions.removeCost({
+        id: '123'
+      })
+
+      const { type, id } = removeAction
+      expect(type).to.be.equal('REMOVE_COST')
+      expect(id).to.be.equal('123')
+    })
+  })
 })

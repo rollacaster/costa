@@ -2,6 +2,7 @@ import uuid from 'uuid'
 
 export const CREATE_COST = 'CREATE_COST'
 export const UPDATE_COST = 'UPDATE_COST'
+export const REMOVE_COST = 'REMOVE_COST'
 
 export function createCost ({ category, cost }) {
   return {
@@ -19,5 +20,12 @@ export function updateCost ({id, cost, category}) {
     id,
     cost: parseFloat(cost),
     category
+  }
+}
+
+export function removeCost ({id}) {
+  return {
+    type: REMOVE_COST,
+    id
   }
 }
