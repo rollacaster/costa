@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { Map } from 'immutable'
 
 import costs from './CostReducer'
-import { createCost, updateCost } from '../../actions'
+import { createCost, updateCost, removeCost } from '../../actions'
 
 describe('CostReducer', () => {
   describe('Create action', () => {
@@ -36,6 +36,23 @@ describe('CostReducer', () => {
       expect(state[0].category).to.be.equal('Food')
       expect(state[0].cost).to.be.equal(2)
       expect(state[0].time.getTime()).to.be.above((new Date('01-01-2016')).getTime())
+    })
+  })
+
+  describe('Remove action', () => {
+    it('removes a cost entry', () => {
+      const startState = new Map()
+      const updatedState = startState.set('123', {
+        category: 'Food',
+        cost: 1,
+        time: new Date('01-01-2016')
+      })
+
+      const state = costs(updatedState, removeCost({
+        id: '123'
+      })).toArray()
+
+      expect(state).to.be.empty
     })
   })
 
