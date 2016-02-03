@@ -5,13 +5,16 @@ import {
   Card,
   CardTitle,
   CardText,
+  CardActions,
+  CardActionButton,
   Button,
   AccentedButton,
   AddIconButton,
   NumberInput,
   Table,
   TableHeadText,
-  TableCellText
+  TableCellText,
+  Attribute
 } from './UI'
 
 describe('UI', () => {
@@ -23,8 +26,8 @@ describe('UI', () => {
         </Card>
     )
     const output = renderer.getRenderOutput()
-    expect(output).to.include(
-      <div className='mdl-card mdl-shadow--2dp'>
+    expect(output).to.be.deep.equal(
+      <div _radiumDidResolveStyles className=' mdl-card mdl-shadow--2dp' style={{minHeight: 0, margin: 5}}>
         <div>Test</div>
       </div>
     )
@@ -43,12 +46,34 @@ describe('UI', () => {
 
   it('should render a CardText', () => {
     const renderer = createRenderer()
-    renderer.render(<CardText text='Test' />)
+    renderer.render(<CardText>Test</CardText>)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
       <div className=' mdl-card__supporting-text' style={{padding: 0}} _radiumDidResolveStyles>
         Test
       </div>
+    )
+  })
+
+  it('should render CardActions', () => {
+    const renderer = createRenderer()
+    renderer.render(<CardActions>Test</CardActions>)
+    const output = renderer.getRenderOutput()
+    expect(output).to.be.deep.equal(
+      <div className='mdl-card__actions mdl-card--border'>
+        Test
+      </div>
+    )
+  })
+
+  it('should render CardActionButton', () => {
+    const renderer = createRenderer()
+    renderer.render(<CardActionButton text='Test' />)
+    const output = renderer.getRenderOutput()
+    expect(output).to.be.deep.equal(
+      <a className='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onClick={undefined}>
+        Test
+      </a>
     )
   })
 
@@ -58,8 +83,8 @@ describe('UI', () => {
         <NumberInput id='test' label='Test' validationError='Error' value={3} onChange={_ => {}}/>
     )
     const output = renderer.getRenderOutput()
-    expect(output).to.include(
-      <div className='mdl-textfield mdl-js-textfield' _radiumDidResolveStyles>
+    expect(output).to.be.deep.equal(
+      <div className='mdl-textfield mdl-js-textfield' _radiumDidResolveStyles style={undefined}>
         <input className='mdl-textfield__input' type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={_ => {}}/>
         <label className='mdl-textfield__label' htmlFor='test'>Test</label>
         <span className='mdl-textfield__error'>Error</span>
@@ -74,6 +99,7 @@ describe('UI', () => {
     expect(output).to.include(
       <button
         type='submit'
+        onClick={undefined}
         className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
         disabled>
         Test
@@ -150,6 +176,17 @@ describe('UI', () => {
         style={undefined}>
         <i className='material-icons'>add</i>
       </button>
+    )
+  })
+
+  it('should render an Attribute', () => {
+    const renderer = createRenderer()
+    renderer.render(
+        <Attribute attribute='Key' value='Value'/>
+    )
+    const output = renderer.getRenderOutput()
+    expect(output).to.be.deep.equal(
+      <p style={{margin: 0}}><span style={{fontWeight: 600}}>Key</span> Value</p>
     )
   })
 })

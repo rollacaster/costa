@@ -4,7 +4,7 @@ import Radium from 'radium'
 import { classes } from '../css'
 
 export const Card = Radium(({children}) => (
-  <div className={classes.card}>
+  <div className={classes.card} style={{minHeight: 0, margin: 5}}>
     {children}
   </div>
 ))
@@ -19,9 +19,9 @@ CardTitle.propTypes = {
   text: PropTypes.string
 }
 
-export const CardText = Radium(({text}) => (
+export const CardText = Radium(({children}) => (
   <div className={classes.cardText} style={{padding: 0}}>
-    {text}
+    {children}
   </div>
 ))
 
@@ -29,8 +29,20 @@ CardText.propTypes = {
   text: PropTypes.string
 }
 
-export const NumberInput = Radium(({id, label, onChange, validationError, value}) => (
-  <div className={classes.textField}>
+export const CardActions = Radium(({children}) => (
+  <div className={classes.cardActions}>
+    {children}
+  </div>
+))
+
+export const CardActionButton = Radium(({text, onClick}) => (
+  <a className={classes.cardActionButton} onClick={onClick}>
+    {text}
+  </a>
+))
+
+export const NumberInput = Radium(({id, label, onChange, validationError, value, style}) => (
+  <div className={classes.textField} style={style}>
     <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} onChange={onChange} value={value}/>
     <label className={classes.label} htmlFor={id}>{label}</label>
     <span className={classes.textFieldError}>{validationError}</span>
@@ -69,8 +81,8 @@ export const SelectableButton = Radium(({text, selected, onClick}) => (
   </button>
 ))
 
-export const Button = Radium(({text, disabled}) => (
-  <button type='submit' className={classes.raisedButton} disabled={disabled}>
+export const Button = Radium(({text, disabled, onClick}) => (
+  <button type='submit' className={classes.raisedButton} disabled={disabled} onClick={onClick}>
     {text}
   </button>
 ))
@@ -113,3 +125,12 @@ export const TableCellText = Radium(({children}) => (
     {children}
   </td>
 ))
+
+export const Attribute = ({attribute, value}) => (
+  <p style={{margin: 0}}><span style={{fontWeight: 600}}>{attribute}</span> {value}</p>
+)
+
+Attribute.propTypes = {
+  key: PropTypes.string,
+  value: PropTypes.string
+}
