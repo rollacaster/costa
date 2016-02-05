@@ -9,7 +9,33 @@ import {
   AddIconButton
 } from './UI'
 
+export const TextFormInput = Radium(React.createClass({
+  propTypes: {
+    initValue: PropTypes.string
+  },
+
+  mixins: [Formsy.Mixin],
+
+  render () {
+    return (
+      <TextInput
+        value={this.getValue()}
+        onChange={e => this.setValue(e.currentTarget.value)}
+        {...this.props}/>
+    )
+  },
+
+  componentDidMount () {
+    const { initValue } = this.props
+    this.setValue(initValue)
+  }
+}))
+
 export const NumberFormInput = Radium(React.createClass({
+  propTypes: {
+    initValue: PropTypes.number
+  },
+
   mixins: [Formsy.Mixin],
 
   render () {
@@ -19,6 +45,11 @@ export const NumberFormInput = Radium(React.createClass({
         onChange={e => this.setValue(e.currentTarget.value)}
         {...this.props}/>
     )
+  },
+
+  componentDidMount () {
+    const { initValue } = this.props
+    this.setValue(initValue)
   }
 }))
 
