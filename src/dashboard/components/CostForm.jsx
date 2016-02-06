@@ -26,7 +26,7 @@ const styles = {
 
 const CostForm = React.createClass({
   getInitialState () {
-    return { canSubmit: false }
+    return { canSubmit: false, newCategory: false }
   },
 
   propTypes: {
@@ -39,10 +39,12 @@ const CostForm = React.createClass({
 
     const action = createCost({category, cost})
     connection.send(JSON.stringify(action))
+    this.setState({newCategory: false})
+    this.refs.form.reset()
   },
 
   render () {
-    const { canSubmit } = this.state
+    const { canSubmit, newCategory } = this.state
     const { categories } = this.props
 
     return (
@@ -50,6 +52,7 @@ const CostForm = React.createClass({
        <Card>
          <CardTitle text='Create new cost' />
          <Form
+             ref='form'
              style={styles.form}
              onValid={_ => this.setState({canSubmit: true})}
              onInvalid={_ => this.setState({canSubmit: false})}
@@ -58,6 +61,8 @@ const CostForm = React.createClass({
            <RadioFormButtons
              name='category'
              buttons={categories}
+             newElement={newCategory}
+             onNewElement={() => this.setState({newCategory: true})}
              required/>
            <NumberFormInput
              name='cost'

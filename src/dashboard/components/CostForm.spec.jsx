@@ -22,7 +22,12 @@ describe('CostForm', () => {
 
   it('should render categories', () => {
     expect(output).to.include(
-      <RadioFormButtons name='category' buttons={['Food', 'Rent']} required/>
+      <RadioFormButtons
+        name='category'
+        buttons={['Food', 'Rent']}
+        newElement={false}
+        onNewElement={() => {}}
+        required/>
     )
   })
 })
