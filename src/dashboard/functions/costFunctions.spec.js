@@ -32,8 +32,8 @@ describe('Cost functions', () => {
   describe('getCostsPerCategory', () => {
     it('should group all costs per category', () => {
       expect(getCostsPerCategory(costs)).to.be.deep.equal([
-        {category: 'Food', costs: 3},
-        {category: 'Rent', costs: 2}
+        {category: 'Food', cost: 3},
+        {category: 'Rent', cost: 2}
       ])
     })
   })
@@ -56,10 +56,10 @@ describe('Cost functions', () => {
     it('should group all costs per category', () => {
       expect(getCostsPerMonthAndCategory(costs)).to.be.deep.equal({
         January: [
-          {category: 'Food', costs: 3}
+          {category: 'Food', cost: 3}
         ],
         February: [
-          {category: 'Rent', costs: 2}
+          {category: 'Rent', cost: 2}
         ]
       })
     })

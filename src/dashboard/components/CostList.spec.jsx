@@ -11,11 +11,10 @@ describe('CostList', () => {
   beforeEach(() => {
     const renderer = createRenderer()
 
-    const costs = {
-      1: { category: 'Food', cost: 1, time: new Date() },
-      2: { category: 'Food', cost: 2, time: new Date() },
-      3: { category: 'Rent', cost: 2, time: new Date() }
-    }
+    const costs = [
+      { category: 'Food', cost: 3 },
+      { category: 'Rent', cost: 2 }
+    ]
 
     renderer.render(<CostList costs={costs}/>)
     output = renderer.getRenderOutput()

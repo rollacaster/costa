@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import Radium from 'radium'
 
 import { Table, TableHeadText, TableCellText } from './UI'
-import { getCostsPerCategory, getTotalCosts } from '../functions/costFunctions'
+import { getTotalCosts } from '../functions/costFunctions'
 
-const CostList = ({costs}) => (
+const CostList = ({costs = []}) => (
   <Table>
     <thead>
       <tr>
@@ -14,10 +14,10 @@ const CostList = ({costs}) => (
     </thead>
     <tbody>
       {
-        getCostsPerCategory(costs).map(({category, costs}) => (
+        costs.map(({category, cost}) => (
           <tr key={category}>
             <TableCellText>{category}</TableCellText>
-            <td>{costs.toFixed(2)}</td>
+            <td>{cost.toFixed(2)}</td>
           </tr>
         ))
       }
@@ -30,10 +30,10 @@ const CostList = ({costs}) => (
 )
 
 CostList.propTypes = {
-  costs: PropTypes.shape({
+  costs: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
-    cost: PropTypes.number
-  })
+    costs: PropTypes.number
+  }))
 }
 
 export default Radium(CostList)

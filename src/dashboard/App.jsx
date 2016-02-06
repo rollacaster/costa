@@ -2,8 +2,8 @@ import React from 'react'
 import Radium from 'radium'
 
 import config from '../config'
-import { getCategories } from './functions/costFunctions'
-import CostList from './components/CostList'
+import { getCategories, getCostsPerMonthAndCategory } from './functions/costFunctions'
+import CostOverview from './components/CostOverview'
 import CostForm from './components/CostForm'
 import CostStream from './components/CostStream'
 
@@ -28,7 +28,7 @@ const App = React.createClass({
       <div>
         <h1 style={{paddingLeft: 20}}>Costa</h1>
         <div style={styles.container}>
-          <CostList costs={costs} />
+          <CostOverview costs={getCostsPerMonthAndCategory(costs)} />
           <CostForm categories={getCategories(costs)} connection={this.ws}/>
           <CostStream costs={costs} connection={this.ws}/>
         </div>
