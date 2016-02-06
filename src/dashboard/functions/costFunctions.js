@@ -1,4 +1,11 @@
 import R from 'ramda'
+import moment from 'moment'
+
+export const getCategories = R.compose(
+  R.uniq,
+  R.pluck('category'),
+  R.values
+)
 
 export const getTotalCosts = R.compose(
   R.reduce((cost, total) => cost + total, 0),
@@ -9,15 +16,19 @@ export const getTotalCosts = R.compose(
 export const getCostsPerCategory = R.compose(
   R.map(groupedCosts => ({
     category: groupedCosts[0]['category'],
-    costs: getTotalCosts(groupedCosts)
+    cost: getTotalCosts(groupedCosts)
   })),
   R.values,
-  R.groupBy(({category, cost}) => category),
+  R.groupBy(({category}) => category),
   R.values
 )
 
-export const getCategories = R.compose(
-  R.uniq,
-  R.pluck('category'),
+export const getCostsPerMonth = R.compose(
+  R.groupBy(cost => moment(cost.time).format('MMMM')),
   R.values
+)
+
+export const getCostsPerMonthAndCategory = R.compose(
+  R.mapObjIndexed(costs => getCostsPerCategory(costs)),
+  getCostsPerMonth
 )
