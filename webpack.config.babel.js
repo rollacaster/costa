@@ -1,4 +1,5 @@
 import path from 'path'
+import webpack from 'webpack'
 
 export default {
   entry: [
@@ -16,6 +17,11 @@ export default {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
+  ],
   devtool: 'source-map',
   debug: true
 }
