@@ -98,7 +98,7 @@ describe('UI', () => {
     const output = renderer.getRenderOutput()
     expect(output).to.include(
       <button
-        type='submit'
+        type={undefined}
         onClick={undefined}
         className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
         disabled>

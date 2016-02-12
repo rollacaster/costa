@@ -81,8 +81,8 @@ export const SelectableButton = Radium(({text, selected, onClick, style}) => (
   </button>
 ))
 
-export const Button = Radium(({text, disabled, onClick}) => (
-  <button type='submit' className={classes.raisedButton} disabled={disabled} onClick={onClick}>
+export const Button = Radium(({text, disabled, onClick, type}) => (
+  <button type={type} className={classes.raisedButton} disabled={disabled} onClick={onClick}>
     {text}
   </button>
 ))

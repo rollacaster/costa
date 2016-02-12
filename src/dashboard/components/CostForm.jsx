@@ -71,7 +71,7 @@ const CostForm = React.createClass({
              validations='isNumeric'
              validationError='Not a number!'
              required/>
-           <Button text='Create' disabled={!canSubmit}/>
+           <Button type='submit' text='Create' disabled={!canSubmit}/>
          </Form>
        </Card>
      </div>

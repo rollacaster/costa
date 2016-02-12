@@ -53,13 +53,13 @@ describe('EditCostForm', () => {
 
   it('should render an edit button', () => {
     expect(output).to.include(
-      <Button text='Edit' disabled/>
+      <Button type='submit' text='Edit' disabled/>
     )
   })
 
   it('should render a cancel button', () => {
     expect(output).to.include(
-      <Button text='Cancel' onClick={undefined} />
+      <Button type='button' text='Cancel' onClick={undefined} />
     )
   })
 })

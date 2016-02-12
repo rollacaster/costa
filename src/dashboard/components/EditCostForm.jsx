@@ -64,8 +64,8 @@ const EditCostForm = React.createClass({
         </CardText>
         <CardActions>
           <div style={{display: 'flex', justifyContent: 'space-around'}}>
-            <Button text='Edit' disabled={!canSubmit}/>
-            <Button text='Cancel' onClick={onFinish}/>
+            <Button type='submit' text='Edit' disabled={!canSubmit}/>
+            <Button type='button' text='Cancel' onClick={onFinish}/>
           </div>
         </CardActions>
       </Form>
