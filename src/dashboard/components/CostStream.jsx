@@ -14,8 +14,13 @@ import {
 
 const CostStream = React.createClass({
   propTypes: {
-    costs: PropTypes.object,
-    connection: PropTypes.object
+    costs: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      category: PropTypes.string,
+      cost: PropTypes.nuber,
+      time: PropTypes.date
+    })),
+    connection: PropTypes.object.isRequired
   },
 
   getInitialState () {
@@ -37,14 +42,13 @@ const CostStream = React.createClass({
     return (
       <div>
         {
-          Object.keys(costs).map(costKey => {
-            const { cost, category, time } = costs[costKey]
+          costs.map(({id, cost, category, time}) => {
             const { edit } = this.state
-            if (edit === costKey) {
+            if (edit === id) {
               const { connection } = this.props
               return (
-                <Card key={costKey}>
-                  <EditCostForm cost={cost} category={category} id={costKey}
+                <Card key={id}>
+                  <EditCostForm cost={cost} category={category} id={id}
                                 time={time} connection={connection}
                                 onFinish={_ => this.setState({edit: ''})}/>
                 </Card>
@@ -52,7 +56,7 @@ const CostStream = React.createClass({
             }
 
             return (
-              <Card key={costKey}>
+              <Card key={id}>
                 <CardText>
                   <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap'}}>
                     <Attribute attribute='Cost' value={cost.toString()}/>
@@ -62,8 +66,8 @@ const CostStream = React.createClass({
                 </CardText>
                 <CardActions>
                   <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                    <CardActionButton text='Edit' onClick={this.editCost.bind(null, costKey)}/>
-                    <CardActionButton text='Delete'onClick={this.removeCost.bind(null, costKey)}/>
+                    <CardActionButton text='Edit' onClick={this.editCost.bind(null, id)}/>
+                    <CardActionButton text='Delete'onClick={this.removeCost.bind(null, id)}/>
                   </div>
                 </CardActions>
               </Card>

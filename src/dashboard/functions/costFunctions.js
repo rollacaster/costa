@@ -24,11 +24,17 @@ export const getCostsPerCategory = R.compose(
 )
 
 export const getCostsPerMonth = R.compose(
-  R.groupBy(cost => moment(cost.time).format('MMMM')),
-  R.values
+  R.groupBy(({time}) => moment(time).format('MMMM')),
+  R.values,
+  R.mapObjIndexed(({category, cost, time}, id) => ({id, category, cost, time}))
 )
 
 export const getCostsPerMonthAndCategory = R.compose(
   R.mapObjIndexed(costs => getCostsPerCategory(costs)),
   getCostsPerMonth
+)
+
+export const getCostsPerYear = R.compose(
+  R.groupBy(cost => moment(cost.time).format('YYYY')),
+  R.values
 )
