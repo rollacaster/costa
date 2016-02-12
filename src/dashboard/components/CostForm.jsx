@@ -62,7 +62,8 @@ const CostForm = React.createClass({
              name='category'
              buttons={categories}
              newElement={newCategory}
-             onNewElement={() => this.setState({newCategory: true})}
+             onRadioButtonClick = {() => this.setState({newCategory: false})}
+             onNewElementClick={() => this.setState({newCategory: true})}
              required/>
            <NumberFormInput
              name='cost'

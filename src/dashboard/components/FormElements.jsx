@@ -57,14 +57,15 @@ export const RadioFormButtons = Radium(React.createClass({
   propTypes: {
     buttons: PropTypes.arrayOf(PropTypes.string),
     selected: PropTypes.string,
-    onNewElement: PropTypes.func,
+    onNewElementClick: PropTypes.func,
+    onRadioButtonClick: PropTypes.func,
     newElement: PropTypes.bool
   },
 
   mixins: [Formsy.Mixin],
 
   render () {
-    const { buttons, newElement, onNewElement } = this.props
+    const { buttons, newElement, onNewElementClick, onRadioButtonClick } = this.props
 
     return (
       <div>
@@ -73,7 +74,10 @@ export const RadioFormButtons = Radium(React.createClass({
             buttons.map(button => <SelectableButton
                 key={button}
                 style={{margin: 5}}
-                onClick={() => this.setValue(button)}
+                onClick={() => {
+                  onRadioButtonClick()
+                  this.setValue(button)
+                }}
                 selected={button === this.getValue()}
                 text={button}/>)
           }
@@ -87,7 +91,10 @@ export const RadioFormButtons = Radium(React.createClass({
             onChange={e => this.setValue(e.currentTarget.value)}/>
           <AddIconButton
             style={{float: 'right', display: newElement ? 'none' : 'block'}}
-            onClick={onNewElement}/>
+            onClick={() => {
+              this.setValue('')
+              onNewElementClick()
+            }}/>
         </div>
       </div>
     )

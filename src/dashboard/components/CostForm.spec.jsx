@@ -26,7 +26,8 @@ describe('CostForm', () => {
         name='category'
         buttons={['Food', 'Rent']}
         newElement={false}
-        onNewElement={() => {}}
+        onNewElementClick={() => {}}
+        onRadioButtonClick={() => {}}
         required/>
     )
   })
