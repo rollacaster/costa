@@ -16,6 +16,8 @@
     "test:integration": "cross-env NODE_ENV=test mocha 'src/test/**/*.test.js' --require babel-core/register",
     "lint": "standard src/",
     "coverage": "./node_modules/babel-cli/bin/babel-node.js ./node_modules/.bin/babel-istanbul cover _mocha 'src/**/*.spec.js?(x)' --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "deploy": "pm2 deploy ecosystem.json production",
+    "deploy:develop": "pm2 deploy ecosystem.json develop",
     "reset": "npm run reset:dependencies",
     "reset:dependencies": "rm -rf ./node_modules/; npm i"
   },
