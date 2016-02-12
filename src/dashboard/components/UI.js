@@ -71,12 +71,12 @@ TextInput.propTypes = {
   onChange: PropTypes.func
 }
 
-export const SelectableButton = Radium(({text, selected, onClick}) => (
+export const SelectableButton = Radium(({text, selected, onClick, style}) => (
   <button
     type='button'
     className={selected ? classes.raisedButton : classes.raisedButtonAccented }
     onClick={onClick}
-    style={{margin: 5}}>
+    style={style}>
     {text}
   </button>
 ))

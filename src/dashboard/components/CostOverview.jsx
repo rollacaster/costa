@@ -21,6 +21,7 @@ const CostOverview = React.createClass({
         {
           Object.keys(costs).map(month => (
             <SelectableButton
+               style={{margin: 5}}
                key={month}
                onClick={() => this.setState({activeMonth: month})}
                selected={month === activeMonth}

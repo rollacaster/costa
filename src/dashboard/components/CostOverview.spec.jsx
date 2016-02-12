@@ -2,7 +2,6 @@ import React from 'react'
 import { createRenderer, expect } from '../../test'
 
 import { SelectableButton } from './UI'
-import CostList from './CostList'
 import CostOverview from './CostOverview'
 
 describe('CostOverview', () => {
@@ -24,7 +23,7 @@ describe('CostOverview', () => {
   describe('Appearance', () => {
     it('should render all months', () => {
       expect(output).to.include(
-        <SelectableButton onClick={() => {}} selected={false} text='January'/>
+        <SelectableButton onClick={() => {}} selected={false} text='January' style={{margin: 5}}/>
       )
     })
   })

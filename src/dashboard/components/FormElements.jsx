@@ -72,6 +72,7 @@ export const RadioFormButtons = Radium(React.createClass({
           {
             buttons.map(button => <SelectableButton
                 key={button}
+                style={{margin: 5}}
                 onClick={() => this.setValue(button)}
                 selected={button === this.getValue()}
                 text={button}/>)
