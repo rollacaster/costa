@@ -39,7 +39,7 @@ describe('Cost functions', () => {
   })
 
   describe('getCostsPerMonth', () => {
-    it('should group all costs per category', () => {
+    it('should group all costs per month', () => {
       expect(getCostsPerMonth(costs)).to.be.deep.equal({
         January: [
           {category: 'Food', cost: 1, time: new Date('01-01-2016')},
