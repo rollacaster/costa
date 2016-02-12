@@ -8,7 +8,7 @@ import {
   Card,
   CardText,
   CardActions,
-  CardActionButton,
+  LinkButton,
   Attribute
 } from './UI'
 
@@ -66,8 +66,8 @@ const CostStream = React.createClass({
                 </CardText>
                 <CardActions>
                   <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                    <CardActionButton text='Edit' onClick={this.editCost.bind(null, id)}/>
-                    <CardActionButton text='Delete'onClick={this.removeCost.bind(null, id)}/>
+                    <LinkButton text='Edit' onClick={this.editCost.bind(null, id)}/>
+                    <LinkButton text='Delete'onClick={this.removeCost.bind(null, id)}/>
                   </div>
                 </CardActions>
               </Card>

@@ -8,7 +8,7 @@ import {
   Card,
   CardText,
   CardActions,
-  CardActionButton,
+  LinkButton,
   Attribute
 } from './UI'
 
@@ -40,8 +40,8 @@ describe('CostStream', () => {
             </CardText>
             <CardActions>
               <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <CardActionButton text='Edit' onClick={_ => {}}/>
-                <CardActionButton text='Delete'onClick={_ => {}}/>
+                <LinkButton text='Edit' onClick={_ => {}}/>
+                <LinkButton text='Delete'onClick={_ => {}}/>
               </div>
             </CardActions>
           </Card>

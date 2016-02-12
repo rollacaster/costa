@@ -35,8 +35,8 @@ export const CardActions = Radium(({children}) => (
   </div>
 ))
 
-export const CardActionButton = Radium(({text, onClick}) => (
-  <a className={classes.cardActionButton} onClick={onClick}>
+export const LinkButton = Radium(({text, onClick}) => (
+  <a className={classes.linkButton} onClick={onClick}>
     {text}
   </a>
 ))

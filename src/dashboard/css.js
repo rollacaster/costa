@@ -6,7 +6,7 @@ export const classes = {
   cardTitleText: classNames('mdl-card__title-text'),
   cardText: classNames('mdl-card__supporting-text'),
   cardActions: classNames('mdl-card__actions', 'mdl-card--border'),
-  cardActionButton: classNames('mdl-button', 'mdl-button--colored', 'mdl-js-button', 'mdl-js-ripple-effect'),
+  linkButton: classNames('mdl-button', 'mdl-button--colored', 'mdl-js-button', 'mdl-js-ripple-effect'),
   raisedButton: classNames('mdl-button', 'mdl-js-button', 'mdl-button--raised mdl-button--colored'),
   raisedButtonAccented: classNames('mdl-button', 'mdl-js-button', 'mdl-button--raised', 'mdl-button--accent'),
   iconButton: classNames('mdl-button', 'mdl-js-button', 'mdl-button--icon'),

@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardText,
   CardActions,
-  CardActionButton,
+  LinkButton,
   Button,
   AccentedButton,
   AddIconButton,
@@ -66,9 +66,9 @@ describe('UI', () => {
     )
   })
 
-  it('should render CardActionButton', () => {
+  it('should render LinkButton', () => {
     const renderer = createRenderer()
-    renderer.render(<CardActionButton text='Test' />)
+    renderer.render(<LinkButton text='Test' />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
       <a className='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onClick={undefined}>
