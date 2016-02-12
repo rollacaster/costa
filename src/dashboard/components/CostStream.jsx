@@ -40,7 +40,7 @@ const CostStream = React.createClass({
   render () {
     const { costs } = this.props
     return (
-      <div>
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
         {
           costs.map(({id, cost, category, time}) => {
             const { edit } = this.state

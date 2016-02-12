@@ -17,7 +17,8 @@ const CostOverview = React.createClass({
     const { costs } = this.props
 
     return (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flex: 1}}>
+        <div style={{display: 'flex', flexDirection: 'column'}}>
         {
           Object.keys(costs).map(month => (
             <SelectableButton
@@ -28,11 +29,14 @@ const CostOverview = React.createClass({
                text={month} />
           ))
         }
+        </div>
+        <div>
         {
           activeMonth
           ? <CostList costs={costs[activeMonth]}/>
           : ''
         }
+        </div>
       </div>
     )
   },

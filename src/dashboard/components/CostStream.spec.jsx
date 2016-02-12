@@ -29,7 +29,7 @@ describe('CostStream', () => {
   describe('CostStream', () => {
     it('should render one cost entry', () => {
       expect(output).to.be.deep.equal(
-        <div>
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
           <Card>
             <CardText>
               <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap'}}>
