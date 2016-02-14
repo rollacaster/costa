@@ -27,7 +27,7 @@ describe('UI', () => {
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div _radiumDidResolveStyles className=' mdl-card mdl-shadow--2dp' style={{minHeight: 0, margin: 5}}>
+      <div _radiumDidResolveStyles className='mdl-card mdl-shadow--2dp' style={{minHeight: 0, margin: 5}}>
         <div>Test</div>
       </div>
     )
@@ -49,7 +49,7 @@ describe('UI', () => {
     renderer.render(<CardText>Test</CardText>)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div className=' mdl-card__supporting-text' style={{padding: 0}} _radiumDidResolveStyles>
+      <div className='mdl-card__supporting-text' style={{padding: 0}} _radiumDidResolveStyles>
         Test
       </div>
     )
@@ -112,7 +112,7 @@ describe('UI', () => {
     renderer.render(<AccentedButton text='Test' />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <button style={{margin: 5}} className=' mdl-button mdl-js-button mdl-button--raised mdl-button--accent' _radiumDidResolveStyles>
+      <button style={{margin: 5}} className='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' _radiumDidResolveStyles>
         Test
       </button>
     )
