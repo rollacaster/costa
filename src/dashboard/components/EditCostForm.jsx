@@ -21,7 +21,7 @@ const EditCostForm = React.createClass({
     id: PropTypes.string,
     cost: PropTypes.number,
     category: PropTypes.string,
-    time: PropTypes.string,
+    time: PropTypes.object,
     connection: PropTypes.object,
     onFinish: PropTypes.func
   },

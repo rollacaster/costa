@@ -20,7 +20,7 @@ describe('CostStream', () => {
     renderer.render(
       <CostStream costs= {[
         { id: '1', category: 'Food', cost: 1, time: new Date('02-01-2016') }
-      ]}/>
+      ]} connection={{}}/>
     )
 
     output = renderer.getRenderOutput()
