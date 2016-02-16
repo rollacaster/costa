@@ -1,3 +1,4 @@
+
 import { expect } from '../../test'
 
 import {
@@ -10,7 +11,7 @@ import {
 
 describe('Cost functions', () => {
   const costs = {
-    1: { category: 'Food', cost: 1, time: new Date('01-01-2016') },
+    1: { category: 'Food', cost: 1, time: new Date('01-02-2016') },
     2: { category: 'Food', cost: 2, time: new Date('01-01-2016') },
     3: { category: 'Rent', cost: 2, time: new Date('02-02-2016') }
   }
@@ -42,7 +43,7 @@ describe('Cost functions', () => {
     it('should group all costs per month', () => {
       expect(getCostsPerMonth(costs)).to.be.deep.equal({
         January: [
-          {id: '1', category: 'Food', cost: 1, time: new Date('01-01-2016')},
+          {id: '1', category: 'Food', cost: 1, time: new Date('01-02-2016')},
           {id: '2', category: 'Food', cost: 2, time: new Date('01-01-2016')}
         ],
         February: [

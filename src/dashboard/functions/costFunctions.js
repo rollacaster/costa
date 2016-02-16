@@ -25,6 +25,7 @@ export const getCostsPerCategory = R.compose(
 
 export const getCostsPerMonth = R.compose(
   R.groupBy(({time}) => moment(time).format('MMMM')),
+  R.sort((cost1, cost2) => moment(cost2.time) - moment(cost1.time)),
   R.values,
   R.mapObjIndexed(({category, cost, time}, id) => ({id, category, cost, time}))
 )
