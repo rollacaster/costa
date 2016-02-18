@@ -14,7 +14,7 @@ export const getTotalCosts = R.compose(
 )
 
 export const getCostsPerCategory = R.compose(
-  R.map(groupedCosts => ({
+  R.map((groupedCosts) => ({
     category: groupedCosts[0]['category'],
     cost: getTotalCosts(groupedCosts)
   })),
@@ -31,11 +31,11 @@ export const getCostsPerMonth = R.compose(
 )
 
 export const getCostsPerMonthAndCategory = R.compose(
-  R.mapObjIndexed(costs => getCostsPerCategory(costs)),
+  R.mapObjIndexed((costs) => getCostsPerCategory(costs)),
   getCostsPerMonth
 )
 
 export const getCostsPerYear = R.compose(
-  R.groupBy(cost => moment(cost.time).format('YYYY')),
+  R.groupBy((cost) => moment(cost.time).format('YYYY')),
   R.values
 )

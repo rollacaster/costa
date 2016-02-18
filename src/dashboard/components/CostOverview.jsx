@@ -20,13 +20,13 @@ const CostOverview = React.createClass({
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flex: 1}}>
         <div style={{display: 'flex', flexDirection: 'column'}}>
         {
-          Object.keys(costs).map(month => (
+          Object.keys(costs).map((month) => (
             <SelectableButton
-               style={{margin: 5}}
-               key={month}
-               onClick={() => this.setState({activeMonth: month})}
-               selected={month === activeMonth}
-               text={month} />
+              style={{margin: 5}}
+              key={month}
+              onClick={() => this.setState({activeMonth: month})}
+              selected={month === activeMonth}
+              text={month} />
           ))
         }
         </div>

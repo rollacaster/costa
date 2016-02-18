@@ -25,23 +25,23 @@ describe('EditCostForm', () => {
   it('should render a number input', () => {
     expect(output).to.include(
       <NumberFormInput
-         name='cost'
-         id='costInput'
-         validations='isNumeric'
-         validationError='Not a number!'
-         initValue={1}
-         style={{paddingBottom: 0}}
-         required/>
+        name='cost'
+        id='costInput'
+        validations='isNumeric'
+        validationError='Not a number!'
+        initValue={1}
+        style={{paddingBottom: 0}}
+        required/>
     )
   })
 
   it('should render a text input', () => {
     expect(output).to.include(
       <TextFormInput
-         name='category'
-         initValue='Food'
-         style={{paddingBottom: 0}}
-         required/>
+        name='category'
+        initValue='Food'
+        style={{paddingBottom: 0}}
+        required/>
     )
   })
 

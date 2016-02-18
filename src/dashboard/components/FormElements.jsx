@@ -20,7 +20,7 @@ export const TextFormInput = Radium(React.createClass({
     return (
       <TextInput
         value={this.getValue()}
-        onChange={e => this.setValue(e.currentTarget.value)}
+        onChange={(e) => this.setValue(e.currentTarget.value)}
         {...this.props}/>
     )
   },
@@ -42,7 +42,7 @@ export const NumberFormInput = Radium(React.createClass({
     return (
       <NumberInput
         value={this.getValue()}
-        onChange={e => this.setValue(e.currentTarget.value)}
+        onChange={(e) => this.setValue(e.currentTarget.value)}
         {...this.props}/>
     )
   },
@@ -71,15 +71,15 @@ export const RadioFormButtons = Radium(React.createClass({
       <div>
         <div style={{display: 'flex', flexWrap: 'wrap'}}>
           {
-            buttons.map(button => <SelectableButton
-                key={button}
-                style={{margin: 5}}
-                onClick={() => {
-                  onRadioButtonClick()
-                  this.setValue(button)
-                }}
-                selected={button === this.getValue()}
-                text={button}/>)
+            buttons.map((button) => <SelectableButton
+              key={button}
+              style={{margin: 5}}
+              onClick={() => {
+                onRadioButtonClick()
+                this.setValue(button)
+              }}
+              selected={button === this.getValue()}
+              text={button}/>)
           }
         </div>
         <div>
@@ -88,7 +88,7 @@ export const RadioFormButtons = Radium(React.createClass({
             style={{display: newElement ? 'block' : 'none'}}
             label='New Category'
             value={this.getValue()}
-            onChange={e => this.setValue(e.currentTarget.value)}/>
+            onChange={(e) => this.setValue(e.currentTarget.value)}/>
           <AddIconButton
             style={{float: 'right', display: newElement ? 'none' : 'block'}}
             onClick={() => {

@@ -18,7 +18,7 @@ describe('CostStream', () => {
   beforeEach(() => {
     const renderer = createRenderer()
     renderer.render(
-      <CostStream costs= {[
+      <CostStream costs={[
         { id: '1', category: 'Food', cost: 1, time: new Date('02-01-2016') }
       ]} connection={{}}/>
     )
@@ -40,8 +40,8 @@ describe('CostStream', () => {
             </CardText>
             <CardActions>
               <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <LinkButton text='Edit' onClick={_ => {}}/>
-                <LinkButton text='Delete'onClick={_ => {}}/>
+                <LinkButton text='Edit' onClick={() => {}}/>
+                <LinkButton text='Delete'onClick={() => {}}/>
               </div>
             </CardActions>
           </Card>

@@ -103,9 +103,9 @@ AccentedButton.propTypes = {
 }
 
 export const AddIconButton = Radium(({style, onClick}) => (
-    <button className={classes.addButton} style={style} onClick={onClick}>
-      <i className={classes.icons}>add</i>
-    </button>
+  <button className={classes.addButton} style={style} onClick={onClick}>
+    <i className={classes.icons}>add</i>
+  </button>
 ))
 
 export const Table = Radium(({children}) => (

@@ -49,8 +49,8 @@ const CostStream = React.createClass({
               return (
                 <Card key={id}>
                   <EditCostForm cost={cost} category={category} id={id}
-                                time={time} connection={connection}
-                                onFinish={_ => this.setState({edit: ''})}/>
+                    time={time} connection={connection}
+                    onFinish={() => this.setState({edit: ''})}/>
                 </Card>
               )
             }

@@ -43,23 +43,23 @@ const EditCostForm = React.createClass({
 
     return (
       <Form
-        onValid={_ => this.setState({canSubmit: true})}
-        onInvalid={_ => this.setState({canSubmit: false})}
+        onValid={() => this.setState({canSubmit: true})}
+        onInvalid={() => this.setState({canSubmit: false})}
         onValidSubmit={this.editCost}>
         <CardText>
           <div style={{paddingLeft: 5}}>
-          <NumberFormInput
-             name='cost'
-             id='costInput'
-             validations='isNumeric'
-             validationError='Not a number!'
-             initValue={cost}
-             style={{paddingBottom: 0}}
-             required/>
-          <p style={{fontWeight: 600, margin: 0}}>Cost</p>
-          <TextFormInput name='category' initValue={category} style={{paddingBottom: 0}} required/>
-          <p style={{fontWeight: 600, marginTop: 0}}>Category</p>
-          <p style={{fontSize: 'small', marginBottom: 0}}>Last edited: {moment(time).format('DD.MM.YYYY HH:MM')}</p>
+            <NumberFormInput
+              name='cost'
+              id='costInput'
+              validations='isNumeric'
+              validationError='Not a number!'
+              initValue={cost}
+              style={{paddingBottom: 0}}
+              required/>
+            <p style={{fontWeight: 600, margin: 0}}>Cost</p>
+            <TextFormInput name='category' initValue={category} style={{paddingBottom: 0}} required/>
+            <p style={{fontWeight: 600, marginTop: 0}}>Category</p>
+            <p style={{fontSize: 'small', marginBottom: 0}}>Last edited: {moment(time).format('DD.MM.YYYY HH:MM')}</p>
           </div>
         </CardText>
         <CardActions>

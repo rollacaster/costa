@@ -14,14 +14,14 @@ describe('Cost integration tests', () => {
       ws = new WebSocket(config.ws)
     })
 
-    afterEach(done => {
+    afterEach((done) => {
       getConnection()
-        .then(con => {
+        .then((con) => {
           con.collection('actions')
           con.dropCollection('actions')
         })
-        .then(_ => ws.close())
-        .catch(err => console.log('err: ', err))
+        .then(() => ws.close())
+        .catch((err) => console.log('err: ', err))
       ws.on('close', () => done())
     })
 
@@ -29,18 +29,18 @@ describe('Cost integration tests', () => {
       ws.on('open', () => done())
     })
 
-    it('should receive the state', done => {
+    it('should receive the state', (done) => {
       const initState = {costs: {}}
 
-      ws.on('message', msg => {
+      ws.on('message', (msg) => {
         expect(JSON.parse(msg)).to.be.deep.equal(initState)
         done()
       })
     })
 
-    it('should receive the updated state', done => {
+    it('should receive the updated state', (done) => {
       ws.on('open', () => {
-        ws.on('message', msg => {
+        ws.on('message', (msg) => {
           const state = JSON.parse(msg)
           const hasChildren = Object.keys(state.costs).length > 0
 

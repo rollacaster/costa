@@ -18,17 +18,17 @@ export function getConnection () {
 
 export function storeDocument ({ collection, document }) {
   return getConnection()
-    .then(con => getCollection(collection))
-    .then(col => col.insert(document))
+    .then((con) => getCollection(collection))
+    .then((col) => col.insert(document))
 }
 
 export function findDocuments ({ collection }) {
   return getConnection()
-    .then(con => getCollection(collection))
-    .then(col => col.find({}).toArray())
+    .then((con) => getCollection(collection))
+    .then((col) => col.find({}).toArray())
 }
 
 function getCollection (collection) {
-  return getConnection().then(con => con.collection(collection))
-    .catch(err => console.log(`Could not connect to collection ${collection} due to ${err}`))
+  return getConnection().then((con) => con.collection(collection))
+    .catch((err) => console.log(`Could not connect to collection ${collection} due to ${err}`))
 }

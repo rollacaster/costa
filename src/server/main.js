@@ -11,7 +11,7 @@ const port = process.env.PORT || config.port
 app.set('port', port)
 
 const server = http.createServer(app)
-server.on('error', err => console.log(`Could not start server: ${err}`))
+server.on('error', (err) => console.log(`Could not start server: ${err}`))
 
 const wss = new WS.Server({ server })
 
@@ -21,17 +21,17 @@ if (config.backup) {
 
 // Load stored actions
 findDocuments({ collection: 'actions' })
-  .then(actions => actions.forEach(action => store.dispatch(action)))
+  .then((actions) => actions.forEach((action) => store.dispatch(action)))
 
-wss.on('connection', ws => {
+wss.on('connection', (ws) => {
   ws.send(JSON.stringify(store.getState()))
 
-  ws.on('message', msg => {
+  ws.on('message', (msg) => {
     const action = JSON.parse(msg)
-    storeDocument({ collection: 'actions', document: action }).then(_ => {
+    storeDocument({ collection: 'actions', document: action }).then(() => {
       store.dispatch(action)
-      wss.clients.forEach(ws => ws.send(JSON.stringify(store.getState())))
-    }).catch(err => console.log(`Could not save ${action} due to ${err}`))
+      wss.clients.forEach((ws) => ws.send(JSON.stringify(store.getState())))
+    }).catch((err) => console.log(`Could not save ${action} due to ${err}`))
   })
 })
 
@@ -48,7 +48,7 @@ export function listen (cb) {
 }
 
 export function stop (cb) {
-  getConnection().then(con => {
+  getConnection().then((con) => {
     con.close()
     server.close(cb)
   })

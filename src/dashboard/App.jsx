@@ -41,7 +41,7 @@ const App = React.createClass({
 
     this.ws.onopen = () => {
       console.log(`Connected to ${config.ws}`)
-      this.ws.onmessage = msg => this.setState(JSON.parse(msg.data))
+      this.ws.onmessage = (msg) => this.setState(JSON.parse(msg.data))
     }
   },
 

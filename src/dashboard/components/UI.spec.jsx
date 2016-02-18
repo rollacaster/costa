@@ -21,9 +21,9 @@ describe('UI', () => {
   it('should render a Card', () => {
     const renderer = createRenderer()
     renderer.render(
-        <Card>
-          <div>Test</div>
-        </Card>
+      <Card>
+        <div>Test</div>
+      </Card>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
@@ -38,8 +38,8 @@ describe('UI', () => {
     renderer.render(<CardTitle text='Test' />)
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-        <div className='mdl-card__title'>
-          <h2 className='mdl-card__title-text'>Test</h2>
+      <div className='mdl-card__title'>
+        <h2 className='mdl-card__title-text'>Test</h2>
       </div>
     )
   })
@@ -151,9 +151,9 @@ describe('UI', () => {
   it('should render a TableCellText', () => {
     const renderer = createRenderer()
     renderer.render(
-        <TableCellText>
-          <div>Test</div>
-        </TableCellText>
+      <TableCellText>
+        <div>Test</div>
+      </TableCellText>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.include(
@@ -166,7 +166,7 @@ describe('UI', () => {
   it('should render an AddIconButton', () => {
     const renderer = createRenderer()
     renderer.render(
-        <AddIconButton/>
+      <AddIconButton/>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
@@ -182,7 +182,7 @@ describe('UI', () => {
   it('should render an Attribute', () => {
     const renderer = createRenderer()
     renderer.render(
-        <Attribute attribute='Key' value='Value'/>
+      <Attribute attribute='Key' value='Value'/>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(

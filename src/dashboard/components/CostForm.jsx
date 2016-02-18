@@ -48,35 +48,35 @@ const CostForm = React.createClass({
     const { categories } = this.props
 
     return (
-     <div style={{display: 'flex', justifyContent: 'center', height: '100%', flex: 1}}>
-       <Card>
-         <CardTitle text='Create new cost' />
-         <Form
-             ref='form'
-             style={styles.form}
-             onValid={_ => this.setState({canSubmit: true})}
-             onInvalid={_ => this.setState({canSubmit: false})}
-             onValidSubmit={this.createCost}>
-           <CardText text='Category' />
-           <RadioFormButtons
-             name='category'
-             buttons={categories}
-             newElement={newCategory}
-             onRadioButtonClick = {() => this.setState({newCategory: false})}
-             onNewElementClick={() => this.setState({newCategory: true})}
-             required/>
-           <NumberFormInput
-             name='cost'
-             id='costInput'
-             label='Cost'
-             validations='isNumeric'
-             validationError='Not a number!'
-             required/>
-           <Button type='submit' text='Create' disabled={!canSubmit}/>
-         </Form>
-       </Card>
-     </div>
-   )
+      <div style={{display: 'flex', justifyContent: 'center', height: '100%', flex: 1}}>
+        <Card>
+          <CardTitle text='Create new cost' />
+          <Form
+            ref='form'
+            style={styles.form}
+            onValid={() => this.setState({canSubmit: true})}
+            onInvalid={() => this.setState({canSubmit: false})}
+            onValidSubmit={this.createCost}>
+            <CardText text='Category' />
+            <RadioFormButtons
+              name='category'
+              buttons={categories}
+              newElement={newCategory}
+              onRadioButtonClick={() => this.setState({newCategory: false})}
+              onNewElementClick={() => this.setState({newCategory: true})}
+              required/>
+            <NumberFormInput
+              name='cost'
+              id='costInput'
+              label='Cost'
+              validations='isNumeric'
+              validationError='Not a number!'
+              required/>
+            <Button type='submit' text='Create' disabled={!canSubmit}/>
+          </Form>
+        </Card>
+      </div>
+    )
   }
 })
 
