@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
   "dependencies": {
-    "react-native": "^0.20.0"
+    "react-native": "^0.20.0",
+    "realm": "^0.10.0"
   },
   "devDependencies": {
     "babel-preset-react-native": "^1.4.0",
