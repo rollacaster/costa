@@ -2,10 +2,12 @@ import React, {
   StyleSheet,
   View,
   Text,
-  Navigator
+  Navigator,
+  AppState
 } from 'react-native'
 
-import { createCost } from './storage'
+import { createCost, listCosts, deleteCosts } from './storage'
+import sync from './sync'
 
 import Category from './components/Category'
 import Inputs from './components/Inputs'
@@ -103,16 +105,36 @@ const App = React.createClass({
             </View>
             <View style={styles.actionsContainer}>
               <Actions
-                          : () => console.log('sync')}/>
                 newCost={isValidCost}
                 onAction={isValidCost
                           ? () => {
                             createCost({cost, category})
+                            this.syncCosts()
+                            this.setState({cost: '', category: '', costCount: listCosts().length})
                           }
+                          : this.syncCosts}/>
             </View>
           </View>
         )}/>
     )
+  },
+
+  syncCosts () {
+    sync({costs: listCosts(), update: this.setState.bind(this)})
+      .then(() => {
+        deleteCosts()
+        this.setState({costCount: listCosts().length})
+      })
+      .catch((err) => `Could not sync costs due to ${err}`)
+  },
+
+  componentDidMount () {
+    this.syncCosts()
+    AppState.addEventListener('change', (appState) => {
+      if (appState === 'active') {
+        sync({costs: listCosts(), update: this.setState.bind(this)})
+      }
+    })
   }
 })
 
