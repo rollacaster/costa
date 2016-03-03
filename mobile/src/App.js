@@ -5,6 +5,8 @@ import React, {
   Navigator
 } from 'react-native'
 
+import { createCost } from './storage'
+
 import Category from './components/Category'
 import Inputs from './components/Inputs'
 import Actions from './components/Actions'
@@ -102,7 +104,7 @@ const App = React.createClass({
               <Actions
                 newCost={category && cost}
                 onAction={category && cost
-                          ? () => console.log('create', cost, category)
+                          ? () => createCost({cost, category})
                           : () => console.log('sync')}/>
             </View>
           </View>
