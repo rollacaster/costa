@@ -63,6 +63,7 @@ const App = React.createClass({
 
   render () {
     const { categories, category, cost, newCategory } = this.state
+    const isValidCost = category !== '' && cost !== ''
 
     return (
       <Navigator
@@ -102,10 +103,12 @@ const App = React.createClass({
             </View>
             <View style={styles.actionsContainer}>
               <Actions
-                newCost={category && cost}
-                onAction={category && cost
-                          ? () => createCost({cost, category})
                           : () => console.log('sync')}/>
+                newCost={isValidCost}
+                onAction={isValidCost
+                          ? () => {
+                            createCost({cost, category})
+                          }
             </View>
           </View>
         )}/>
