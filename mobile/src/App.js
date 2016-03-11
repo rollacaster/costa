@@ -46,16 +46,7 @@ const styles = StyleSheet.create({
 const App = React.createClass({
   getInitialState () {
     return {
-      categories: [
-        'Food',
-        'Shopping',
-        'Driving',
-        'Internet',
-        'Mobile',
-        'Presents',
-        'Rent',
-        'Insurance'
-      ],
+      categorys: [],
       category: '',
       cost: '',
       newCategory: false,
@@ -64,7 +55,7 @@ const App = React.createClass({
   },
 
   render () {
-    const { categories, category, cost, newCategory } = this.state
+    const { categorys, category, cost, newCategory } = this.state
     const isValidCost = category !== '' && cost !== ''
 
     return (
@@ -84,7 +75,7 @@ const App = React.createClass({
           <View style={styles.container}>
             <View style={styles.upperContainer}>
               <View style={styles.categoryContainer}>
-                {categories.map((category) => (
+                {categorys.map((category) => (
                   <Category
                     onPress={() => this.setState({category, newCategory: false})}
                     name={category}

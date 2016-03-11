@@ -7,12 +7,12 @@ const open = (url, update) => new Promise((resolve, reject) => {
   const ws = new WebSocket(url)
   ws.onmessage = (msg) => {
     const { costs } = JSON.parse(msg.data)
-    const categories = [
+    const categorys = [
       ...Object.keys(costs)
         .map((costKey) => costs[costKey])
         .reduce((categories, cost) => categories.add(cost.category), new Set())
     ]
-    update({categories})
+    update({categorys})
   }
   ws.onopen = () => resolve(ws)
   ws.onerror = (err) => reject(err)
