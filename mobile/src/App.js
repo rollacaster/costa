@@ -6,7 +6,10 @@ import React, {
   AppState
 } from 'react-native'
 
-import { createCost, listCosts, deleteCosts } from './storage'
+import {
+  createCost, listCosts, deleteCosts,
+  createCategory, listCategorys, deleteCategorys
+} from './storage'
 import sync from './sync'
 
 import Category from './components/Category'
@@ -112,9 +115,18 @@ const App = React.createClass({
 
   syncCosts () {
     sync({costs: listCosts(), update: this.setState.bind(this)})
-      .then(() => {
-        deleteCosts()
+      .then((isSynced) => {
         this.setState({costCount: listCosts().length})
+        if (isSynced) {
+          deleteCosts()
+          deleteCategorys()
+        } else {
+          this.setState({
+            categorys: Object.keys(listCategorys())
+              .map((categoryKey) => listCategorys()[categoryKey])
+              .map(({name}) => name)
+          })
+        }
       })
       .catch((err) => `Could not sync costs due to ${err}`)
   },
@@ -123,7 +135,7 @@ const App = React.createClass({
     this.syncCosts()
     AppState.addEventListener('change', (appState) => {
       if (appState === 'active') {
-        sync({costs: listCosts(), update: this.setState.bind(this)})
+        this.syncCosts()
       }
     })
   }

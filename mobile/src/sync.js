@@ -1,5 +1,6 @@
 import config from './config'
 import { createCost } from './actions'
+import { createCategory } from './storage'
 
 const wsURL = `${config.ws.url}:${config.ws.port}`
 
@@ -13,9 +14,10 @@ const open = (url, update) => new Promise((resolve, reject) => {
         .reduce((categories, cost) => categories.add(cost.category), new Set())
     ]
     update({categorys})
+    categorys.forEach((category) => createCategory({name: category}))
   }
   ws.onopen = () => resolve(ws)
-  ws.onerror = (err) => reject(err)
+  ws.onerror = () => resolve(false)
 })
 
 const close = (connection) => new Promise((resolve, reject) => {
@@ -24,16 +26,22 @@ const close = (connection) => new Promise((resolve, reject) => {
   connection.close()
 })
 
-const send = (msg, connection) => new Promise((resolve) =>
-  connection.send(JSON.stringify(msg), resolve()))
+const send = (msg, connection) => new Promise((resolve) => connection.send(JSON.stringify(msg), resolve()))
 
-export default ({costs = [], update = () => {}}) =>
-  open(wsURL, update)
-  .then((connection) => Promise.all(
-    Object.keys(costs)
-      .map((costKey) => costs[costKey])
-      .map(({cost, category, date}) => createCost({cost, category, date}))
-      .map((costAction) => send(costAction, connection))
-      .reduce((costTransmissions, costTransmission) => costTransmissions.concat(costTransmission), [])
-  ).then(() => connection))
-  .then((connection) => close(connection))
+export default ({costs = {}, update = () => {}}) => {
+  return open(wsURL, update)
+    .then((connection) => {
+      if (!connection) { return false }
+      return Promise.all(
+        Object.keys(costs)
+          .map((costKey) => costs[costKey])
+          .map(({cost, category, date}) => createCost({cost, category, date}))
+          .map((costAction) => send(costAction, connection))
+          .reduce((costTransmissions, costTransmission) => costTransmissions.concat(costTransmission), [])
+      ).then(() => {
+        close(connection)
+        return true
+      })
+    })
+    .catch((err) => console.log('err: ', err))
+}
