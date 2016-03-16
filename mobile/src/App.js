@@ -106,7 +106,8 @@ const App = React.createClass({
                             this.syncCosts()
                             this.setState({cost: '', category: '', costCount: listCosts().length})
                           }
-                          : this.syncCosts}/>
+                          : this.syncCosts}
+                costCount={listCosts().length}/>
             </View>
           </View>
         )}/>
