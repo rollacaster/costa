@@ -31,7 +31,7 @@ wss.on('connection', (ws) => {
     storeDocument({ collection: 'actions', document: action }).then(() => {
       store.dispatch(action)
       wss.clients.forEach((ws) => ws.send(JSON.stringify(store.getState())))
-    }).catch((err) => console.log(`Could not save ${action} due to ${err}`))
+    }).catch((err) => console.log(`Could not save ${JSON.stringify(action)} due to ${err}`))
   })
 })
 
