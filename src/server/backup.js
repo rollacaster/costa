@@ -5,7 +5,7 @@ import config from '../config'
 export default new CronJob({
   cronTime: '00 00 */1 * * *',
   onTick: () => {
-    spawn('mongodump', ['--db', 'costa', `--archive=${config.backup}/CostaBackup.archive`],
+    spawn('mongodump', ['--db', 'costa', `--out=${config.backup}`],
           {stdio: 'inherit'})
   },
   start: false,
