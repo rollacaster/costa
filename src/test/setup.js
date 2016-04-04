@@ -14,7 +14,7 @@ global.mount = mount
 global.React = React
 
 // Open ws server
-export const wsServer = new Server({port: config.ws.port})
+export const wsServer = new Server({port: config.port})
 export let wsConnection
 wsServer.on('connection', (ws) => { wsConnection = ws })
 

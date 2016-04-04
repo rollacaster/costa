@@ -3,7 +3,7 @@ import fs from 'fs'
 const images = fs.readdirSync('src/mobile/images')
 
 images.forEach((file) => {
-  const key = require.resolve(`../images/${file}`)
+  const key = require.resolve(`../mobile/images/${file}`)
   require.cache[key] = {
     id: key,
     filename: key,

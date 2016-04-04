@@ -1,8 +1,6 @@
-import config from './config'
-import { createCost } from './actions'
+import config from '../config'
+import { createCost } from '../actions'
 import { createCategory } from './storage'
-
-const wsURL = `${config.ws.url}:${config.ws.port}`
 
 const open = (url, update) => new Promise((resolve, reject) => {
   const ws = new WebSocket(url)
@@ -29,7 +27,7 @@ const close = (connection) => new Promise((resolve, reject) => {
 const send = (msg, connection) => new Promise((resolve) => connection.send(JSON.stringify(msg), resolve()))
 
 export default ({costs = {}, update = () => {}}) => {
-  return open(wsURL, update)
+  return open(config.ws, update)
     .then((connection) => {
       if (!connection) { return false }
       return Promise.all(
