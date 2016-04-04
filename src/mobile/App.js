@@ -95,7 +95,7 @@ const App = React.createClass({
                 onCostChange={(cost) => this.setState({cost})}
                 onCategoryChange={(category) => this.setState({category})}
                 cost={cost}
-                categoyr={category}/>
+                category={category}/>
             </View>
             <View style={styles.actionsContainer}>
               <Actions
