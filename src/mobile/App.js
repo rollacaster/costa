@@ -8,7 +8,7 @@ import React, {
 
 import {
   createCost, listCosts, deleteCosts,
-  createCategory, listCategorys, deleteCategorys
+  listCategorys, deleteCategorys
 } from './storage'
 import sync from './sync'
 
