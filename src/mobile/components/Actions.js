@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 50,
     borderWidth: 1,
-    padding: 10
+    padding: 10,
+    shadowOffset: {width: 3, height: 3},
+    shadowRadius: 3,
+    shadowOpacity: 1,
+    shadowColor: '#ccc'
   },
   image: {
     justifyContent: 'flex-end',

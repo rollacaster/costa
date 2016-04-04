@@ -30,7 +30,11 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 1,
     padding: 5,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowOffset: {width: 3, height: 3},
+    shadowRadius: 3,
+    shadowOpacity: 1,
+    shadowColor: '#ccc'
   },
   addButton: {
     width: 40,

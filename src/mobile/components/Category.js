@@ -12,7 +12,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     padding: 10,
-    margin: 8
+    margin: 8,
+    shadowOffset: {width: 3, height: 3},
+    shadowRadius: 3,
+    shadowOpacity: 1,
+    shadowColor: '#ccc'
   },
   text: {
     fontSize
