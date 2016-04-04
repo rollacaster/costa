@@ -21,13 +21,12 @@ import {primary, fontSize} from './style'
 const styles = StyleSheet.create({
   container: {
     flex: 12,
-    marginTop: 60,
-    backgroundColor: '#FCFCFC',
-    borderTopWidth: 1
+    backgroundColor: '#FCFCFC'
   },
   navContainer: {
     flex: 1,
-    backgroundColor: primary
+    backgroundColor: primary,
+    borderBottomWidth: 2
   },
   upperContainer: {
     flex: 6,
@@ -41,7 +40,8 @@ const styles = StyleSheet.create({
   inputContainer: { flex: 3, justifyContent: 'center' },
   actionsContainer: { flex: 2, alignItems: 'center' },
   title: {
-    marginTop: 4,
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize
   }
 })
