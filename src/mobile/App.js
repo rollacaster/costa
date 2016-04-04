@@ -104,7 +104,12 @@ const App = React.createClass({
                           ? () => {
                             createCost({cost, category})
                             this.syncCosts()
-                            this.setState({cost: '', category: '', costCount: listCosts().length})
+                            this.setState({
+                              cost: '',
+                              category: '',
+                              costCount: listCosts().length,
+                              newCategory: false
+                            })
                           }
                           : this.syncCosts}
                 costCount={listCosts().length}/>
