@@ -1,16 +1,16 @@
 import http from 'http'
 import WS from 'ws'
 
-import app from './app'
+import httpConfiguration from './httpConfiguration'
 import config from '../config'
 import backup from './backup'
 import store from './store'
 import { getConnection, storeDocument, findDocuments } from './storage'
 
 const port = process.env.PORT || config.port
-app.set('port', port)
+httpConfiguration.set('port', port)
 
-const server = http.createServer(app)
+const server = http.createServer(httpConfiguration)
 server.on('error', (err) => console.log(`Could not start server: ${err}`))
 
 const wss = new WS.Server({ server })
