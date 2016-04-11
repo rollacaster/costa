@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react'
 
 import { SelectableButton } from './UI'
-import CostList from './CostList'
+import CostPie from './CostPie'
+import { getTotalCosts } from '../functions/costFunctions'
 
 const CostOverview = React.createClass({
   propTypes: {
@@ -30,12 +31,15 @@ const CostOverview = React.createClass({
           ))
         }
         </div>
-        <div>
-        {
-          activeMonth
-          ? <CostList costs={costs[activeMonth]}/>
-          : ''
-        }
+        <div style={{display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center'}}>
+          <div style={{flex: 1}}>
+          {
+            activeMonth
+            ? <CostPie costs={costs[activeMonth]}/>
+            : ''
+          }
+          </div>
+          <span style={{flex: 1}}>{`Total: ${getTotalCosts(costs[activeMonth]).toFixed(2)}€`}</span>
         </div>
       </div>
     )
