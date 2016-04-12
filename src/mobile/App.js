@@ -134,7 +134,7 @@ const App = React.createClass({
           })
         }
       })
-      .catch((err) => `Could not sync costs due to ${err}`)
+      .catch((err) => console.error(`Could not sync costs due to ${err}`))
   },
 
   componentDidMount () {
