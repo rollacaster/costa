@@ -23,8 +23,7 @@ describe('CostReducer', () => {
       const startState = new Map()
       const updatedState = startState.set('123', {
         category: 'Food',
-        cost: 1,
-        time: new Date('01-01-2016')
+        cost: 1
       })
 
       const state = costs(updatedState, updateCost({
@@ -35,7 +34,6 @@ describe('CostReducer', () => {
 
       expect(state[0].category).to.be.equal('Food')
       expect(state[0].cost).to.be.equal(2)
-      expect(state[0].time.getTime()).to.be.above((new Date('01-01-2016')).getTime())
     })
   })
 

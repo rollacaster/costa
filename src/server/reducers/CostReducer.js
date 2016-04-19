@@ -9,7 +9,7 @@ export default function costs (state = Map(), action) {
       const {time} = action
       return state.set(id, {cost, category, time})
     case UPDATE_COST:
-      return state.set(id, Object.assign({}, state.get(id), {cost}, {category}, {time: new Date()}))
+      return state.set(id, Object.assign({}, state.get(id), {cost}, {category}))
     case REMOVE_COST:
       return state.remove(id)
     default:
