@@ -80,12 +80,12 @@ describe('UI', () => {
   it('should render a NumberInput', () => {
     const renderer = createRenderer()
     renderer.render(
-        <NumberInput id='test' label='Test' validationError='Error' value={3} onChange={_ => {}}/>
+      <NumberInput id='test' label='Test' validationError='Error' value={3} onChange={() => {}}/>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
       <div className='mdl-textfield mdl-js-textfield' _radiumDidResolveStyles style={undefined}>
-        <input className='mdl-textfield__input' type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={_ => {}}/>
+        <input _radiumDidResolveStyles className='mdl-textfield__input' style={{textAlign: undefined}} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={() => {}}/>
         <label className='mdl-textfield__label' htmlFor='test'>Test</label>
         <span className='mdl-textfield__error'>Error</span>
       </div>

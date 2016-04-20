@@ -41,9 +41,9 @@ export const LinkButton = Radium(({text, onClick}) => (
   </a>
 ))
 
-export const NumberInput = Radium(({id, label, onChange, validationError, value, style}) => (
+export const NumberInput = Radium(({id, label, onChange, validationError, value, style, textAlign}) => (
   <div className={classes.textField} style={style}>
-    <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} onChange={onChange} value={value}/>
+    <input className={classes.input} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id={id} onChange={onChange} value={value} style={{textAlign}}/>
     <label className={classes.label} htmlFor={id}>{label}</label>
     <span className={classes.textFieldError}>{validationError}</span>
   </div>
@@ -56,9 +56,9 @@ NumberInput.propTypes = {
   onChange: PropTypes.func
 }
 
-export const TextInput = Radium(({id, label, onChange, validationError, value, style}) => (
+export const TextInput = Radium(({id, label, onChange, validationError, value, style, textAlign}) => (
   <div className={classes.textField} style={style}>
-    <input className={classes.input} type='text' id={id} onChange={onChange} value={value}/>
+    <input className={classes.input} type='text' id={id} onChange={onChange} value={value} style={{textAlign}}/>
     <label className={classes.label} htmlFor={id}>{label}</label>
     <span className={classes.textFieldError}>{validationError}</span>
   </div>
