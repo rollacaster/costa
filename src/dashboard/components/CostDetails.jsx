@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 
 import { SelectableButton, LinkButton } from './UI'
-import CostStream from './CostStream'
+import CostList from './CostList'
 
 const CostDetails = React.createClass({
   propTypes: {
@@ -10,7 +10,7 @@ const CostDetails = React.createClass({
   },
 
   getInitialState () {
-    return { activeMonth: '', isOpen: false }
+    return { activeMonth: '', isOpen: true }
   },
 
   render () {
@@ -41,7 +41,7 @@ const CostDetails = React.createClass({
           }
           {
             activeMonth
-            ? <CostStream costs={costs[activeMonth]} connection={connection}/>
+            ? <CostList costs={costs[activeMonth]} connection={connection}/>
             : ''
           }
           </div>
