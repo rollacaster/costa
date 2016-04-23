@@ -5,6 +5,7 @@ import { getTotalCosts } from '../functions/costFunctions'
 import { updateCost, removeCost } from '../../actions'
 
 import CostRow from './CostRow'
+import CostListHeader from './CostListHeader'
 import EditableCostRow from './EditableCostRow'
 
 const CostList = React.createClass({
@@ -21,15 +22,24 @@ const CostList = React.createClass({
   },
 
   render () {
-    const { costs } = this.props
+    const { costs, onSortCosts } = this.props
     const { edit } = this.state
 
     return (
       <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'stretch' }}>
         <div style={{display: 'flex', justifyContent: 'space-around'}}>
-          <span style={{textAlign: 'center'}}>Category</span>
-          <span style={{textAlign: 'center'}}>Cost</span>
-          <span style={{textAlign: 'center'}}>Created at</span>
+          <CostListHeader
+            label='Cost'
+            onSortDesc={() => onSortCosts({sortBy: 'category', desc: true})}
+            onSortAsc={() => onSortCosts({sortBy: 'category', desc: false})}/>
+          <CostListHeader
+            label='Cost'
+            onSortDesc={() => onSortCosts({sortBy: 'cost', desc: true})}
+            onSortAsc={() => onSortCosts({sortBy: 'cost', desc: false})}/>
+          <CostListHeader
+            label='Cost'
+            onSortDesc={() => onSortCosts({sortBy: 'time', desc: true})}
+            onSortAsc={() => onSortCosts({sortBy: 'time', desc: false})}/>
           <span style={{textAlign: 'center'}}>Actions</span>
         </div>
         <hr/>
@@ -50,7 +60,8 @@ CostList.propTypes = {
   costs: PropTypes.arrayOf(PropTypes.shape({
     category: PropTypes.string,
     costs: PropTypes.number
-  }))
+  })),
+  onSortCosts: PropTypes.func
 }
 
 export default Radium(CostList)

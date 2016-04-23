@@ -15,7 +15,7 @@ const CostDetails = React.createClass({
 
   render () {
     const { activeMonth, isOpen } = this.state
-    const { costs, connection } = this.props
+    const { costs, connection, onSortCosts } = this.props
 
     return (
       <div style={{margin: 20}}>
@@ -36,7 +36,7 @@ const CostDetails = React.createClass({
                   selected={month === activeMonth}
                   text={month} />
               ))}
-            {activeMonth && <CostList costs={costs[activeMonth]} connection={connection}/>}
+            {activeMonth && <CostList costs={costs[activeMonth]} connection={connection} onSortCosts={onSortCosts}/>}
             </div>
           )}
       </div>

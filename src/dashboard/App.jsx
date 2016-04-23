@@ -2,7 +2,12 @@ import React from 'react'
 import Radium from 'radium'
 
 import config from '../config'
-import { getCategories, getCostsPerMonthAndCategory, getCostsPerMonth } from './functions/costFunctions'
+import {
+  getCategories,
+  getCostsPerMonthAndCategory,
+  getCostsPerMonth,
+  sortCosts
+} from './functions/costFunctions'
 import CostOverview from './components/CostOverview'
 import CostForm from './components/CostForm'
 import CostDetails from './components/CostDetails'
@@ -18,12 +23,14 @@ const styles = {
 const App = React.createClass({
   getInitialState () {
     return {
-      costs: {}
+      costs: {},
+      sortBy: 'time',
+      desc: true
     }
   },
 
   render () {
-    const { costs } = this.state
+    const { costs, sortBy, desc } = this.state
     return (
       <div>
         <h1 style={{paddingLeft: 20}}>Costa</h1>
@@ -31,7 +38,10 @@ const App = React.createClass({
           <CostOverview costs={getCostsPerMonthAndCategory(costs)} />
           <CostForm categories={getCategories(costs)} connection={this.ws}/>
         </div>
-        <CostDetails costs={getCostsPerMonth(costs)} connection={this.ws} />
+        <CostDetails
+          costs={getCostsPerMonth(sortCosts({sortBy, desc})(costs))}
+          onSortCosts={(sortParams) => this.setState(sortParams)}
+          connection={this.ws}/>
       </div>
     )
   },
