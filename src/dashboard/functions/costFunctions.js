@@ -56,8 +56,7 @@ export const sortCosts = ({sortBy = 'time', desc = true}) => {
 }
 
 export const getCostsPerMonth = R.compose(
-  R.groupBy(({time}) => moment(time).format('MMMM')),
-  flattenCosts
+  R.groupBy(({time}) => moment(time).format('MMMM'))
 )
 
 export const getCostsPerMonthAndCategory = R.compose(
