@@ -36,7 +36,7 @@ describe('<CostRow/>', () => {
   })
 
   it('should render a time', () => {
-    expect(costRow.find('span').at(2).children().text()).to.be.deep.equal('07.04.2016 02:30')
+    expect(costRow.find('span').at(2).children().text()).to.be.deep.equal('07.04.2016 04:30')
   })
 
   it('should render a cost', () => {

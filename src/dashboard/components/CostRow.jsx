@@ -8,7 +8,7 @@ const CostRow = ({id, category, cost, time, editCost, removeCost}) => (
   <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', marginBottom: 5}}>
     <span style={{flex: 1, textAlign: 'center'}}>{category}</span>
     <span style={{flex: 1, textAlign: 'center'}}>{cost.toFixed(2)}</span>
-    <span style={{flex: 1, textAlign: 'center'}}>{moment(time).format('DD.MM.YYYY HH:MM')}</span>
+    <span style={{flex: 1, textAlign: 'center'}}>{moment(time).format('DD.MM.YYYY HH:mm')}</span>
     <div style={{flex: 1, display: 'flex', justifyContent: 'space-around'}}>
       <Button text='Edit' onClick={editCost}/>
       <Button text='Delete' onClick={() => removeCost(id)}/>
