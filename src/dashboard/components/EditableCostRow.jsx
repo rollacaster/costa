@@ -23,7 +23,7 @@ const EditableCostRow = ({id, category, cost, time, updateCost, cancelEdit}) => 
         style={{flex: 1}}
         textAlign='center'
         required/>
-      <span style={{flex: 1, textAlign: 'center'}}>{moment(time).format('DD.MM.YYYY HH:MM')}</span>
+      <span style={{flex: 1, textAlign: 'center'}}>{moment(time).format('DD.MM.YYYY HH:mm')}</span>
       <div style={{flex: 1, display: 'flex', justifyContent: 'space-around'}}>
         <Button text='Edit' type='submit'/>
         <Button type='button' text='Cancel' onClick={cancelEdit}/>
