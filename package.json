@@ -40,7 +40,6 @@
     "cron": "^1.1.0",
     "express": "^4.13.3",
     "formsy-react": "^0.17.0",
-    "highland": "^2.6.0",
     "immutable": "^3.7.6",
     "material-design-lite": "^1.0.6",
     "moment": "^2.11.1",
