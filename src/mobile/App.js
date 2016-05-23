@@ -78,7 +78,7 @@ const App = React.createClass({
           <View style={styles.container}>
             <View style={styles.upperContainer}>
               <View style={styles.categoryContainer}>
-                {categorys.lengith > 0 ? categorys.slice(0, 8).map((category) => (
+                {categorys.length > 0 ? categorys.slice(0, 8).map((category) => (
                   <Category
                     onPress={() => this.setState({category, newCategory: false})}
                     name={category}
