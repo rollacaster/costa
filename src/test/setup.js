@@ -1,10 +1,11 @@
-import React from 'react'
-import { expect } from 'chai'
-import { shallow, mount } from 'enzyme'
-import { jsdom } from 'jsdom'
-import { spy } from 'sinon'
-import config from '../config'
-import ws, { Server } from 'ws'
+const React = require('react')
+const { expect } = require('chai')
+const { shallow, mount } = require('enzyme')
+const { jsdom } = require('jsdom')
+const { spy } = require('sinon')
+const config = require('../config')
+const ws = require('ws')
+const { Server } = ws
 
 // Test utils
 global.expect = expect
@@ -14,9 +15,11 @@ global.mount = mount
 global.React = React
 
 // Open ws server
-export const wsServer = new Server({port: config.port})
-export let wsConnection
+const wsServer = new Server({port: config.port})
+let wsConnection
 wsServer.on('connection', (ws) => { wsConnection = ws })
+exports.wsServer = wsServer
+exports.wsConnection = wsConnection
 
 // Create browser environment
 const exposedProperties = ['window', 'navigator', 'document']

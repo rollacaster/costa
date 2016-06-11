@@ -1,8 +1,8 @@
-import { expect } from 'chai'
-import { Map } from 'immutable'
+const { expect } = require('chai')
+const { Map } = require('immutable')
 
-import costs from './CostReducer'
-import { createCost, updateCost, removeCost } from '../../actions'
+const costs = require('./CostReducer')
+const { createCost, updateCost, removeCost } = require('../../actions')
 
 describe('CostReducer', () => {
   describe('Create action', () => {

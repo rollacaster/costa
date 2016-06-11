@@ -1,8 +1,8 @@
-import { Map } from 'immutable'
+const { Map } = require('immutable')
 
-import { CREATE_COST, UPDATE_COST, REMOVE_COST } from '../../actions'
+const { CREATE_COST, UPDATE_COST, REMOVE_COST } = require('../../actions')
 
-export default function costs (state = Map(), action) {
+module.exports = function costs (state = Map(), action) {
   const { type, id, cost, category } = action
   switch (type) {
     case CREATE_COST:

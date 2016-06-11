@@ -1,8 +1,8 @@
-import { CronJob } from 'cron'
-import { spawn } from 'child_process'
-import config from '../config'
+const { CronJob } = require('cron')
+const { spawn } = require('child_process')
+const config = require('../config')
 
-export default new CronJob({
+module.exports = new CronJob({
   cronTime: '00 00 */1 * * *',
   onTick: () => {
     spawn('mongodump', ['--db', 'costa', `--out=${config.backup}`],

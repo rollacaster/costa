@@ -1,6 +1,6 @@
-import webServer from 'express'
-import favicon from 'serve-favicon'
-import bodyParser from 'body-parser'
+const webServer = require('express')
+const favicon = require('serve-favicon')
+const bodyParser = require('body-parser')
 
 const httpConfiguration = webServer()
 
@@ -17,4 +17,4 @@ httpConfiguration.use(function (err, req, res, next) {
   })
 })
 
-export default httpConfiguration
+module.exports = httpConfiguration

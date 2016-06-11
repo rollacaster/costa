@@ -1,7 +1,7 @@
-import builder from 'gulp'
-import { spawn } from 'child_process'
+const builder = require('gulp')
+const { spawn } = require('child_process')
 
-import { listen, stop } from './src/server/main'
+const { listen, stop } = require('./src/server/main')
 
 builder.task('test:integration', (done) => {
   listen(() => {

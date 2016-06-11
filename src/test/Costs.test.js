@@ -1,10 +1,10 @@
-import WebSocket from 'ws'
-import R from 'ramda'
-import { expect } from 'chai'
+const WebSocket = require('ws')
+const R = require('ramda')
+const { expect } = require('chai')
 
-import config from '../config'
-import { createCost } from '../actions'
-import { getConnection } from '../server/storage'
+const config = require('../config')
+const { createCost } = require('../actions')
+const { getConnection } = require('../server/storage')
 
 describe('Cost integration tests', () => {
   describe('Create new cost', () => {

@@ -1,10 +1,14 @@
-import uuid from 'uuid'
+const uuid = require('uuid')
 
-export const CREATE_COST = 'CREATE_COST'
-export const UPDATE_COST = 'UPDATE_COST'
-export const REMOVE_COST = 'REMOVE_COST'
+const CREATE_COST = 'CREATE_COST'
+const UPDATE_COST = 'UPDATE_COST'
+const REMOVE_COST = 'REMOVE_COST'
 
-export function createCost ({ category, cost }) {
+exports.CREATE_COST = CREATE_COST
+exports.UPDATE_COST = UPDATE_COST
+exports.REMOVE_COST = REMOVE_COST
+
+exports.createCost = ({ category, cost }) => {
   return {
     type: CREATE_COST,
     id: uuid.v1(),
@@ -14,7 +18,7 @@ export function createCost ({ category, cost }) {
   }
 }
 
-export function updateCost ({id, cost, category}) {
+exports.updateCost = ({id, cost, category}) => {
   return {
     type: UPDATE_COST,
     id,
@@ -23,7 +27,7 @@ export function updateCost ({id, cost, category}) {
   }
 }
 
-export function removeCost ({id}) {
+exports.removeCost = ({id}) => {
   return {
     type: REMOVE_COST,
     id

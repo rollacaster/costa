@@ -1,6 +1,6 @@
-import { expect } from 'chai'
+const { expect } = require('chai')
 
-import * as actions from './index'
+const actions = require('./index')
 
 describe('Action Creators', () => {
   describe('createCost', () => {

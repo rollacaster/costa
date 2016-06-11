@@ -1,7 +1,7 @@
-import { combineReducers } from 'redux'
+const { combineReducers } = require('redux')
 
-import costs from './CostReducer'
+const costs = require('./CostReducer')
 
-export default combineReducers({
+module.exports = combineReducers({
   costs
 })

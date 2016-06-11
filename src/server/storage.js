@@ -1,6 +1,6 @@
-import { MongoClient } from 'mongodb'
+const { MongoClient } = require('mongodb')
 
-import config from '../config'
+const config = require('../config')
 
 const connection = new Promise((resolve, reject) => {
   MongoClient.connect(config.db, (err, connection) => {
@@ -12,17 +12,19 @@ const connection = new Promise((resolve, reject) => {
   })
 })
 
-export function getConnection () {
+const getConnection = () => {
   return connection
 }
 
-export function storeDocument ({ collection, document }) {
+exports.getConnection = getConnection
+
+exports.storeDocument = ({ collection, document }) => {
   return getConnection()
     .then((con) => getCollection(collection))
     .then((col) => col.insert(document))
 }
 
-export function findDocuments ({ collection }) {
+exports.findDocuments = ({ collection }) => {
   return getConnection()
     .then((con) => getCollection(collection))
     .then((col) => col.find({}).toArray())

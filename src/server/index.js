@@ -1,3 +1,3 @@
-import { listen } from './main'
+const { listen } = require('./main')
 
 listen()

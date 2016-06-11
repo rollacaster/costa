@@ -1,4 +1,4 @@
-import fs from 'fs'
+const fs = require('fs')
 
 const images = fs.readdirSync('src/mobile/images')
 

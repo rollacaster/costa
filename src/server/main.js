@@ -1,11 +1,11 @@
-import http from 'http'
-import WS from 'ws'
+const http = require('http')
+const WS = require('ws')
 
-import httpConfiguration from './httpConfiguration'
-import config from '../config'
-import backup from './backup'
-import store from './store'
-import { getConnection, storeDocument, findDocuments } from './storage'
+const httpConfiguration = require('./httpConfiguration')
+const config = require('../config')
+const backup = require('./backup')
+const store = require('./store')
+const { getConnection, storeDocument, findDocuments } = require('./storage')
 
 const port = process.env.PORT || config.port
 httpConfiguration.set('port', port)
@@ -35,7 +35,7 @@ wss.on('connection', (ws) => {
   })
 })
 
-export function listen (cb) {
+exports.listen = (cb) => {
   server.on('listening', () => {
     console.log(`Listening on port ${port}`)
 
@@ -47,7 +47,7 @@ export function listen (cb) {
   server.listen(port)
 }
 
-export function stop (cb) {
+exports.stop = (cb) => {
   getConnection().then((con) => {
     con.close()
     server.close(cb)
