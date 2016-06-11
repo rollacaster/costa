@@ -1,7 +1,7 @@
-import path from 'path'
-import webpack from 'webpack'
+const path = require('path')
+const webpack = require('webpack')
 
-export default {
+module.exports = {
   entry: [
     './src/dashboard/index'
   ],
@@ -11,7 +11,11 @@ export default {
   },
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel-loader'] }
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel-loader?presets[]=react,presets[]=es2015']
+      }
     ]
   },
   resolve: {
