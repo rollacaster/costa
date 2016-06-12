@@ -5,8 +5,12 @@ const { expect } = require('chai')
 const config = require('../config')
 const { createCost } = require('../actions')
 const { getConnection } = require('../server/storage')
+const { listen, stop } = require('../server/main')
 
 describe('Cost integration tests', () => {
+  before((done) => listen(() => done()))
+  after((done) => stop(() => done()))
+
   describe('Create new cost', () => {
     let ws
 
@@ -15,7 +19,7 @@ describe('Cost integration tests', () => {
     })
 
     afterEach((done) => {
-      getConnection()
+      getConnection
         .then((con) => {
           con.collection('actions')
           con.dropCollection('actions')

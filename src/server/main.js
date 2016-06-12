@@ -48,7 +48,7 @@ exports.listen = (cb) => {
 }
 
 exports.stop = (cb) => {
-  getConnection().then((con) => {
+  getConnection.then((con) => {
     con.close()
     server.close(cb)
   })
