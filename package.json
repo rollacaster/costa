@@ -14,6 +14,7 @@
     "test:unit": "cross-env NODE_ENV=test mocha 'src/**/*.spec.js?(x)' -r src/test/mocks.js -r react-native-mock/mock.js -r src/test/setup.js --compilers js:babel-core/register",
     "test:integration": "cross-env NODE_ENV=test mocha 'src/test/**/*.test.js' --require babel-core/register",
     "lint": "standard src/",
+    "test:server": "cross-env NODE_ENV=test mocha 'src/server/**/*.spec.js'",
     "coverage": "npm-run-all coverage:*",
     "coverage:run": "babel-node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha 'src/**/*.spec.js?(x)' --report lcovonly -- -R spec -r src/test/mocks.js -r react-native-mock/mock.js -r src/test/setup.js",
     "coverage:send": "cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
