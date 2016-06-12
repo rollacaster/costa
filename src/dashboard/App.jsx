@@ -36,12 +36,12 @@ const App = React.createClass({
         <h1 style={{paddingLeft: 20}}>Costa</h1>
         <div style={styles.container}>
           <CostOverview costs={getCostsPerMonthAndCategory(costs)} />
-          <CostForm categories={getCategories(costs)} connection={this.ws}/>
+          <CostForm categories={getCategories(costs)} connection={this.ws} />
         </div>
         <CostDetails
           costs={getCostsPerMonth(sortCosts({sortBy, desc})(costs))}
           onSortCosts={(sortParams) => this.setState(sortParams)}
-          connection={this.ws}/>
+          connection={this.ws} />
       </div>
     )
   },

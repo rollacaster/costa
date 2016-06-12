@@ -72,7 +72,7 @@ const App = React.createClass({
               Title () {
                 return <Text style={styles.title}>Costa</Text>
               }
-            }}/>
+            }} />
         }
         renderScene={() => (
           <View style={styles.container}>
@@ -95,7 +95,7 @@ const App = React.createClass({
                 onCostChange={(cost) => this.setState({cost})}
                 onCategoryChange={(category) => this.setState({category})}
                 cost={cost}
-                category={category}/>
+                category={category} />
             </View>
             <View style={styles.actionsContainer}>
               <Actions
@@ -112,10 +112,10 @@ const App = React.createClass({
                             })
                           }
                           : this.syncCosts}
-                costCount={listCosts().length}/>
+                costCount={listCosts().length} />
             </View>
           </View>
-        )}/>
+        )} />
     )
   },
 
