@@ -8,7 +8,7 @@ describe('<Actions />', () => {
 
   beforeEach(() => {
     handleAction = spy()
-    actions = shallow(<Actions newCost={false} onAction={handleAction}/>)
+    actions = shallow(<Actions newCost={false} onAction={handleAction} />)
   })
 
   it('should handle a press', () => {

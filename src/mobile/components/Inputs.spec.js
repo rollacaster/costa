@@ -14,7 +14,7 @@ describe('<Inputs />', () => {
       <Inputs
         newCategory={false}
         onCostChange={handleCostChange}
-        onCategoryChange={handleCategoryChange}/>
+        onCategoryChange={handleCategoryChange} />
     )
   })
 

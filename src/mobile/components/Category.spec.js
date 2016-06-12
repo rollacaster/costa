@@ -12,7 +12,7 @@ describe('<Category />', () => {
       <Category
         name={'test'}
         selected={'adsf'}
-        onPress={handlePress}/>
+        onPress={handlePress} />
     )
   })
 
@@ -25,7 +25,7 @@ describe('<Category />', () => {
       <Category
         name={'test'}
         selected={'test'}
-        onPress={handlePress}/>
+        onPress={handlePress} />
     )
 
     const selectedColor = selectedCategory.find(TouchableHighlight)
