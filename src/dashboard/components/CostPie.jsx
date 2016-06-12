@@ -3,7 +3,7 @@ import c3 from 'c3'
 
 const CostPie = React.createClass({
   render () {
-    return <div id='costPie' style={{fill: '#efefef'}}/>
+    return <div id='costPie' style={{fill: '#efefef'}} />
   },
 
   componentDidMount () {
