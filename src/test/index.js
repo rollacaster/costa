@@ -1,11 +1,11 @@
-import testUtils from 'react-addons-test-utils'
-import chai from 'chai'
-import chaiJSX from 'jsx-chai'
-import sinon from 'sinon'
+const testUtils = require('react-addons-test-utils')
+const chai = require('chai')
+const chaiJSX = require('jsx-chai')
+const sinon = require('sinon')
 
-chai.use(chaiJSX)
+chai.use(chaiJSX.default)
 
-export const expect = chai.expect
-export const createRenderer = testUtils.createRenderer
-export const spy = sinon.spy
+exports.expect = chai.expect
+exports.createRenderer = testUtils.createRenderer
+exports.spy = sinon.spy
 
