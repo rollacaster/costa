@@ -1,4 +1,8 @@
+import React from 'react'
 import { TouchableHighlight } from 'react-native'
+import { expect } from 'chai'
+import { spy } from 'sinon'
+import { shallow } from 'enzyme'
 
 import Actions from './Actions'
 

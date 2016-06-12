@@ -1,4 +1,7 @@
+import React from 'react'
 import { TouchableHighlight } from 'react-native'
+import { spy } from 'sinon'
+import { shallow } from 'enzyme'
 
 import Inputs from './Inputs'
 
