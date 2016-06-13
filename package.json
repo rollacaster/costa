@@ -16,7 +16,7 @@
     "test:mobile": "cross-env NODE_ENV=test mocha 'src/mobile/**/*.spec.js' -r react-native-mock/mock -r src/mobile/mocks --compilers js:babel-core/register",
     "test:lint": "standard src/**/*",
     "coverage": "npm-run-all coverage:*",
-    "coverage:run": "babel-node ./node_modules/.bin/babel-istanbul cover ./node_modules/.bin/_mocha 'src/**/*.spec.js?(x)' --report lcovonly -- -R spec -r src/test/mocks.js -r react-native-mock/mock.js -r src/test/setup.js",
+    "coverage:run": "babel-istanbul cover ./node_modules/.bin/_mocha 'src/**/*.spec.js?(x)' --report lcovonly -- -R spec -r src/mobile/mocks.js -r react-native-mock/mock.js",
     "coverage:send": "cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "coverage:clean": "rm -rf ./coverage",
     "deploy": "pm2 deploy ecosystem.json production",
