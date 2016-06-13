@@ -1,9 +1,5 @@
-import React, {
-  PropTypes,
-  StyleSheet,
-  Text,
-  TouchableHighlight
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { StyleSheet, Text, TouchableHighlight } from 'react-native'
 
 import { primary, fontSize, accented } from '../style'
 
@@ -33,7 +29,7 @@ const Category = ({name, selected, onPress}) => (
 )
 
 Category.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   selected: PropTypes.string
 }
 

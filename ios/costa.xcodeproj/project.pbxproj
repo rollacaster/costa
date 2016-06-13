@@ -21,10 +21,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		53B16D094A114FB39ECBFCDE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA3A9041504C49799B3A4D08 /* libz.tbd */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		A27A9867F87A4122AB5B98A7 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2CE243D1114C538904000A /* libRealmReact.a */; };
-		ECEFC41853A7473291ADA8CC /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E85789298F64B1CA4CB859B /* libc++.tbd */; };
+		8F6D68F599514C5EB64FD489 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B8551AE32029413CAF995A64 /* libc++.tbd */; };
+		B2035027C179469BB3505DB0 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43A80C82824645954A6189 /* libz.tbd */; };
+		B3EFB06852004259818437F3 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99271B7BFFBE43A2A955B692 /* libRealmReact.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,9 +105,9 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		E97CD9AC1CB04AF30026BE91 /* PBXContainerItemProxy */ = {
+		E99661621D0F028000D3CD13 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 7DBF36920B3149C2BBF8A0A4 /* RealmReact.xcodeproj */;
+			containerPortal = 5FF6FEA33A9147F5BD9CAB63 /* RealmReact.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F60690131CA2766F0003FB26;
 			remoteInfo = RealmReact;
@@ -134,12 +134,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = costa/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = costa/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		4E85789298F64B1CA4CB859B /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5FF6FEA33A9147F5BD9CAB63 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		7DBF36920B3149C2BBF8A0A4 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		ED2CE243D1114C538904000A /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
-		FA3A9041504C49799B3A4D08 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		99271B7BFFBE43A2A955B692 /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
+		B8551AE32029413CAF995A64 /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CE43A80C82824645954A6189 /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,9 +164,9 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				A27A9867F87A4122AB5B98A7 /* libRealmReact.a in Frameworks */,
-				ECEFC41853A7473291ADA8CC /* libc++.tbd in Frameworks */,
-				53B16D094A114FB39ECBFCDE /* libz.tbd in Frameworks */,
+				B3EFB06852004259818437F3 /* libRealmReact.a in Frameworks */,
+				8F6D68F599514C5EB64FD489 /* libc++.tbd in Frameworks */,
+				B2035027C179469BB3505DB0 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +289,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				7DBF36920B3149C2BBF8A0A4 /* RealmReact.xcodeproj */,
+				5FF6FEA33A9147F5BD9CAB63 /* RealmReact.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -309,7 +309,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* costaTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
-				BC9177AD7D6A42D388FA0641 /* Frameworks */,
+				E62E57C4EC2941AAAA25836A /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -324,19 +324,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC9177AD7D6A42D388FA0641 /* Frameworks */ = {
+		E62E57C4EC2941AAAA25836A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4E85789298F64B1CA4CB859B /* libc++.tbd */,
-				FA3A9041504C49799B3A4D08 /* libz.tbd */,
+				B8551AE32029413CAF995A64 /* libc++.tbd */,
+				CE43A80C82824645954A6189 /* libz.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E97CD99F1CB04AF30026BE91 /* Products */ = {
+		E99661551D0F028000D3CD13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E97CD9AD1CB04AF30026BE91 /* libRealmReact.a */,
+				E99661631D0F028000D3CD13 /* libRealmReact.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -393,9 +393,6 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
-					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 6W56NZH5S5;
-					};
 				};
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "costa" */;
@@ -451,8 +448,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = E97CD99F1CB04AF30026BE91 /* Products */;
-					ProjectRef = 7DBF36920B3149C2BBF8A0A4 /* RealmReact.xcodeproj */;
+					ProductGroup = E99661551D0F028000D3CD13 /* Products */;
+					ProjectRef = 5FF6FEA33A9147F5BD9CAB63 /* RealmReact.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -534,11 +531,11 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		E97CD9AD1CB04AF30026BE91 /* libRealmReact.a */ = {
+		E99661631D0F028000D3CD13 /* libRealmReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRealmReact.a;
-			remoteRef = E97CD9AC1CB04AF30026BE91 /* PBXContainerItemProxy */;
+			remoteRef = E99661621D0F028000D3CD13 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -624,10 +621,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -649,10 +642,6 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = costaTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -669,7 +658,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -679,8 +667,10 @@
 				);
 				INFOPLIST_FILE = costa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.costa;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = costa;
 			};
 			name = Debug;
@@ -689,8 +679,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -699,8 +687,10 @@
 				);
 				INFOPLIST_FILE = costa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = org.costa;
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_NAME = costa;
 			};
 			name = Release;

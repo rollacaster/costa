@@ -1,10 +1,5 @@
-import React, {
-  StyleSheet,
-  View,
-  Text,
-  Navigator,
-  AppState
-} from 'react-native'
+import React from 'react'
+import { StyleSheet, View, Text, Navigator, AppState } from 'react-native'
 
 import {
   createCost, listCosts, deleteCosts,
@@ -102,7 +97,7 @@ const App = React.createClass({
                 newCost={isValidCost}
                 onAction={isValidCost
                           ? () => {
-                            createCost({cost, category})
+                            createCost({cost: parseFloat(cost), category})
                             this.syncCosts()
                             this.setState({
                               cost: '',

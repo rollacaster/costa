@@ -43,3 +43,9 @@ npm-debug.log
 #
 .tern-project
 *.keystore
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs
+android/keystores/debug.keystore

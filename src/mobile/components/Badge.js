@@ -1,9 +1,5 @@
-import React, {
-  PropTypes,
-  View,
-  StyleSheet,
-  Text
-} from 'react-native'
+import React, { PropTypes } from 'react'
+import { View, StyleSheet, Text } from 'react-native'
 
 import { accented } from '../style'
 
