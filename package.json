@@ -4,8 +4,9 @@
   "description": "Keep track of your daily costs across all devices.",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build:dashboard;cross-env NODE_ENV=production npm run start:server",
-    "start:server": "babel-node src/server/index.js",
+    "prestart": "npm install",
+    "start": "cross-env NODE_ENV=production npm-run-all build start:server",
+    "start:server": "node src/server/index.js",
     "build": "cross-env NODE_ENV=production  webpack",
     "develop": "webpack; npm run start:server & npm run develop:hot",
     "develop:hot": "webpack-dev-server --hot --inline --content-base static --port 4000",
