@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 
 import { accented } from '../style'
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const Badge = ({value}) => (
+const Badge = ({ value }) => (
   <View style={styles.container}><Text style={styles.text}>{value}</Text></View>
 )
 

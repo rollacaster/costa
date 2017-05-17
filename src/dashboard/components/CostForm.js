@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
 import { Form } from 'formsy-react'
+import PropTypes from 'prop-types';
 import Radium from 'radium'
 
 import { createCost } from '../../actions'

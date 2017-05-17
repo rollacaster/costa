@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 import { StyleSheet, View, TextInput, Image, TouchableHighlight } from 'react-native'
 
 import { fontSize, primary, accented } from '../style'
