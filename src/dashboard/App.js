@@ -20,16 +20,14 @@ const styles = {
   }
 }
 
-const App = React.createClass({
-  getInitialState () {
-    return {
-      costs: {},
-      sortBy: 'time',
-      desc: true
-    }
-  },
+class App extends React.Component {
+  state = {
+    costs: {},
+    sortBy: 'time',
+    desc: true
+  };
 
-  render () {
+  render() {
     const { costs, sortBy, desc } = this.state
     return (
       <div>
@@ -44,20 +42,20 @@ const App = React.createClass({
           connection={this.ws} />
       </div>
     )
-  },
+  }
 
-  componentDidMount () {
+  componentDidMount() {
     this.ws = new WebSocket(config.ws)
 
     this.ws.onopen = () => {
       console.log(`Connected to ${config.ws}`)
       this.ws.onmessage = (msg) => this.setState(JSON.parse(msg.data))
     }
-  },
+  }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.ws.close()
   }
-})
+}
 
 export default Radium(App)

@@ -25,26 +25,24 @@ const styles = {
   }
 }
 
-const CostForm = React.createClass({
-  getInitialState () {
-    return { canSubmit: false, newCategory: false }
-  },
-
-  propTypes: {
+class CostForm extends React.Component {
+  static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.string),
     connection: PropTypes.object
-  },
+  };
 
-  createCost ({category, cost}) {
+  state = { canSubmit: false, newCategory: false };
+
+  createCost = ({category, cost}) => {
     const { connection } = this.props
 
     const action = createCost({category, cost})
     connection.send(JSON.stringify(action))
     this.setState({newCategory: false})
     this.refs.form.reset()
-  },
+  };
 
-  render () {
+  render() {
     const { canSubmit, newCategory } = this.state
     const { categories } = this.props
 
@@ -79,6 +77,6 @@ const CostForm = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default Radium(CostForm)

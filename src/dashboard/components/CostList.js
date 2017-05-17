@@ -9,20 +9,20 @@ import CostRow from './CostRow'
 import CostListHeader from './CostListHeader'
 import EditableCostRow from './EditableCostRow'
 
-const CostList = React.createClass({
-  removeCost (id) {
+class CostList extends React.Component {
+  removeCost = (id) => {
     const { connection } = this.props
     const action = removeCost({id})
     connection.send(JSON.stringify(action))
-  },
+  };
 
-  updateCost (cost) {
+  updateCost = (cost) => {
     const { connection } = this.props
     connection.send(JSON.stringify(updateCost(cost)))
     this.setState({edit: ''})
-  },
+  };
 
-  render () {
+  render() {
     const { costs, onSortCosts } = this.props
     const { edit } = this.state
 
@@ -55,7 +55,7 @@ const CostList = React.createClass({
       </div>
     )
   }
-})
+}
 
 CostList.propTypes = {
   costs: PropTypes.arrayOf(PropTypes.shape({

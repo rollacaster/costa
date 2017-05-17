@@ -4,17 +4,15 @@ import React from 'react';
 import { SelectableButton, LinkButton } from './UI'
 import CostList from './CostList'
 
-const CostDetails = React.createClass({
-  propTypes: {
+class CostDetails extends React.Component {
+  static propTypes = {
     costs: PropTypes.object,
     connection: PropTypes.object
-  },
+  };
 
-  getInitialState () {
-    return { activeMonth: '', isOpen: true }
-  },
+  state = { activeMonth: '', isOpen: true };
 
-  render () {
+  render() {
     const { activeMonth, isOpen } = this.state
     const { costs, connection, onSortCosts } = this.props
 
@@ -43,6 +41,6 @@ const CostDetails = React.createClass({
       </div>
     )
   }
-})
+}
 
 export default CostDetails

@@ -1,4 +1,5 @@
 import React from 'react';
+import createReactClass from 'create-react-class';
 import Formsy from 'formsy-react'
 import PropTypes from 'prop-types';
 import Radium from 'radium'
@@ -10,7 +11,8 @@ import {
   AddIconButton
 } from './UI'
 
-export const TextFormInput = Radium(React.createClass({
+export const TextFormInput = Radium(createReactClass({
+  displayName: 'TextFormInput',
   mixins: [Formsy.Mixin],
 
   render () {
@@ -21,10 +23,11 @@ export const TextFormInput = Radium(React.createClass({
         value={this.getValue()}
         onChange={({target}) => this.setValue(target.value)}/>
     )
-  }
+  },
 }))
 
-export const NumberFormInput = Radium(React.createClass({
+export const NumberFormInput = Radium(createReactClass({
+  displayName: 'NumberFormInput',
   mixins: [Formsy.Mixin],
 
   render () {
@@ -33,10 +36,12 @@ export const NumberFormInput = Radium(React.createClass({
         value={this.getValue()}
         onChange={({target}) => this.setValue(target.value)}/>
     )
-  }
+  },
 }))
 
-export const RadioFormButtons = Radium(React.createClass({
+export const RadioFormButtons = Radium(createReactClass({
+  displayName: 'RadioFormButtons',
+
   propTypes: {
     buttons: PropTypes.arrayOf(PropTypes.string),
     selected: PropTypes.string,
@@ -81,5 +86,5 @@ export const RadioFormButtons = Radium(React.createClass({
         </div>
       </div>
     )
-  }
+  },
 }))

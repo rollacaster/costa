@@ -1,21 +1,21 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 import c3 from 'c3'
 
-const CostPie = React.createClass({
+class CostPie extends Component {
   render () {
     return <div id='costPie' style={{fill: '#efefef'}} />
-  },
+  }
 
   componentDidMount () {
     const { costs } = this.props
     if (costs) { renderPie(costs) }
-  },
+  }
 
   componentWillReceiveProps ({costs}) {
     renderPie(costs)
   }
-})
+}
 
 CostPie.propTypes = {
   costs: PropTypes.arrayOf(PropTypes.shape({

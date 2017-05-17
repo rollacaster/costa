@@ -1,18 +1,15 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
 
 import { SelectableButton } from './UI'
 import CostPie from './CostPie'
 import { getTotalCosts } from '../functions/costFunctions'
 
-const CostOverview = React.createClass({
-  propTypes: {
-    costs: PropTypes.object
-  },
-
-  getInitialState () {
-    return { activeMonth: '' }
-  },
+class CostOverview extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { activeMonth: '' }
+  }
 
   render () {
     const { activeMonth } = this.state
@@ -21,7 +18,7 @@ const CostOverview = React.createClass({
     return (
       <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', flex: 1}}>
         <div style={{display: 'flex', flexDirection: 'column'}}>
-        {
+          {
           Object.keys(costs).map((month) => (
             <SelectableButton
               style={{margin: 5}}
@@ -34,9 +31,9 @@ const CostOverview = React.createClass({
         </div>
         <div style={{display: 'flex', flex: 1, flexDirection: 'column', alignItems: 'center'}}>
           <div style={{flex: 1}}>
-          {
+            {
             activeMonth
-            ? <CostPie costs={costs[activeMonth]}/>
+            ? <CostPie costs={costs[activeMonth]} />
             : ''
           }
           </div>
@@ -44,7 +41,7 @@ const CostOverview = React.createClass({
         </div>
       </div>
     )
-  },
+  }
 
   componentWillReceiveProps (nextProps) {
     const { costs } = nextProps
@@ -53,6 +50,10 @@ const CostOverview = React.createClass({
     const initMonth = months[months.length - 1]
     if (activeMonth === '') this.setState({activeMonth: initMonth})
   }
-})
+}
+
+CostOverview.propTypes = {
+  costs: PropTypes.object
+}
 
 export default CostOverview

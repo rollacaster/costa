@@ -41,18 +41,16 @@ const styles = StyleSheet.create({
   }
 })
 
-const App = React.createClass({
-  getInitialState () {
-    return {
-      categorys: [],
-      category: '',
-      cost: '',
-      newCategory: false,
-      costCount: listCosts().length
-    }
-  },
+class App extends React.Component {
+  state = {
+    categorys: [],
+    category: '',
+    cost: '',
+    newCategory: false,
+    costCount: listCosts().length
+  };
 
-  render () {
+  render() {
     const { categorys, category, cost, newCategory } = this.state
     const isValidCost = category !== '' && cost !== ''
 
@@ -112,9 +110,9 @@ const App = React.createClass({
           </View>
         )} />
     )
-  },
+  }
 
-  syncCosts () {
+  syncCosts = () => {
     sync({costs: listCosts(), update: this.setState.bind(this)})
       .then((isSynced) => {
         this.setState({costCount: listCosts().length})
@@ -130,9 +128,9 @@ const App = React.createClass({
         }
       })
       .catch((err) => console.error(`Could not sync costs due to ${err}`))
-  },
+  };
 
-  componentDidMount () {
+  componentDidMount() {
     this.syncCosts()
     AppState.addEventListener('change', (appState) => {
       if (appState === 'active') {
@@ -140,6 +138,6 @@ const App = React.createClass({
       }
     })
   }
-})
+}
 
 export default App
