@@ -1,9 +1,13 @@
 import React from 'react'
-import { StyleSheet, View, Text, Navigator, AppState } from 'react-native'
+import { StyleSheet, View, Text, AppState } from 'react-native'
+import { Navigator } from 'react-native-deprecated-custom-components'
 
 import {
-  createCost, listCosts, deleteCosts,
-  listCategorys, deleteCategorys
+  createCost,
+  listCosts,
+  deleteCosts,
+  listCategorys,
+  deleteCategorys
 } from './storage'
 import sync from './sync'
 
@@ -11,7 +15,7 @@ import Category from './components/Category'
 import Inputs from './components/Inputs'
 import Actions from './components/Actions'
 
-import {primary, fontSize} from './style'
+import { primary, fontSize } from './style'
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +52,7 @@ class App extends React.Component {
     cost: '',
     newCategory: false,
     costCount: listCosts().length
-  };
+  }
 
   render() {
     const { categorys, category, cost, newCategory } = this.state
@@ -60,79 +64,91 @@ class App extends React.Component {
           <Navigator.NavigationBar
             style={styles.navContainer}
             routeMapper={{
-              LeftButton () {},
-              RightButton () {},
-              Title () {
+              LeftButton() {},
+              RightButton() {},
+              Title() {
                 return <Text style={styles.title}>Costa</Text>
               }
-            }} />
+            }}
+          />
         }
         renderScene={() => (
           <View style={styles.container}>
             <View style={styles.upperContainer}>
               <View style={styles.categoryContainer}>
-                {categorys.length > 0 ? categorys.slice(0, 8).map((category) => (
-                  <Category
-                    onPress={() => this.setState({category, newCategory: false})}
-                    name={category}
-                    key={category}
-                    selected={this.state.category}
-                    />
-                )) : <Text>Please connect to costa to view categories</Text>}
+                {categorys.length > 0
+                  ? categorys
+                      .slice(0, 8)
+                      .map(category => (
+                        <Category
+                          onPress={() =>
+                            this.setState({ category, newCategory: false })}
+                          name={category}
+                          key={category}
+                          selected={this.state.category}
+                        />
+                      ))
+                  : <Text>Please connect to costa to view categories</Text>}
               </View>
             </View>
             <View style={styles.inputContainer}>
               <Inputs
                 newCategory={newCategory}
-                onNewCategoryPress={() => this.setState({newCategory: true, category: ''})}
-                onCostChange={(cost) => this.setState({cost})}
-                onCategoryChange={(category) => this.setState({category})}
+                onNewCategoryPress={() =>
+                  this.setState({ newCategory: true, category: '' })}
+                onCostChange={cost => this.setState({ cost })}
+                onCategoryChange={category => this.setState({ category })}
                 cost={cost}
-                category={category} />
+                category={category}
+              />
             </View>
             <View style={styles.actionsContainer}>
               <Actions
                 newCost={isValidCost}
-                onAction={isValidCost
-                          ? () => {
-                            createCost({cost: parseFloat(cost), category})
-                            this.syncCosts()
-                            this.setState({
-                              cost: '',
-                              category: '',
-                              costCount: listCosts().length,
-                              newCategory: false
-                            })
-                          }
-                          : this.syncCosts}
-                costCount={listCosts().length} />
+                onAction={
+                  isValidCost
+                    ? () => {
+                        createCost({ cost: parseFloat(cost), category })
+                        this.syncCosts()
+                        this.setState({
+                          cost: '',
+                          category: '',
+                          costCount: listCosts().length,
+                          newCategory: false
+                        })
+                      }
+                    : this.syncCosts
+                }
+                costCount={listCosts().length}
+              />
             </View>
           </View>
-        )} />
+        )}
+      />
     )
   }
 
   syncCosts = () => {
-    sync({costs: listCosts(), update: this.setState.bind(this)})
-      .then((isSynced) => {
-        this.setState({costCount: listCosts().length})
+    sync({ costs: listCosts(), update: this.setState.bind(this) })
+      .then(isSynced => {
+        this.setState({ costCount: listCosts().length })
         if (isSynced) {
           deleteCosts()
           deleteCategorys()
         } else {
           this.setState({
             categorys: Object.keys(listCategorys())
-              .map((categoryKey) => listCategorys()[categoryKey])
-              .map(({name}) => name)
+              .map(categoryKey => listCategorys()[categoryKey])
+              .map(({ name }) => name)
           })
         }
       })
-      .catch((err) => console.error(`Could not sync costs due to ${err}`))
-  };
+      .catch(err => console.error(`Could not sync costs due to ${err}`))
+  }
 
   componentDidMount() {
     this.syncCosts()
-    AppState.addEventListener('change', (appState) => {
+    AppState.addEventListener('change', appState => {
       if (appState === 'active') {
         this.syncCosts()
       }
