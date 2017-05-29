@@ -1,6 +1,5 @@
-import React from 'react';
-import { Form } from 'formsy-react'
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import Radium from 'radium'
 
 import { createCost } from '../../actions'
@@ -9,13 +8,12 @@ import {
   Card,
   CardTitle,
   CardText,
-  Button
+  Button,
+  NumberInput,
+  TextInput,
+  SelectableButton,
+  AddIconButton
 } from './UI'
-
-import {
-  NumberFormInput,
-  RadioFormButtons
-} from './FormElements'
 
 const styles = {
   form: {
@@ -29,50 +27,89 @@ class CostForm extends React.Component {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.string),
     connection: PropTypes.object
-  };
+  }
 
-  state = { canSubmit: false, newCategory: false };
+  state = {
+    canSubmit: false,
+    newCategory: false,
+    cost: '',
+    category: ''
+  }
 
-  createCost = ({category, cost}) => {
+  createCost = () => {
     const { connection } = this.props
-
-    const action = createCost({category, cost})
+    const { category, cost } = this.state
+    const action = createCost({ category, cost })
+    this.setState({ newCategory: false, cost: '', category: '' })
     connection.send(JSON.stringify(action))
-    this.setState({newCategory: false})
-    this.refs.form.reset()
-  };
+  }
 
   render() {
-    const { canSubmit, newCategory } = this.state
+    const { canSubmit, newCategory, cost, category } = this.state
     const { categories } = this.props
 
     return (
-      <div style={{display: 'flex', justifyContent: 'center', height: '100%', flex: 1}}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          height: '100%',
+          flex: 1
+        }}
+      >
         <Card>
-          <CardTitle text='Create new cost' />
-          <Form
-            ref='form'
-            style={styles.form}
-            onValid={() => this.setState({canSubmit: true})}
-            onInvalid={() => this.setState({canSubmit: false})}
-            onValidSubmit={this.createCost}>
-            <CardText text='Category' />
-            <RadioFormButtons
-              name='category'
-              buttons={categories}
-              newElement={newCategory}
-              onRadioButtonClick={() => this.setState({newCategory: false})}
-              onNewElementClick={() => this.setState({newCategory: true})}
-              required/>
-            <NumberFormInput
-              name='cost'
-              id='costInput'
-              label='Cost'
-              validations='isNumeric'
-              validationError='Not a number!'
-              required/>
-            <Button type='submit' text='Create' disabled={!canSubmit}/>
-          </Form>
+          <CardTitle text="Create new cost" />
+          <form style={styles.form}>
+            <CardText text="Category" />
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+              {!newCategory
+                ? categories.map(categoryName => (
+                    <SelectableButton
+                      key={categoryName}
+                      style={{ margin: 5 }}
+                      onClick={() =>
+                        this.setState({
+                          newCategory: false,
+                          category: categoryName
+                        })}
+                      selected={category === categoryName}
+                    >
+                      {categoryName}
+                    </SelectableButton>
+                  ))
+                : <TextInput
+                    id="category"
+                    label="New Category"
+                    value={category}
+                    onChange={e =>
+                      this.setState({ category: e.currentTarget.value })}
+                  />}
+            </div>
+            <AddIconButton
+              style={{
+                float: 'right',
+                display: newCategory ? 'none' : 'block'
+              }}
+              onClick={() => {
+                this.setState({
+                  newCategory: true,
+                  category: ''
+                })
+              }}
+            />
+            <NumberInput
+              id="costInput"
+              label="Cost"
+              value={cost}
+              onChange={e => this.setState({ cost: e.target.value })}
+            />
+            <Button
+              type="button"
+              text="Create"
+              onClick={this.createCost}
+              disabled={!cost || !category}
+            />
+          </form>
         </Card>
       </div>
     )
