@@ -23,7 +23,7 @@
       "host": "localhost",
       "ref": "origin/develop",
       "repo": "git@github.com:rollacaster/costa.git",
-      "path": "~/temp",
+      "path": "/Users/thomas/temp",
       "post-deploy" : "npm i; npm run build; pm2 startOrRestart ecosystem.json --env production"
     }
   }
