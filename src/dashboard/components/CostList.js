@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 import Radium from 'radium'
 
 import { getTotalCosts } from '../functions/costFunctions'
@@ -10,46 +10,76 @@ import CostListHeader from './CostListHeader'
 import EditableCostRow from './EditableCostRow'
 
 class CostList extends React.Component {
-  removeCost = (id) => {
-    const { connection } = this.props
-    const action = removeCost({id})
-    connection.send(JSON.stringify(action))
-  };
+  state = {
+    category: '',
+    cost: undefined
+  }
 
-  updateCost = (cost) => {
+  removeCost = id => {
     const { connection } = this.props
+    const action = removeCost({ id })
+    connection.send(JSON.stringify(action))
+  }
+
+  saveCost = () => {
+    const { connection } = this.props
+    const { cost } = this.state
     connection.send(JSON.stringify(updateCost(cost)))
-    this.setState({edit: ''})
-  };
+    this.setState({ edit: '' })
+  }
 
   render() {
     const { costs, onSortCosts } = this.props
     const { edit } = this.state
 
     return (
-      <div style={{ display: 'flex', width: '100%', flexDirection: 'column', alignItems: 'stretch' }}>
-        <div style={{display: 'flex', justifyContent: 'space-around'}}>
+      <div
+        style={{
+          display: 'flex',
+          width: '100%',
+          flexDirection: 'column',
+          alignItems: 'stretch'
+        }}
+      >
+        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <CostListHeader
-            label='Cost'
-            onSortDesc={() => onSortCosts({sortBy: 'category', desc: true})}
-            onSortAsc={() => onSortCosts({sortBy: 'category', desc: false})}/>
+            label="Cost"
+            onSortDesc={() => onSortCosts({ sortBy: 'category', desc: true })}
+            onSortAsc={() => onSortCosts({ sortBy: 'category', desc: false })}
+          />
           <CostListHeader
-            label='Cost'
-            onSortDesc={() => onSortCosts({sortBy: 'cost', desc: true})}
-            onSortAsc={() => onSortCosts({sortBy: 'cost', desc: false})}/>
+            label="Cost"
+            onSortDesc={() => onSortCosts({ sortBy: 'cost', desc: true })}
+            onSortAsc={() => onSortCosts({ sortBy: 'cost', desc: false })}
+          />
           <CostListHeader
-            label='Cost'
-            onSortDesc={() => onSortCosts({sortBy: 'time', desc: true})}
-            onSortAsc={() => onSortCosts({sortBy: 'time', desc: false})}/>
-          <span style={{textAlign: 'center'}}>Actions</span>
+            label="Cost"
+            onSortDesc={() => onSortCosts({ sortBy: 'time', desc: true })}
+            onSortAsc={() => onSortCosts({ sortBy: 'time', desc: false })}
+          />
+          <span style={{ textAlign: 'center' }}>Actions</span>
         </div>
-        <hr/>
-        {costs.map((cost, index) => cost.id === edit
-            ? <EditableCostRow key={index} updateCost={this.updateCost} cancelEdit={() => this.setState({edit: ''})} {...cost}/>
-            : <CostRow key={index} editCost={() => this.setState({edit: cost.id})} removeCost={this.removeCost} {...cost}/>
+        <hr />
+        {costs.map(
+          (cost, index) =>
+            cost.id === edit
+              ? <EditableCostRow
+                  key={index}
+                  saveCost={this.saveCost}
+                  cancelEdit={() => this.setState({ edit: '' })}
+                  updateCost={cost => this.setState({ cost })}
+                  updateCategory={category => this.setState({ category })}
+                  {...cost}
+                />
+              : <CostRow
+                  key={index}
+                  editCost={() => this.setState({ edit: cost.id })}
+                  removeCost={this.removeCost}
+                  {...cost}
+                />
         )}
-        <hr/>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <hr />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
           <span>{`Total: ${getTotalCosts(costs).toFixed(2)}`}</span>
         </div>
       </div>
@@ -58,10 +88,12 @@ class CostList extends React.Component {
 }
 
 CostList.propTypes = {
-  costs: PropTypes.arrayOf(PropTypes.shape({
-    category: PropTypes.string,
-    costs: PropTypes.number
-  })),
+  costs: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.string,
+      costs: PropTypes.number
+    })
+  ),
   onSortCosts: PropTypes.func
 }
 
