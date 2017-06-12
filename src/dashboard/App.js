@@ -1,5 +1,4 @@
 import React from 'react'
-import Radium from 'radium'
 
 import config from '../config'
 import {
@@ -25,21 +24,22 @@ class App extends React.Component {
     costs: {},
     sortBy: 'time',
     desc: true
-  };
+  }
 
   render() {
     const { costs, sortBy, desc } = this.state
     return (
       <div>
-        <h1 style={{paddingLeft: 20}}>Costa</h1>
+        <h1 style={{ paddingLeft: 20 }}>Costa</h1>
         <div style={styles.container}>
           <CostOverview costs={getCostsPerMonthAndCategory(costs)} />
           <CostForm categories={getCategories(costs)} connection={this.ws} />
         </div>
         <CostDetails
-          costs={getCostsPerMonth(sortCosts({sortBy, desc})(costs))}
-          onSortCosts={(sortParams) => this.setState(sortParams)}
-          connection={this.ws} />
+          costs={getCostsPerMonth(sortCosts({ sortBy, desc })(costs))}
+          onSortCosts={sortParams => this.setState(sortParams)}
+          connection={this.ws}
+        />
       </div>
     )
   }
@@ -49,7 +49,7 @@ class App extends React.Component {
 
     this.ws.onopen = () => {
       console.log(`Connected to ${config.ws}`)
-      this.ws.onmessage = (msg) => this.setState(JSON.parse(msg.data))
+      this.ws.onmessage = msg => this.setState(JSON.parse(msg.data))
     }
   }
 
@@ -58,4 +58,4 @@ class App extends React.Component {
   }
 }
 
-export default Radium(App)
+export default App

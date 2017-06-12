@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Radium from 'radium'
 import moment from 'moment'
 
 import { Button } from './UI'
@@ -57,4 +56,4 @@ EditableCostRow.propTypes = {
   cancelEdit: PropTypes.func
 }
 
-export default Radium(EditableCostRow)
+export default EditableCostRow

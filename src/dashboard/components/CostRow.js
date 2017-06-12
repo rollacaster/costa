@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Radium from 'radium'
 import moment from 'moment'
 
 import { Button } from './UI'
@@ -35,4 +34,4 @@ CostRow.propTypes = {
   removeCost: PropTypes.func
 }
 
-export default Radium(CostRow)
+export default CostRow

@@ -47,7 +47,6 @@
     "mongodb": "^2.1.18",
     "pathseg": "^1.0.2",
     "prop-types": "^15.5.10",
-    "radium": "^0.17.1",
     "ramda": "^0.21.0",
     "react": "16.0.0-alpha.6",
     "react-dom": "^15.1.0",

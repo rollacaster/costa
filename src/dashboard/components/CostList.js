@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Radium from 'radium'
 
 import { getTotalCosts } from '../functions/costFunctions'
 import { updateCost, removeCost } from '../../actions'
@@ -97,4 +96,4 @@ CostList.propTypes = {
   onSortCosts: PropTypes.func
 }
 
-export default Radium(CostList)
+export default CostList
