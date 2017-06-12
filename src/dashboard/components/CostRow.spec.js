@@ -16,30 +16,28 @@ describe('<CostRow/>', () => {
     handleRemove = spy()
     costRow = shallow(
       <CostRow
-        id='testId'
+        id="testId"
         cost={3.546}
         time={new Date('2016-04-07T02:30:00.000Z')}
         editCost={handleEdit}
         removeCost={handleRemove}
-        />
+      />
     )
   })
 
   it('should handle a edit press', () => {
     costRow.find(Button).at(0).simulate('click')
-    expect(handleEdit.calledOnce).to.be.true
+    expect(handleEdit.calledOnce).to.equal(true)
   })
 
   it('should handle a remove press', () => {
     costRow.find(Button).at(1).simulate('click')
-    expect(handleRemove.calledOnce).to.be.true
-  })
-
-  it('should render a time', () => {
-    expect(costRow.find('span').at(2).children().text()).to.be.deep.equal('07.04.2016 02:30')
+    expect(handleRemove.calledOnce).to.equal(true)
   })
 
   it('should render a cost', () => {
-    expect(costRow.find('span').at(1).children().text()).to.be.deep.equal('3.55')
+    expect(costRow.find('span').at(1).children().text()).to.be.deep.equal(
+      '3.55'
+    )
   })
 })

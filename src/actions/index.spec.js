@@ -12,8 +12,8 @@ describe('Action Creators', () => {
 
       const { type, id, time, category, cost } = createAction
       expect(type).to.be.equal('CREATE_COST')
-      expect(id).to.be.ok
-      expect(time).to.be.ok
+      expect(id).to.be.ok()
+      expect(time).to.be.ok()
       expect(category).to.be.equal('Test')
       expect(cost).to.be.equal(2)
     })

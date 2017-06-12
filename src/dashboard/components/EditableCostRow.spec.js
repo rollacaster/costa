@@ -16,18 +16,17 @@ describe('<EditableCostRow/>', () => {
     handleCancel = spy()
     editableCostRow = shallow(
       <EditableCostRow
-        id='testId'
+        id="testId"
         cost={3.546}
         time={new Date('2016-04-07T02:30:00.000Z')}
         updateCost={handleUpdate}
         cancelEdit={handleCancel}
-        />
+      />
     )
   })
 
   it('should handle a cancel press', () => {
     editableCostRow.find(Button).at(1).simulate('click')
-    expect(handleCancel.calledOnce).to.be.true
+    expect(handleCancel.calledOnce).to.equal(true)
   })
 })
-

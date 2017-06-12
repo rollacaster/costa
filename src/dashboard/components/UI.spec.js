@@ -27,7 +27,10 @@ describe('UI', () => {
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div _radiumDidResolveStyles className='mdl-card mdl-shadow--2dp' style={{minHeight: 0, margin: 5}}>
+      <div
+        className="mdl-card mdl-shadow--2dp"
+        style={{ minHeight: 0, margin: 5 }}
+      >
         <div>Test</div>
       </div>
     )
@@ -35,11 +38,11 @@ describe('UI', () => {
 
   it('should render a CardTitle', () => {
     const renderer = createRenderer()
-    renderer.render(<CardTitle text='Test' />)
+    renderer.render(<CardTitle text="Test" />)
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-      <div className='mdl-card__title'>
-        <h2 className='mdl-card__title-text'>Test</h2>
+      <div className="mdl-card__title">
+        <h2 className="mdl-card__title-text">Test</h2>
       </div>
     )
   })
@@ -49,7 +52,7 @@ describe('UI', () => {
     renderer.render(<CardText>Test</CardText>)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div className='mdl-card__supporting-text' style={{padding: 0}} _radiumDidResolveStyles>
+      <div className="mdl-card__supporting-text" style={{ padding: 0 }}>
         Test
       </div>
     )
@@ -60,7 +63,7 @@ describe('UI', () => {
     renderer.render(<CardActions>Test</CardActions>)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div className='mdl-card__actions mdl-card--border'>
+      <div className="mdl-card__actions mdl-card--border">
         Test
       </div>
     )
@@ -68,10 +71,13 @@ describe('UI', () => {
 
   it('should render LinkButton', () => {
     const renderer = createRenderer()
-    renderer.render(<LinkButton text='Test' />)
+    renderer.render(<LinkButton text="Test" />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <a className='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' onClick={undefined}>
+      <a
+        className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+        onClick={undefined}
+      >
         Test
       </a>
     )
@@ -80,28 +86,43 @@ describe('UI', () => {
   it('should render a NumberInput', () => {
     const renderer = createRenderer()
     renderer.render(
-      <NumberInput id='test' label='Test' validationError='Error' value={3} onChange={() => {}}/>
+      <NumberInput
+        id="test"
+        label="Test"
+        validationError="Error"
+        value={3}
+        onChange={() => {}}
+      />
     )
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <div className='mdl-textfield mdl-js-textfield' _radiumDidResolveStyles style={undefined}>
-        <input _radiumDidResolveStyles className='mdl-textfield__input' style={{textAlign: undefined}} type='text' pattern='-?[0-9]*(\.[0-9]+)?' id='test' value={3} onChange={() => {}}/>
-        <label className='mdl-textfield__label' htmlFor='test'>Test</label>
-        <span className='mdl-textfield__error'>Error</span>
+      <div className="mdl-textfield mdl-js-textfield" style={undefined}>
+        <input
+          className="mdl-textfield__input"
+          style={{ textAlign: undefined }}
+          type="text"
+          pattern="-?[0-9]*(\.[0-9]+)?"
+          id="test"
+          value={3}
+          onChange={() => {}}
+        />
+        <label className="mdl-textfield__label" htmlFor="test">Test</label>
+        <span className="mdl-textfield__error">Error</span>
       </div>
     )
   })
 
   it('should render a Button', () => {
     const renderer = createRenderer()
-    renderer.render(<Button text='Test' disabled/>)
+    renderer.render(<Button text="Test" disabled />)
     const output = renderer.getRenderOutput()
     expect(output).to.include(
       <button
         type={undefined}
         onClick={undefined}
-        className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-        disabled>
+        className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+        disabled
+      >
         Test
       </button>
     )
@@ -109,10 +130,13 @@ describe('UI', () => {
 
   it('should render an AccentedButton', () => {
     const renderer = createRenderer()
-    renderer.render(<AccentedButton text='Test' />)
+    renderer.render(<AccentedButton text="Test" />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <button style={{margin: 5}} className='mdl-button mdl-js-button mdl-button--raised mdl-button--accent' _radiumDidResolveStyles>
+      <button
+        style={{ margin: 5 }}
+        className="mdl-button mdl-js-button mdl-button--raised mdl-button--accent"
+      >
         Test
       </button>
     )
@@ -121,13 +145,13 @@ describe('UI', () => {
   it('should render a Table', () => {
     const renderer = createRenderer()
     renderer.render(
-        <Table>
-          <div>Test</div>
-        </Table>
+      <Table>
+        <div>Test</div>
+      </Table>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-      <table className='mdl-data-table mdl-js-data-table'>
+      <table className="mdl-data-table mdl-js-data-table">
         <div>Test</div>
       </table>
     )
@@ -136,13 +160,13 @@ describe('UI', () => {
   it('should render a TableHeadText', () => {
     const renderer = createRenderer()
     renderer.render(
-        <TableHeadText>
-          <div>Test</div>
-        </TableHeadText>
+      <TableHeadText>
+        <div>Test</div>
+      </TableHeadText>
     )
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-      <th className='mdl-data-table__cell--non-numeric'>
+      <th className="mdl-data-table__cell--non-numeric">
         <div>Test</div>
       </th>
     )
@@ -157,7 +181,7 @@ describe('UI', () => {
     )
     const output = renderer.getRenderOutput()
     expect(output).to.include(
-      <td className='mdl-data-table__cell--non-numeric'>
+      <td className="mdl-data-table__cell--non-numeric">
         <div>Test</div>
       </td>
     )
@@ -165,28 +189,28 @@ describe('UI', () => {
 
   it('should render an AddIconButton', () => {
     const renderer = createRenderer()
-    renderer.render(
-      <AddIconButton/>
-    )
+    renderer.render(<AddIconButton />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
       <button
-        className='mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored'
+        className="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
         onClick={undefined}
-        style={undefined}>
-        <i className='material-icons'>add</i>
+        style={undefined}
+        type="button"
+      >
+        <i className="material-icons">add</i>
       </button>
     )
   })
 
   it('should render an Attribute', () => {
     const renderer = createRenderer()
-    renderer.render(
-      <Attribute attribute='Key' value='Value'/>
-    )
+    renderer.render(<Attribute attribute="Key" value="Value" />)
     const output = renderer.getRenderOutput()
     expect(output).to.be.deep.equal(
-      <p style={{margin: 0}}><span style={{fontWeight: 600}}>Key</span> Value</p>
+      <p style={{ margin: 0 }}>
+        <span style={{ fontWeight: 600 }}>Key</span> Value
+      </p>
     )
   })
 })

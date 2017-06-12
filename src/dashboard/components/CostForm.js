@@ -29,7 +29,6 @@ class CostForm extends React.Component {
   }
 
   state = {
-    canSubmit: false,
     newCategory: false,
     cost: '',
     category: ''
@@ -44,7 +43,7 @@ class CostForm extends React.Component {
   }
 
   render() {
-    const { canSubmit, newCategory, cost, category } = this.state
+    const { newCategory, cost, category } = this.state
     const { categories } = this.props
 
     return (

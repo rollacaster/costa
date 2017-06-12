@@ -17,6 +17,6 @@ describe('<Actions />', () => {
 
   it('should handle a press', () => {
     actions.find(TouchableHighlight).first().simulate('press')
-    expect(handleAction.calledOnce).to.be.true
+    expect(handleAction.calledOnce).to.equal(true)
   })
 })

@@ -19,7 +19,7 @@ const CostRow = ({ id, category, cost, time, editCost, removeCost }) => (
       {moment(time).format('DD.MM.YYYY HH:mm')}
     </span>
     <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around' }}>
-      {/*<Button text='Edit' onClick={editCost}/>*/}
+      <Button text="Edit" onClick={editCost} />
       <Button text="Delete" onClick={() => removeCost(id)} />
     </div>
   </div>
