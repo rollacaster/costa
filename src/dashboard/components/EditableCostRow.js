@@ -1,51 +1,63 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import moment from 'moment'
 
 import { Button } from './UI'
 
-const EditableCostRow = ({
-  id,
-  category,
-  cost,
-  time,
-  saveCost,
-  updateCost,
-  updateCategory,
-  cancelEdit
-}) => (
-  <form>
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100%',
-        marginBottom: 5
-      }}
-    >
-      <input
-        type="text"
-        value={category}
-        style={{ flex: 1 }}
-        onChange={e => updateCategory(e.target.value)}
-      />
-      <input
-        name="cost"
-        type="number"
-        value={cost.toFixed(2)}
-        style={{ flex: 1 }}
-        onChange={e => updateCost(e.target.value)}
-      />
-      <span style={{ flex: 1, textAlign: 'center' }}>
-        {moment(time).format('DD.MM.YYYY HH:mm')}
-      </span>
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'space-around' }}>
-        <Button text="Edit" type="submit" onClick={saveCost} />
-        <Button type="button" text="Cancel" onClick={cancelEdit} />
-      </div>
-    </div>
-  </form>
-)
+class EditableCostRow extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      category: props.category,
+      cost: props.cost
+    }
+  }
+
+  render() {
+    const { time, saveCost, cancelEdit, cost: { id } } = this.props
+    const { category, cost } = this.state
+
+    return (
+      <form>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-around',
+            width: '100%',
+            marginBottom: 5
+          }}
+        >
+          <input
+            type="text"
+            value={category}
+            style={{ flex: 1 }}
+            onChange={e => this.setState({ category: e.target.value })}
+          />
+          <input
+            name="cost"
+            type="text"
+            value={cost}
+            style={{ flex: 1 }}
+            onChange={e => this.setState({ cost: e.target.value })}
+          />
+          <span style={{ flex: 1, textAlign: 'center' }}>
+            {moment(time).format('DD.MM.YYYY HH:mm')}
+          </span>
+          <div
+            style={{ flex: 1, display: 'flex', justifyContent: 'space-around' }}
+          >
+            <Button
+              text="Edit"
+              type="submit"
+              onClick={() => saveCost({ id, cost, category })}
+            />
+            <Button type="button" text="Cancel" onClick={cancelEdit} />
+          </div>
+        </div>
+      </form>
+    )
+  }
+}
 
 EditableCostRow.propTypes = {
   id: PropTypes.string,

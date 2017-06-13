@@ -10,8 +10,7 @@ import EditableCostRow from './EditableCostRow'
 
 class CostList extends React.Component {
   state = {
-    category: '',
-    cost: undefined
+    edit: ''
   }
 
   removeCost = id => {
@@ -20,9 +19,8 @@ class CostList extends React.Component {
     connection.send(JSON.stringify(action))
   }
 
-  saveCost = () => {
+  saveCost = cost => {
     const { connection } = this.props
-    const { cost } = this.state
     connection.send(JSON.stringify(updateCost(cost)))
     this.setState({ edit: '' })
   }
@@ -66,8 +64,6 @@ class CostList extends React.Component {
                   key={index}
                   saveCost={this.saveCost}
                   cancelEdit={() => this.setState({ edit: '' })}
-                  updateCost={cost => this.setState({ cost })}
-                  updateCategory={category => this.setState({ category })}
                   {...cost}
                 />
               : <CostRow
