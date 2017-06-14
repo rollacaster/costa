@@ -83,6 +83,10 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+   aaptOptions
+   {
+   cruncherEnabled = false
+   }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
 
