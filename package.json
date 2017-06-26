@@ -40,6 +40,7 @@
     "classnames": "^2.2.3",
     "create-react-class": "^15.5.3",
     "cron": "^1.1.0",
+    "eslint": "^4.1.1",
     "express": "^4.13.3",
     "immutable": "^3.7.6",
     "material-design-lite": "^1.0.6",
