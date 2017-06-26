@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { StyleSheet, TextInput } from 'react-native'
+import { StyleSheet, TextInput as RNTextInput } from 'react-native'
 
 import { fontSize, primary } from '../style'
 
 const styles = StyleSheet.create({
   textInput: {
-    margin: 30,
+    marginLeft: 30,
+    marginRight: 30,
     fontSize,
     backgroundColor: primary,
     borderWidth: 2,
@@ -17,17 +18,9 @@ const styles = StyleSheet.create({
   }
 })
 
-const Inputs = ({ onCostChange, cost, children }) => (
-  <TextInput
-    value={cost}
-    style={[styles.textInput]}
-    placeholder="Cost"
-    onChangeText={onCostChange}
-    keyboardType="numeric"
-  />
-)
+const TextInput = props => <RNTextInput style={[styles.textInput]} {...props} />
 
-Inputs.propTypes = {
+TextInput.propTypes = {
   cost: PropTypes.string,
   category: PropTypes.string,
   newCategory: PropTypes.bool,
@@ -36,4 +29,4 @@ Inputs.propTypes = {
   onCategoryChange: PropTypes.func
 }
 
-export default Inputs
+export default TextInput

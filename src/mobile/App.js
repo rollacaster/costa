@@ -5,7 +5,6 @@ import {
   Text,
   AppState,
   TouchableHighlight,
-  TextInput,
   Image
 } from 'react-native'
 import { Navigator } from 'react-native-deprecated-custom-components'
@@ -20,7 +19,7 @@ import {
 import sync from './sync'
 
 import Category from './components/Category'
-import Inputs from './components/Inputs'
+import TextInput from './components/TextInput'
 import Actions from './components/Actions'
 
 import { primary, fontSize, accented } from './style'
@@ -31,40 +30,10 @@ const styles = StyleSheet.create({
     backgroundColor: primary,
     borderBottomWidth: 2
   },
-  categoryContainer: {
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 30
-  },
   title: {
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize
-  },
-  imageContainer: {
-    backgroundColor: primary,
-    borderRadius: 50,
-    borderWidth: 1,
-    padding: 5,
-    justifyContent: 'center',
-    shadowOffset: { width: 3, height: 3 },
-    shadowRadius: 3,
-    shadowOpacity: 1,
-    shadowColor: '#ccc'
-  },
-  textInput: {
-    fontSize,
-    backgroundColor: primary,
-    borderWidth: 2,
-    height: 40,
-    opacity: 0.8,
-    textAlign: 'center',
-    borderRadius: 10
-  },
-  addButton: {
-    width: 40,
-    height: 40
   }
 })
 
@@ -96,15 +65,20 @@ class App extends React.Component {
           />
         }
         renderScene={() => (
-          <View
-            style={{ paddingTop: '20%', flex: 1, justifyContent: 'flex-start' }}
-          >
-            <Inputs
-              newCategory={newCategory}
-              onCostChange={cost => this.setState({ cost })}
-              cost={cost}
+          <View style={{ paddingTop: '20%' }}>
+            <TextInput
+              onChangeText={cost => this.setState({ cost })}
+              value={cost}
+              placeholder="Cost"
+              keyboardType="numeric"
             />
-            <View style={styles.categoryContainer}>
+            <View
+              style={{
+                flexWrap: 'wrap',
+                flexDirection: 'row',
+                justifyContent: 'space-around'
+              }}
+            >
               {categorys.length > 0
                 ? categorys
                     .slice(0, 8)
@@ -122,33 +96,46 @@ class App extends React.Component {
             <View
               style={{
                 alignItems: 'flex-end',
-                margin: 15,
-                height: 60
+                marginTop: 15
               }}
             >
-              {newCategory
-                ? <TextInput
-                    value={category}
-                    style={[styles.textInput]}
-                    placeholder="New Category"
-                    onChangeText={category => this.setState({ category })}
-                  />
-                : <TouchableHighlight
-                    style={styles.imageContainer}
-                    onPress={() =>
-                      this.setState({ newCategory: true, category: '' })}
-                    underlayColor={accented}
-                  >
+              {!newCategory &&
+                <TouchableHighlight
+                  style={{
+                    backgroundColor: primary,
+                    borderRadius: 5,
+                    borderWidth: 1,
+                    padding: 5,
+                    justifyContent: 'center',
+                    shadowOffset: { width: 3, height: 3 },
+                    shadowRadius: 3,
+                    shadowOpacity: 1,
+                    shadowColor: '#ccc',
+                    marginRight: 30
+                  }}
+                  onPress={() =>
+                    this.setState({ newCategory: true, category: '' })}
+                  underlayColor={accented}
+                >
+                  <View style={{ flexDirection: 'row' }}>
                     <Image
-                      style={[styles.addButton]}
+                      style={{ height: 20, width: 20, marginRight: 5 }}
                       source={require('./images/plus.png')}
                     />
-                  </TouchableHighlight>}
+                    <Text>Add Category</Text>
+                  </View>
+                </TouchableHighlight>}
             </View>
+            {newCategory &&
+              <TextInput
+                value={category}
+                placeholder="New Category"
+                onChangeText={category => this.setState({ category })}
+              />}
             <View
               style={{
-                flex: 1,
-                alignItems: 'center'
+                alignItems: 'center',
+                marginTop: 15
               }}
             >
               <Actions
