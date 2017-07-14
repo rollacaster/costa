@@ -27,12 +27,13 @@ import { primary, fontSize, accented } from './style'
 const styles = StyleSheet.create({
   navContainer: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: primary,
     borderBottomWidth: 2
   },
   title: {
     fontWeight: 'bold',
-    textAlign: 'center',
     fontSize
   }
 })
@@ -59,13 +60,22 @@ class App extends React.Component {
               LeftButton() {},
               RightButton() {},
               Title() {
-                return <Text style={styles.title}>Costa</Text>
+                return (
+                  <View
+                    style={{
+                      flex: 1,
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Text style={styles.title}>Costa</Text>
+                  </View>
+                )
               }
             }}
           />
         }
-        renderScene={() => (
-          <View style={{ paddingTop: '20%' }}>
+        renderScene={() =>
+          <View style={{ paddingTop: '30%' }}>
             <TextInput
               onChangeText={cost => this.setState({ cost })}
               value={cost}
@@ -82,7 +92,7 @@ class App extends React.Component {
               {categorys.length > 0
                 ? categorys
                     .slice(0, 8)
-                    .map(category => (
+                    .map(category =>
                       <Category
                         onPress={() =>
                           this.setState({ category, newCategory: false })}
@@ -90,7 +100,7 @@ class App extends React.Component {
                         key={category}
                         selected={this.state.category}
                       />
-                    ))
+                    )
                 : <Text>Please connect to costa to view categories</Text>}
             </View>
             <View
@@ -157,8 +167,7 @@ class App extends React.Component {
                 costCount={listCosts().length}
               />
             </View>
-          </View>
-        )}
+          </View>}
       />
     )
   }

@@ -18,7 +18,12 @@ const styles = StyleSheet.create({
   }
 })
 
-const TextInput = props => <RNTextInput style={[styles.textInput]} {...props} />
+const TextInput = props =>
+  <RNTextInput
+    style={[styles.textInput]}
+    underlineColorAndroid="transparent"
+    {...props}
+  />
 
 TextInput.propTypes = {
   cost: PropTypes.string,
