@@ -3,43 +3,40 @@ import PropTypes from 'prop-types'
 
 import { classes } from '../css'
 
-export const Card = ({ children }) => (
+export const Card = ({ children }) =>
   <div className={classes.card} style={{ minHeight: 0, margin: 5 }}>
     {children}
   </div>
-)
 
-export const CardTitle = ({ text }) => (
+export const CardTitle = ({ text }) =>
   <div className={classes.cardTitle}>
-    <h2 className={classes.cardTitleText}>{text}</h2>
+    <h2 className={classes.cardTitleText}>
+      {text}
+    </h2>
   </div>
-)
 
 CardTitle.propTypes = {
   text: PropTypes.string
 }
 
-export const CardText = ({ children }) => (
+export const CardText = ({ children }) =>
   <div className={classes.cardText} style={{ padding: 0 }}>
     {children}
   </div>
-)
 
 CardText.propTypes = {
   text: PropTypes.string
 }
 
-export const CardActions = ({ children }) => (
+export const CardActions = ({ children }) =>
   <div className={classes.cardActions}>
     {children}
   </div>
-)
 
-export const LinkButton = ({ text, onClick }) => (
+export const LinkButton = ({ text, onClick }) =>
   <a className={classes.linkButton} onClick={onClick}>
     {text}
   </a>
-)
 
 export const NumberInput = ({
   id,
@@ -49,7 +46,7 @@ export const NumberInput = ({
   value,
   style,
   textAlign
-}) => (
+}) =>
   <div className={classes.textField} style={style}>
     <input
       className={classes.input}
@@ -60,10 +57,13 @@ export const NumberInput = ({
       value={value}
       style={{ textAlign }}
     />
-    <label className={classes.label} htmlFor={id}>{label}</label>
-    <span className={classes.textFieldError}>{validationError}</span>
+    <label className={classes.label} htmlFor={id}>
+      {label}
+    </label>
+    <span className={classes.textFieldError}>
+      {validationError}
+    </span>
   </div>
-)
 
 NumberInput.propTypes = {
   id: PropTypes.string,
@@ -80,7 +80,7 @@ export const TextInput = ({
   value,
   style,
   textAlign
-}) => (
+}) =>
   <div className={classes.textField} style={style}>
     <input
       className={classes.input}
@@ -90,10 +90,13 @@ export const TextInput = ({
       value={value}
       style={{ textAlign }}
     />
-    <label className={classes.label} htmlFor={id}>{label}</label>
-    <span className={classes.textFieldError}>{validationError}</span>
+    <label className={classes.label} htmlFor={id}>
+      {!value && label}
+    </label>
+    <span className={classes.textFieldError}>
+      {validationError}
+    </span>
   </div>
-)
 
 TextInput.propTypes = {
   id: PropTypes.string,
@@ -102,7 +105,7 @@ TextInput.propTypes = {
   onChange: PropTypes.func
 }
 
-export const SelectableButton = ({ children, selected, onClick, style }) => (
+export const SelectableButton = ({ children, selected, onClick, style }) =>
   <button
     type="button"
     className={selected ? classes.raisedButton : classes.raisedButtonAccented}
@@ -111,9 +114,8 @@ export const SelectableButton = ({ children, selected, onClick, style }) => (
   >
     {children}
   </button>
-)
 
-export const Button = ({ text, disabled, onClick, type }) => (
+export const Button = ({ text, disabled, onClick, type }) =>
   <button
     type={type}
     className={classes.raisedButton}
@@ -122,24 +124,22 @@ export const Button = ({ text, disabled, onClick, type }) => (
   >
     {text}
   </button>
-)
 
 Button.propTypes = {
   text: PropTypes.string
 }
 
-export const AccentedButton = ({ text }) => (
+export const AccentedButton = ({ text }) =>
   <button style={{ margin: 5 }} className={classes.raisedButtonAccented}>
     {text}
   </button>
-)
 
 AccentedButton.propTypes = {
   id: PropTypes.string,
   text: PropTypes.string
 }
 
-export const AddIconButton = ({ style, onClick }) => (
+export const AddIconButton = ({ style, onClick }) =>
   <button
     type="button"
     className={classes.addButton}
@@ -148,31 +148,26 @@ export const AddIconButton = ({ style, onClick }) => (
   >
     <i className={classes.icons}>add</i>
   </button>
-)
 
-export const Table = ({ children }) => (
+export const Table = ({ children }) =>
   <table className={classes.table}>
     {children}
   </table>
-)
 
-export const TableHeadText = ({ children }) => (
+export const TableHeadText = ({ children }) =>
   <th className={classes.nonNumericTableCell}>
     {children}
   </th>
-)
 
-export const TableCellText = ({ children }) => (
+export const TableCellText = ({ children }) =>
   <td className={classes.nonNumericTableCell}>
     {children}
   </td>
-)
 
-export const Attribute = ({ attribute, value }) => (
+export const Attribute = ({ attribute, value }) =>
   <p style={{ margin: 0 }}>
     <span style={{ fontWeight: 600 }}>{attribute}</span> {value}
   </p>
-)
 
 Attribute.propTypes = {
   key: PropTypes.string,

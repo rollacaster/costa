@@ -60,28 +60,28 @@ class CostForm extends React.Component {
           <form style={styles.form}>
             <CardText text="Category" />
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              {!newCategory
-                ? categories.map(categoryName => (
-                    <SelectableButton
-                      key={categoryName}
-                      style={{ margin: 5 }}
-                      onClick={() =>
-                        this.setState({
-                          newCategory: false,
-                          category: categoryName
-                        })}
-                      selected={category === categoryName}
-                    >
-                      {categoryName}
-                    </SelectableButton>
-                  ))
-                : <TextInput
-                    id="category"
-                    label="New Category"
-                    value={category}
-                    onChange={e =>
-                      this.setState({ category: e.currentTarget.value })}
-                  />}
+              {categories.map(categoryName =>
+                <SelectableButton
+                  key={categoryName}
+                  style={{ margin: 5 }}
+                  onClick={() =>
+                    this.setState({
+                      newCategory: false,
+                      category: categoryName
+                    })}
+                  selected={category === categoryName}
+                >
+                  {categoryName}
+                </SelectableButton>
+              )}
+              {newCategory &&
+                <TextInput
+                  id="category"
+                  label="New Category"
+                  value={category}
+                  onChange={e =>
+                    this.setState({ category: e.currentTarget.value })}
+                />}
             </div>
             <AddIconButton
               style={{
