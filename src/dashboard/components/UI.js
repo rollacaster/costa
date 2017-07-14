@@ -140,14 +140,16 @@ AccentedButton.propTypes = {
 }
 
 export const AddIconButton = ({ style, onClick }) =>
-  <button
-    type="button"
-    className={classes.addButton}
-    style={style}
-    onClick={onClick}
-  >
-    <i className={classes.icons}>add</i>
-  </button>
+  <div>
+    <button
+      type="button"
+      className={classes.addButton}
+      style={style}
+      onClick={onClick}
+    >
+      <i className={classes.icons}>add</i>
+    </button>
+  </div>
 
 export const Table = ({ children }) =>
   <table className={classes.table}>

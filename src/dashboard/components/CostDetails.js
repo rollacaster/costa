@@ -24,22 +24,24 @@ class CostDetails extends React.Component {
         />
         {isOpen &&
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-            {Object.keys(costs).map(month => (
-              <SelectableButton
-                style={{ margin: 5 }}
-                key={month}
-                onClick={() => {
-                  if (month === activeMonth) {
-                    this.setState({ activeMonth: '' })
-                  } else {
-                    this.setState({ activeMonth: month })
-                  }
-                }}
-                selected={month === activeMonth}
-              >
-                {month}
-              </SelectableButton>
-            ))}
+            <div style={{ marginBottom: '2rem' }}>
+              {Object.keys(costs).map(month =>
+                <SelectableButton
+                  style={{ margin: 5 }}
+                  key={month}
+                  onClick={() => {
+                    if (month === activeMonth) {
+                      this.setState({ activeMonth: '' })
+                    } else {
+                      this.setState({ activeMonth: month })
+                    }
+                  }}
+                  selected={month === activeMonth}
+                >
+                  {month}
+                </SelectableButton>
+              )}
+            </div>
             {activeMonth &&
               <CostList
                 costs={costs[activeMonth]}
