@@ -40,7 +40,7 @@ class CostList extends React.Component {
       >
         <div style={{ display: 'flex', justifyContent: 'space-around' }}>
           <CostListHeader
-            label="Cost"
+            label="Category"
             onSortDesc={() => onSortCosts({ sortBy: 'category', desc: true })}
             onSortAsc={() => onSortCosts({ sortBy: 'category', desc: false })}
           />
@@ -50,7 +50,7 @@ class CostList extends React.Component {
             onSortAsc={() => onSortCosts({ sortBy: 'cost', desc: false })}
           />
           <CostListHeader
-            label="Cost"
+            label="Date"
             onSortDesc={() => onSortCosts({ sortBy: 'time', desc: true })}
             onSortAsc={() => onSortCosts({ sortBy: 'time', desc: false })}
           />
