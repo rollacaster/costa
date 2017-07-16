@@ -29,7 +29,9 @@ class App extends React.Component {
   render() {
     const { costs, sortBy, desc } = this.state
     return (
-      <div>
+      <div
+        style={{ maxWidth: '85rem', marginLeft: 'auto', marginRight: 'auto' }}
+      >
         <h1 style={{ paddingLeft: 20 }}>Costa</h1>
         <div style={styles.container}>
           <CostOverview costs={getCostsPerMonthAndCategory(costs)} />
