@@ -43,6 +43,7 @@ class CostDetails extends React.Component {
               )}
             </div>
             {activeMonth &&
+              costs[activeMonth] &&
               <CostList
                 costs={costs[activeMonth]}
                 connection={connection}

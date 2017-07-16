@@ -25,7 +25,7 @@ class CostOverview extends Component {
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {Object.keys(costs).map(month => (
+          {Object.keys(costs).map(month =>
             <SelectableButton
               style={{ margin: 5 }}
               key={month}
@@ -34,7 +34,7 @@ class CostOverview extends Component {
             >
               {month}
             </SelectableButton>
-          ))}
+          )}
         </div>
         <div
           style={{
@@ -45,11 +45,13 @@ class CostOverview extends Component {
           }}
         >
           <div style={{ flex: 1 }}>
-            {activeMonth ? <CostPie costs={costs[activeMonth]} /> : ''}
+            {activeMonth && costs[activeMonth]
+              ? <CostPie costs={costs[activeMonth]} />
+              : ''}
           </div>
-          <span
-            style={{ flex: 1 }}
-          >{`Total: ${getTotalCosts(costs[activeMonth]).toFixed(2)}€`}</span>
+          <span style={{ flex: 1 }}>{`Total: ${getTotalCosts(
+            costs[activeMonth]
+          ).toFixed(2)}€`}</span>
         </div>
       </div>
     )
