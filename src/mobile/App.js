@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-  StyleSheet,
-  View,
-  Text,
-  AppState,
-  TouchableHighlight,
-  Image
-} from 'react-native'
+import { View, Text, AppState, TouchableHighlight, Image } from 'react-native'
 
 import {
   createCost,
@@ -18,18 +11,11 @@ import {
 import sync from './sync'
 
 import Category from './components/Category'
+import Header from './components/Header'
 import TextInput from './components/TextInput'
 import Actions from './components/Actions'
 
-import { primary, fontSize, accented } from './style'
-
-const styles = StyleSheet.create({
-  title: {
-    margin: 10,
-    fontWeight: 'bold',
-    fontSize
-  }
-})
+import { primary, accented } from './style'
 
 class App extends React.Component {
   state = {
@@ -46,18 +32,7 @@ class App extends React.Component {
 
     return (
       <View>
-        <View
-          style={{
-            alignItems: 'center',
-            paddingTop: 20,
-            marginBottom: 10,
-            backgroundColor: primary,
-            borderBottomWidth: 2,
-            borderBottomColor: 'black'
-          }}
-        >
-          <Text style={styles.title}>Costa</Text>
-        </View>
+        <Header />
         <TextInput
           onChangeText={cost => this.setState({ cost })}
           value={cost}
