@@ -57,8 +57,8 @@ const renderPie = data =>
         '#607D8B'
       ]
     },
-    pie: { label: { format: value => `${value}€` } },
-    tooltip: { format: { value: value => `${value}€` } }
+    pie: { label: { format: value => `${value.toFixed(2)}€` } },
+    tooltip: { format: { value: value => `${value.toFixed(2)}€` } }
   })
 
 export default CostPie
