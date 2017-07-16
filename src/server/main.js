@@ -11,7 +11,7 @@ const port = process.env.PORT || config.port
 httpConfiguration.set('port', port)
 
 const server = http.createServer(httpConfiguration)
-server.on('error', (err) => console.log(`Could not start server: ${err}`))
+server.on('error', err => console.log(`Could not start server: ${err}`))
 
 const wss = new WS.Server({ server })
 
@@ -20,22 +20,27 @@ if (config.backup) {
 }
 
 // Load stored actions
-findDocuments({ collection: 'actions' })
-  .then((actions) => actions.forEach((action) => store.dispatch(action)))
+findDocuments({ collection: 'actions' }).then(actions =>
+  actions.forEach(action => store.dispatch(action))
+)
 
-wss.on('connection', (ws) => {
+wss.on('connection', ws => {
   ws.send(JSON.stringify(store.getState()))
 
-  ws.on('message', (msg) => {
+  ws.on('message', msg => {
     const action = JSON.parse(msg)
-    storeDocument({ collection: 'actions', document: action }).then(() => {
-      store.dispatch(action)
-      wss.clients.forEach((ws) => ws.send(JSON.stringify(store.getState())))
-    }).catch((err) => console.log(`Could not save ${JSON.stringify(action)} due to ${err}`))
+    storeDocument({ collection: 'actions', document: action })
+      .then(() => {
+        store.dispatch(action)
+        wss.clients.forEach(ws => ws.send(JSON.stringify(store.getState())))
+      })
+      .catch(err =>
+        console.log(`Could not save ${JSON.stringify(action)} due to ${err}`)
+      )
   })
 })
 
-exports.listen = (cb) => {
+exports.listen = cb => {
   server.on('listening', () => {
     console.log(`Listening on port ${port}`)
 
@@ -47,8 +52,8 @@ exports.listen = (cb) => {
   server.listen(port)
 }
 
-exports.stop = (cb) => {
-  getConnection.then((con) => {
+exports.stop = cb => {
+  getConnection.then(con => {
     con.close()
     server.close(cb)
   })

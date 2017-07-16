@@ -4,7 +4,7 @@ import moment from 'moment'
 
 import { Button } from './UI'
 
-const CostRow = ({ id, category, cost, time, editCost, removeCost }) => (
+const CostRow = ({ id, category, cost, time, editCost, removeCost }) =>
   <div
     style={{
       display: 'flex',
@@ -13,8 +13,12 @@ const CostRow = ({ id, category, cost, time, editCost, removeCost }) => (
       marginBottom: 5
     }}
   >
-    <span style={{ flex: 1, textAlign: 'center' }}>{category}</span>
-    <span style={{ flex: 1, textAlign: 'center' }}>{cost.toFixed(2)}</span>
+    <span style={{ flex: 1, textAlign: 'center' }}>
+      {category}
+    </span>
+    <span style={{ flex: 1, textAlign: 'center' }}>
+      {cost.toFixed(2)}
+    </span>
     <span style={{ flex: 1, textAlign: 'center' }}>
       {moment(time).format('DD.MM.YYYY HH:mm')}
     </span>
@@ -23,7 +27,6 @@ const CostRow = ({ id, category, cost, time, editCost, removeCost }) => (
       <Button text="Delete" onClick={() => removeCost(id)} />
     </div>
   </div>
-)
 
 CostRow.propTypes = {
   id: PropTypes.string,

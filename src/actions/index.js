@@ -8,28 +8,22 @@ exports.CREATE_COST = CREATE_COST
 exports.UPDATE_COST = UPDATE_COST
 exports.REMOVE_COST = REMOVE_COST
 
-exports.createCost = ({ category, cost }) => {
-  return {
-    type: CREATE_COST,
-    id: uuid.v1(),
-    time: new Date(),
-    category,
-    cost: parseFloat(cost)
-  }
-}
+exports.createCost = ({ category, cost }) => ({
+  type: CREATE_COST,
+  id: uuid.v1(),
+  time: new Date(),
+  category,
+  cost: parseFloat(cost)
+})
 
-exports.updateCost = ({id, cost, category}) => {
-  return {
-    type: UPDATE_COST,
-    id,
-    cost: parseFloat(cost),
-    category
-  }
-}
+exports.updateCost = ({ id, cost, category }) => ({
+  type: UPDATE_COST,
+  id,
+  cost: parseFloat(cost),
+  category
+})
 
-exports.removeCost = ({id}) => {
-  return {
-    type: REMOVE_COST,
-    id
-  }
-}
+exports.removeCost = ({ id }) => ({
+  type: REMOVE_COST,
+  id
+})
