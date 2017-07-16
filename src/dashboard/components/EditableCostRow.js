@@ -14,11 +14,11 @@ class EditableCostRow extends Component {
   }
 
   render() {
-    const { time, saveCost, cancelEdit, cost: { id } } = this.props
+    const { time, saveCost, cancelEdit, id } = this.props
     const { category, cost } = this.state
 
     return (
-      <form>
+      <div>
         <div
           style={{
             display: 'flex',
@@ -30,14 +30,14 @@ class EditableCostRow extends Component {
           <input
             type="text"
             value={category}
-            style={{ flex: 1 }}
+            style={{ flex: 1, textAlign: 'center', fontSize: '1rem' }}
             onChange={e => this.setState({ category: e.target.value })}
           />
           <input
             name="cost"
             type="text"
             value={cost}
-            style={{ flex: 1 }}
+            style={{ flex: 1, textAlign: 'center', fontSize: '1rem' }}
             onChange={e => this.setState({ cost: e.target.value })}
           />
           <span style={{ flex: 1, textAlign: 'center' }}>
@@ -48,13 +48,13 @@ class EditableCostRow extends Component {
           >
             <Button
               text="Edit"
-              type="submit"
+              type="button"
               onClick={() => saveCost({ id, cost, category })}
             />
             <Button type="button" text="Cancel" onClick={cancelEdit} />
           </div>
         </div>
-      </form>
+      </div>
     )
   }
 }
