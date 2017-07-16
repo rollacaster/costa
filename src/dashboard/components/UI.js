@@ -55,10 +55,10 @@ export const NumberInput = ({
       id={id}
       onChange={onChange}
       value={value}
-      style={{ textAlign }}
+      style={{ textAlign, outline: 'none' }}
     />
     <label className={classes.label} htmlFor={id}>
-      {label}
+      {!value && label}
     </label>
     <span className={classes.textFieldError}>
       {validationError}
@@ -88,7 +88,7 @@ export const TextInput = ({
       id={id}
       onChange={onChange}
       value={value}
-      style={{ textAlign }}
+      style={{ textAlign, outline: 'none' }}
     />
     <label className={classes.label} htmlFor={id}>
       {!value && label}
