@@ -134,18 +134,17 @@ class App extends React.Component {
         if (isSynced) {
           deleteCosts()
           deleteCategorys()
-        } else {
-          this.setState({
-            categorys: Object.keys(listCategorys())
-              .map(categoryKey => listCategorys()[categoryKey])
-              .map(({ name }) => name)
-          })
         }
       })
       .catch(err => console.error(`Could not sync costs due to ${err}`))
   }
 
   componentDidMount() {
+    this.setState({
+      categorys: Object.keys(listCategorys())
+        .map(categoryKey => listCategorys()[categoryKey])
+        .map(({ name }) => name)
+    })
     this.syncCosts()
     AppState.addEventListener('change', appState => {
       if (appState === 'active') {
