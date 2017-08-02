@@ -109,7 +109,10 @@ class App extends React.Component {
             onAction={
               isValidCost
                 ? () => {
-                    createCost({ cost: parseFloat(cost), category })
+                    createCost({
+                      cost: parseFloat(cost.replace(',', '.')),
+                      category
+                    })
                     this.syncCosts()
                     this.setState({
                       cost: '',
