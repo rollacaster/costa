@@ -13,13 +13,13 @@ exports.createCost = ({ category, cost }) => ({
   id: uuid.v1(),
   time: new Date(),
   category,
-  cost: parseFloat(cost)
+  cost: parseFloat(cost.replace(',', '.'))
 })
 
 exports.updateCost = ({ id, cost, category }) => ({
   type: UPDATE_COST,
   id,
-  cost: parseFloat(cost),
+  cost: parseFloat(cost.replace(',', '.')),
   category
 })
 

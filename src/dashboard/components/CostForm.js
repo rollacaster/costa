@@ -37,7 +37,7 @@ class CostForm extends React.Component {
   createCost = () => {
     const { connection } = this.props
     const { category, cost } = this.state
-    const action = createCost({ category, cost })
+    const action = createCost({ category, cost: cost.replace(',', '.') })
     this.setState({ newCategory: false, cost: '', category: '' })
     connection.send(JSON.stringify(action))
   }
