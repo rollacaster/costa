@@ -37,27 +37,31 @@ const renderPie = data =>
     },
     color: {
       pattern: [
-        '#f44336',
-        '#E91E63',
-        '#9C27B0',
-        '#3F51B5',
         '#2196F3',
-        '#03A9F4',
-        '#00BCD4',
-        '#009688',
-        '#4CAF50',
-        '#8BC34A',
-        '#CDDC39',
+        '#E91E63',
         '#FFEB3B',
-        '#FFC107',
+        '#9C27B0',
+        '#009688',
+        '#8BC34A',
+        '#9E9E9E',
         '#FF9800',
+        '#FFC107',
+        '#4CAF50',
         '#FF5722',
         '#795548',
-        '#9E9E9E',
-        '#607D8B'
+        '#607D8B',
+        '#03A9F4',
+        '#f44336',
+        '#CDDC39',
+        '#3F51B5',
+        '#00BCD4'
       ]
     },
-    pie: { label: { format: value => `${value.toFixed(2)}€` } },
+    pie: {
+      label: {
+        format: (value, _, category) => `${category} ${value.toFixed(2)}€`
+      }
+    },
     tooltip: { format: { value: value => `${value.toFixed(2)}€` } }
   })
 
