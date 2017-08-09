@@ -32,7 +32,22 @@ class App extends React.Component {
 
     return (
       <View>
-        <Header />
+        <Header
+          newCost={isValidCost}
+          onAction={() => {
+            createCost({
+              cost: parseFloat(cost.replace(',', '.')),
+              category
+            })
+            this.syncCosts()
+            this.setState({
+              cost: '',
+              category: '',
+              costCount: listCosts().length,
+              newCategory: false
+            })
+          }}
+        />
         <TextInput
           onChangeText={cost => this.setState({ cost })}
           value={cost}
