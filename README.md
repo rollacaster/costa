@@ -4,6 +4,8 @@
 # costa
 Keep track of your daily costs across all devices.
 
+![demo](./demo.png)
+
 ## Prerequisites
 -   [Node.js](<https://nodejs.org/en/download/current/>) 6.X
 -   For mobile applications see [React Native Docs](<https://facebook.github.io/react-native/docs/getting-started.html>)
